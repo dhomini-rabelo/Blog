@@ -3,14 +3,19 @@
 <html lang="pt-br">
 <head>
     {% include 'base/includes/_head.html' %}
-    <link rel="stylesheet" href="{% static 'styles/core/base.css' %}">
+    <link rel="stylesheet" href="/static/core/base.css">
     {% block links %}
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
     {% block javascript %}{% endblock %}
 </body>
 </html>

@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # My apps
+    'categories.CategoriesConfig',
     'posts.PostsConfig',
     'accounts.AccountsConfig',
     # Others apps
@@ -51,7 +52,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries': {
-            'filters': 'Support.code.TemplatesTags.basic',
+            'filters': 'Support.Code.django.TemplatesTags.basic',
             }
 
         },

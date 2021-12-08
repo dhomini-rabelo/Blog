@@ -4,7 +4,7 @@ from models.app import DjangoApp
 from time import sleep
 
 
-app_name = 'posts'
+app_name = 'categories'
 app = DjangoApp(bp, app_name, project_name)
 
 
@@ -15,15 +15,15 @@ app = DjangoApp(bp, app_name, project_name)
 
 #* APÓS CRIAÇÃO
 # sleep(1)
-delete_comments_by_folder(bp, app_name)
-sleep(1)
-app.create_url_archive()
-sleep(1)
-app.import_for_model()
-sleep(1)
-app.register_app()
-sleep(1)
-app.config_app()
+# delete_comments_by_folder(bp, app_name)
+# sleep(1)
+# app.create_url_archive()
+# sleep(1)
+# app.import_for_model()
+# sleep(1)
+# app.register_app()
+# sleep(1)
+# app.config_app()
 
 
 

@@ -1,0 +1,31 @@
+#container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#dracula-logo{
+    width: 2.5rem;
+    margin-right: 0.5rem;
+}
+
+.header-pc{
+    background-color: black;
+    color: white;
+    padding: 0.8rem 1.1rem;
+    height: 10vh;
+}
+
+.nav-x li{
+    list-style: none;
+    
+}
+
+nav a{
+    color: white;
+    padding: 0.25rem 0.5rem;
+}
+
+main{
+    background-color: #343746;
+    height: 82vh;
+}
