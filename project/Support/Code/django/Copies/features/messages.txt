@@ -1,0 +1,34 @@
+from django.contrib.messages import constants
+
+MESSAGE_TAGS = {
+    constants.ERROR : 'alert-danger',
+    constants.WARNING : 'alert-warning',
+    constants.DEBUG : 'alert-info',
+    constants.SUCCESS : 'alert-success',
+    constants.INFO : 'alert-info',
+}
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags != 'alert-warning'   %}
+<div class="alert {{message.tags}}" role="alert">
+  {{ message }} 
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'alert-warning' and form_errors%}
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">{{ message }}</h4>
+  {% for form_error in form_errors %}
+    <hr>
+    <p class="mb-0">{{ form_error }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+

@@ -1,0 +1,38 @@
+from django.core.paginator import Paginator
+
+funcionarios = empresa.funcionarios.filter(demitido=False)
+paginator = Paginator(funcionarios, 15)
+page_number = request.GET.get('p')
+funcionarios = paginator.get_page(page_number)
+
+
+# as template tag
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if funcionarios.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?p={{ funcionarios.previous_page_number }}&nome={{ request.GET.nome }}&salario={{ request.GET.salario }}&profissao={{ request.GET.profissao }}&demitido={{ request.GET.demitido }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {% endif %}
+      {% for pagina in funcionarios.paginator.page_range %}
+      {% if funcionarios.number == pagina %}
+        <li class="page-item active">
+      {% else %}
+        <li class="page-item">
+      {% endif %}
+        <a class="page-link" href="?p={{ pagina }}&nome={{ request.GET.nome }}&salario={{ request.GET.salario }}&profissao={{ request.GET.profissao }}&demitido={{ request.GET.demitido }}">{{ pagina }}</a>
+        </li>
+      {% endfor %}
+      {% if funcionarios.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?p={{ funcionarios.next_page_number }}&nome={{ request.GET.nome }}&salario={{ request.GET.salario }}&profissao={{ request.GET.profissao }}&demitido={{ request.GET.demitido }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>

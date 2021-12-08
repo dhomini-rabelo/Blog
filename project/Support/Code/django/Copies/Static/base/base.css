@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font */
+}
+
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}

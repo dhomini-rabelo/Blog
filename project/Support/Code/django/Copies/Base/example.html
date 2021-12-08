@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% include 'includes/_head.html' %}
+<!-- default favicon default links -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    {% block links %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% block javascript %}{% endblock %}
+</body>
+</html>

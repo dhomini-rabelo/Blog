@@ -1,0 +1,15 @@
+# Isto já está no requirements.txt
+pip install django-crispy-forms
+pip install crispy-bootstrap5
+
+add app crispy-forms e crispy_bootstrap5
+
+add this settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+use {% load crispy_forms_tags %} in html code
+
+example:
+{{ form|crispy }}

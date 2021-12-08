@@ -1,0 +1,7 @@
+ - criar app e registrar
+ - instalar pillow
+ - criar model
+ - colocar em settings AUTH USER MODEL = 'accounts.User'
+ - fazer migrations e migrate
+ - criar os forms 
+ - criar admin
