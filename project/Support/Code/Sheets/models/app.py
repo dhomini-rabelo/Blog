@@ -12,7 +12,7 @@ class DjangoApp(Base, AppAdmin, AppModels, AppSettings, AppViews, AppTests):
         self.app = self.adapt_path(app)
         self.path = f'{self.base_path}/{self.app}'
         assert_folder_existence(self.path)
-        self.response = lambda message: response(message, app)
+        self.response = lambda message: response(message, 0.25,app)
         self.spaces = lambda text_list, spaces: list(map(lambda text: f'{sp(spaces)}{text}', text_list))
         self.init = Editor(self.path, '__init__.py')
         self.admin = Editor(self.path, 'admin.py')

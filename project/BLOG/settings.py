@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # My apps
+    'accounts.AccountsConfig',
     # Others apps
 ]
 
@@ -112,3 +113,5 @@ MEDIA_URL = '/media/'
 SESSION_COOKIE_AGE = 60*60*24*7
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+AUTH_USER_MODEL = 'accounts.User'

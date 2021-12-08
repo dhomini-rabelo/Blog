@@ -22,7 +22,7 @@ class Eraser(Base):
     
     def initial_lines(self):
         reading = self.read(self.path)
-        if reading[0][:3] == '"""':
+        if len(reading) > 0 and reading[0][:3] == '"""':
             for index_, line in enumerate(reading[1:]):
                 if '"""' in line:
                     end_comment = index_

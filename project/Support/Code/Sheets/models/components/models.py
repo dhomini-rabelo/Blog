@@ -5,7 +5,7 @@ class AppModels(ABC):
     def import_for_model(self):
         current_import = 'from django.db import models'
         new_import = 'from django.db.models import (Model, CharField, DateTimeField, TextField, EmailField, ForeignKey, PositiveIntegerField, ImageField, RESTRICT, DecimalField, DateField, BooleanField)'
-        self.models.replace_code(current_import, new_import) # new_reading
+        self.models.replace_line(current_import, new_import) # new_reading
         self.response(f'import do model foi editado')
         
     

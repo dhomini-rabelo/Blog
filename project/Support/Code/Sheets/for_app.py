@@ -4,7 +4,7 @@ from models.app import DjangoApp
 from time import sleep
 
 
-app_name = 'pessoa'
+app_name = 'accounts'
 app = DjangoApp(bp, app_name, project_name)
 
 
@@ -16,19 +16,15 @@ app = DjangoApp(bp, app_name, project_name)
 #* APÓS CRIAÇÃO
 # sleep(1)
 # delete_comments_by_folder(bp, app_name)
-# app.create_templates_folder(app_name)
 # sleep(1)
 # app.create_url_archive()
-# sleep(1)
-# app.create_forms_archive()
 # app.import_for_model()
 # app.register_app()
+# sleep(1)
 # app.config_app()
 
 
-#* CRIAR ABSTRACT USER
-# app.create_abstract_user_model()
-# app.register_abstract_user(project_name)
+
 
 
 #* CRIAR TESTES
