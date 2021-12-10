@@ -60,3 +60,19 @@ nav a{
 }
 
 
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-title .word-1{
+    font-size: 0.9rem;
+    letter-spacing: 0.3rem;
+}
+
+.logo-title .word-2{
+    font-size: 1.2rem;
+}

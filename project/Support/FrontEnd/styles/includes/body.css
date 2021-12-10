@@ -1,5 +1,5 @@
 header{
-    height: 8vh;
+    min-height: 8vh;
 }
 
 main{
@@ -8,6 +8,6 @@ main{
 }
 
 footer{
-    height: 7.5vh;
+    min-height: 7.5vh;
     background-color: black;
 }

@@ -1,0 +1,129 @@
+main{
+    background-color: #343746;
+    min-height: 100vh;
+    color: white;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    display: inline-block;
+    margin-bottom: 15vh;
+    background-color: white;
+    color: black;
+}
+
+.block-logo{
+    background-color: black;
+    color: white;
+    padding: 0.8rem 4.4rem;
+}
+
+.block-logo a{
+    color: white;
+}
+
+.logo-title{
+    word-spacing: -0.5rem;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.form-group{
+    margin: 1.5rem 1rem; 
+}
+
+input[type="text"], input[type="password"]{
+    width: 100%;
+    height: 2.2rem;
+    border: 1.5px solid black;
+    text-indent: 0.15rem;
+}
+
+.field-group{
+    margin-bottom: 1rem;
+}
+
+label{
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+button{
+    display: block;
+    width: 100%;
+    background-color: black;
+    color: white;
+    margin-top: 2.1rem;
+    padding-block: 0.4rem;
+    font-size: 1.15rem;
+}
+
+.block-forgot-password{
+    font-size: 0.65rem;
+    word-spacing: -0.15rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.block-forgot-password a{
+    color: black;
+}
+
+.create-an-account{
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto 1.5rem auto;
+}
+
+.create-an-account a{
+    word-spacing: -0.2rem;
+    color: black;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+@media(max-width: 375px){
+    .block-logo{
+        padding: 0.8rem 2.2rem;
+    }    
+}
+
+@media(max-width: 275px){
+    form{
+        margin-bottom: 0;
+        height: 100vh;
+        width: 100vh;
+    }
+    .logo-title h1{
+        font-size: 1.3rem;
+    }
+
+    #dracula-logo{
+        height: 1.5rem;
+        width: 1.5rem
+    }
+
+}
+
+@media(max-width: 235px){
+    .logo-title h1{
+        font-size: 1rem;
+    }
+
+    #dracula-logo{
+        height: 1.2rem;
+        width: 1.1rem
+    }    
+}
+
+

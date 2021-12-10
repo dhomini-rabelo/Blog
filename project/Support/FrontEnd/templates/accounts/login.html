@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block title %}LOGIN{% endblock %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/models/flex.css">
+<link rel="stylesheet" href="/static/includes/header.css">
+<link rel="stylesheet" href="/static/apps/accounts/login.css">
+{% endblock %}
+
+
+
+{% block content %}
+<main>
+    <form method="POST">
+        <div class="block-logo">
+            <a href="/">
+                <div class="logo">
+                    <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
+                    <div class="logo-title">
+                        <h1>CODE PORTAL</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="form-group">
+            <div class="field-group">
+                <label for="id_email">Email:</label>
+                <input type="text" name="email" id="id_email">
+            </div>
+            <div class="field-group">
+                <label for="id_password">Senha:</label>
+                <input type="password" name="password" id="id_password">
+            </div>
+            <div class="block-forgot-password">
+                <a href="">Forgot password?</a>
+            </div>
+            <button type="submit">LOGIN</button>
+        </div>
+        <div class="create-an-account">
+            <a href="">Create an account</a>
+        </div>
+    </form>
+</main>
+
+{% endblock %}
+
+

@@ -4,6 +4,6 @@ from .views import *
 
 # contas/
 urlpatterns = [
-    path('cadastro/', RegisterView.as_view(), 'register'),
-    path('login/', LoginView.as_view(), 'login'),
+    path('cadastro/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
 ]
