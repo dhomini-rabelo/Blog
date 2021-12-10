@@ -1,0 +1,36 @@
+.posts{
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.posts{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+.post{
+    background-color:white;
+    width: 22rem;
+    margin: 2rem 1.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 2rem;
+    height: 23rem;
+}
+
+.post-img img{
+    width: 20rem;
+    border-radius: 0.25rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.post-body{
+    width: 20rem;
+    padding: 0.5rem 0.7rem;
+}
+
+.post-title{
+    margin-bottom: 0.4rem;
+}

@@ -1,0 +1,13 @@
+header{
+    height: 8vh;
+}
+
+main{
+    min-height: 84.5vh;
+    background-color: #343746;
+}
+
+footer{
+    height: 7.5vh;
+    background-color: black;
+}

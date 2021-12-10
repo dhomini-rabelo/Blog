@@ -4,13 +4,17 @@
 <head>
     {% include 'base/includes/_head.html' %}
     <link rel="stylesheet" href="/static/core/base.css">
+    <link rel="stylesheet" href="/static/includes/header.css">
+    <link rel="stylesheet" href="/static/includes/body.css">
     {% block links %}
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-
+    
     <div id="container">
+        {% include 'base/includes/_header_pc.html' %}
+        
         {% block content %}
         {% endblock %}
     </div>
