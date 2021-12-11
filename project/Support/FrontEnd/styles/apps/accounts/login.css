@@ -92,13 +92,15 @@ button:hover{
     cursor: pointer;
 }
 
+
 @media(max-width: 375px){
     .block-logo{
         padding: 0.8rem 2.2rem;
     }    
 }
 
-@media(max-width: 275px){
+
+@media(max-width: 300px){
     form{
         margin-bottom: 0;
         height: 100vh;
@@ -124,6 +126,35 @@ button:hover{
         height: 1.2rem;
         width: 1.1rem
     }    
+}
+
+
+
+@media(max-width: 300px) and (max-height: 600px){ 
+    .form-group{
+        margin-top: 3rem;
+    }
+}
+
+@media(max-width: 300px) and (max-height: 500px){ 
+    .form-group{
+        margin-top: 2.5rem;
+    }
+}
+
+
+@media(max-width: 300px) and (max-height: 350px){ 
+    .form-group{
+        margin-top: 1rem;
+    }
+}
+
+
+
+@media(max-width: 300px) and (max-height: 250px){ 
+    .form-group{
+        margin-top: 0.5rem;
+    }
 }
 
 

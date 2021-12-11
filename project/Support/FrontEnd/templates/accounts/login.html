@@ -15,7 +15,7 @@
 <main>
     <form method="POST">
         <div class="block-logo">
-            <a href="/">
+            <a href="{% url 'latest_posts' %}">
                 <div class="logo">
                     <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
                     <div class="logo-title">
@@ -27,11 +27,11 @@
         <div class="form-group">
             <div class="field-group">
                 <label for="id_email">Email:</label>
-                <input type="text" name="email" id="id_email">
+                <input type="text" name="email" id="id_email" placeholder="Digite seu email">
             </div>
             <div class="field-group">
                 <label for="id_password">Senha:</label>
-                <input type="password" name="password" id="id_password">
+                <input type="password" name="password" id="id_password" placeholder="Digite sua senha">
             </div>
             <div class="block-forgot-password">
                 <a href="">Forgot password?</a>

@@ -36,7 +36,7 @@ nav a{
 .search input{
     border: none;
     background-color: transparent;
-    width: 20rem;
+    width: 22.5rem;
     color: black;
 }
 
@@ -66,6 +66,7 @@ nav a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    line-height: 1.02;
 }
 
 .logo-title .word-1{
