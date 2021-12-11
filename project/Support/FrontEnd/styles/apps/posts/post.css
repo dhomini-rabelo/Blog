@@ -1,0 +1,39 @@
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#post{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    color: white;
+    text-align: justify;
+}
+
+.post-title{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+
+@media(min-width: 1000px){
+    #post{
+        width: 768px;
+    }
+}
+
+
+@media(max-width: 500px){
+    #post{
+        width: 85vw;
+    }
+}
+
+@media(max-width: 300px){
+    #post{
+        width: 90vw;
+    }
+}

@@ -9,3 +9,10 @@ class LatestPosts(View):
     def get(self, request):
         return render(request, 'posts/index.html')
 
+
+class PostView(View):
+    def get(self, request):
+        return render(request, 'posts/post.html')
+
+
+

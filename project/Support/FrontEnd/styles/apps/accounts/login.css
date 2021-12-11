@@ -114,7 +114,9 @@ button:hover{
         height: 1.5rem;
         width: 1.5rem
     }
-
+    .create-an-account{
+        padding-bottom: 2rem;
+    }
 }
 
 @media(max-width: 235px){

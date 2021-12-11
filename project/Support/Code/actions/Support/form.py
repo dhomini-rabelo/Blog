@@ -1,3 +1,5 @@
+# django
+from django.utils.html import format_html
 # this module
 from support import adapt_form_errors, adapt_list_of_post_form
 from functions_dict import convert_functions, other_errors_functions
@@ -5,6 +7,7 @@ from checks import check_null
 # others
 from decimal import InvalidOperation
 from typing import Sequence, Union, Any
+
 
 
 
@@ -90,4 +93,33 @@ def change_password(user, current_password: str, new_password: str, new_password
             error = error_password
             return error
     
+
+class Form:
+
+    def __init__(self):
+        self.form_fields = []
+        self.form = ''
+
+    def _update_form(self):
+        for field in self.form_fields:
+            self.form += field['html']
+
+    def add_charfields(self, fields: list, structure: str):
+        for field in fields:
+            self.form_fields.append({'name': field, 'html': structure.replace('[input]', field)})
+        self._update_form()
+
+    def show_errors(errors: dict):
+        pass
+
+    def clear_form(self):
+        self.form = ''
+
+    def get_form(self):
+        return format_html(self.form)  
+
+
+
+
+
 
