@@ -1,5 +1,5 @@
 # this module
-from functions_dict import filters_functions
+from .functions_dict import filters_functions
 # others
 from datetime import datetime
 from collections.abc import Mapping

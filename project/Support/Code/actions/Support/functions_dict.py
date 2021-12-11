@@ -1,4 +1,4 @@
-from validators import validate_unique, validate_for_email, validate_caracters, validate_for_slug, validate_only_numeric
+from .validators import validate_unique, validate_for_email, validate_caracters, validate_for_slug, validate_only_numeric
 from datetime import datetime
 from decimal import Decimal
 

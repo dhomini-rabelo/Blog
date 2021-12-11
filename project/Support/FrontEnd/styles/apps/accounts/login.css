@@ -12,7 +12,6 @@ main{
 
 form{
     display: inline-block;
-    margin-bottom: 15vh;
     background-color: white;
     color: black;
 }
@@ -48,7 +47,7 @@ input[type="text"], input[type="password"]{
 }
 
 .field-group{
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 label{
@@ -92,6 +91,17 @@ button:hover{
     cursor: pointer;
 }
 
+.error{
+    margin-top: 0.15rem;
+    display: flex;
+    min-height: 18.5px;
+}
+
+.error-message{
+    margin-left: 0.1rem;
+    color: rgb(210, 53, 53); 
+    font-size: 0.8rem;
+}
 
 @media(max-width: 375px){
     .block-logo{

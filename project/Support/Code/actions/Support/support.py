@@ -1,5 +1,5 @@
 # this module
-from functions_dict import messages_form_errors
+from .functions_dict import messages_form_errors
 
 
 def adapt_form_errors(form_errors: dict[str, list]) -> dict[str, str]:

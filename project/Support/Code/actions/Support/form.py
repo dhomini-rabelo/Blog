@@ -1,9 +1,9 @@
 # django
 from django.utils.html import format_html
 # this module
-from support import adapt_form_errors, adapt_list_of_post_form
-from functions_dict import convert_functions, other_errors_functions
-from checks import check_null
+from .support import adapt_form_errors, adapt_list_of_post_form
+from .functions_dict import convert_functions, other_errors_functions
+from .checks import check_null
 # others
 from decimal import InvalidOperation
 from typing import Sequence, Union, Any
@@ -32,11 +32,10 @@ def convert_validation(field: Any, new_type: str):
         
         
 
-field_sequence_for_validation = Sequence[Any, str, str, list[tuple[str, Any]]]
-form_type = list[list[field_sequence_for_validation]]      
+     
         
         
-def get_post_form_errors(form: form_type) -> dict[str, str]:
+def get_post_form_errors(form: dict) -> dict[str, str]:
     """
     Form list fields
     [
@@ -99,6 +98,9 @@ class Form:
     def __init__(self):
         self.form_fields = []
         self.form = ''
+        self.error_space_html = '<div class="error">'
+        self.error_message_format = '<img src="/static/admin/img/icon-no.svg" alt="error-img"><span class="error-message"></span>'
+        self.error_message_space_html = '<span class="error-message">'
 
     def _update_form(self):
         for field in self.form_fields:
@@ -106,14 +108,28 @@ class Form:
 
     def add_charfields(self, fields: list, structure: str):
         for field in fields:
-            self.form_fields.append({'name': field, 'html': structure.replace('[input]', field)})
+            self.form_fields.append({'name': field['name'], 'html': structure.replace('[name]', field['name']).replace('[label]', field['label'])})
         self._update_form()
 
-    def show_errors(errors: dict):
-        pass
+    def show_errors(self, errors: dict):
+        for input in self.form_fields:
+            if input['name'] in errors.keys():
+                input['html'] = input['html'].replace(self.error_space_html, f'{self.error_space_html}{self.error_message_format}').replace(self.error_message_space_html, f'{self.error_message_space_html}{errors[input["name"]]}')
+        self.clear_form()
+        self._update_form()
+
 
     def clear_form(self):
         self.form = ''
+
+    def change_error_html(self, error_content: str, error_message_html: str, error_space: str):
+        """
+        self.error_space_html => div
+        self.error_message_space_html => span
+        """
+        self.error_space_html = error_content
+        self.error_message_format = error_message_html
+        self.error_message_space_html = error_space
 
     def get_form(self):
         return format_html(self.form)  
