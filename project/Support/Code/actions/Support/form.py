@@ -102,13 +102,31 @@ class Form:
         self.error_message_format = '<img src="/static/admin/img/icon-no.svg" alt="error-img"><span class="error-message"></span>'
         self.error_message_space_html = '<span class="error-message">'
 
+    def form_for_save(self):
+        return self.form_fields
+
+    def load_form(self, form_fields: list[dict]):
+        self.form_fields = form_fields
+        self._update_form()
+
     def _update_form(self):
+        self.form = ''
         for field in self.form_fields:
             self.form += field['html']
 
-    def add_charfields(self, fields: list, structure: str):
+    def add_field(self, field: dict, structure: str, changes=[('[name]', 'name'), ('[label]', 'label')]):
+        for place, key in changes:
+            structure.replace(place, field[key])
+
+        self.form_fields.append({'name': field['name'], 'html': structure})
+        self._update_form()
+
+    def add_fields(self, fields: list[dict], structure: str, changes=[('[name]', 'name'), ('[label]', 'label')]):
         for field in fields:
-            self.form_fields.append({'name': field['name'], 'html': structure.replace('[name]', field['name']).replace('[label]', field['label'])})
+            field_structure = structure[:]
+            for place, key in changes:
+                field_structure = field_structure.replace(place, field[key])
+            self.form_fields.append({'name': field['name'], 'html': field_structure}) 
         self._update_form()
 
     def show_errors(self, errors: dict):
