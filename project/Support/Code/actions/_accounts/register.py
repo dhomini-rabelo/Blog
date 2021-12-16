@@ -1,4 +1,7 @@
+from django.http import request
+from accounts.models import User
 from .support.register import construct_form, load_form, save_form
+from Support.Code.actions.Support.form import Form, validate_form
 
 
 def get_register_form(request):
@@ -12,7 +15,37 @@ def get_register_form(request):
 
 
 
-def validate_user_form(request):
-    pass
+def validate_register_form(request):
+    form_validation = [
+        'name', ['email', [('max_length', 128), ('email',)]], 
+        ['password', [('min_length', 8), ('max_length', 256)]], 'confirm_password'
+    ]
+
+    validation = validate_form(request.POST, *form_validation)
+
+    if (validation['errors'].get('confirm_password') == None) and (request.POST.get('confirm_password') != request.POST.get('password')):
+        validation['status'] = 'invalid'
+        validation['errors'].update({'confirm_password': 'As senhas são diferentes'})
+
+    return validation
 
 
+def save_register_form_errors(request, errors: dict):
+    form = construct_form()
+    form.show_errors(errors)
+    
+    request.session['register_form'] = form.form_for_save()
+
+
+def create_user(fields: dict):
+    User.objects.create(
+        username=fields['email'], name=fields['name'],
+        email=fields['email'], password=fields['password']
+    )
+
+
+def save_register_form_fields_values(request, fields: dict):
+    request.session['register_fields'] = fields
+
+def delete_register_form_fields_values(request):
+    request.session['register_fields'] = None

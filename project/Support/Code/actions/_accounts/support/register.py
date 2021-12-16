@@ -25,8 +25,11 @@ def construct_form():
 
 def load_form(request):
     register_form = Form()
-    register_form.load_form(request.session['register_form'])
-    
+
+    if request.session.get('register_fields') is None:
+        register_form.load_form(request.session['register_form'])
+    else:
+        register_form.load_form_with_values(request.session['register_form'], request.session['register_fields'])
     return register_form
 
 

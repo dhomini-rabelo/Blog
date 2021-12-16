@@ -4,9 +4,53 @@ from django.utils.html import format_html
 from .support import adapt_form_errors, adapt_list_of_post_form
 from .functions_dict import convert_functions, other_errors_functions
 from .checks import check_null
+from .utils import gets
 # others
 from decimal import InvalidOperation
 from typing import Sequence, Union, Any
+from pprint import pprint
+
+
+
+def validate_form(post_form, *fields, default_type='str', default_validation=[('max_length', 256)]):
+    def get_field(field):
+        if isinstance(field, str):
+            return field
+        elif isinstance(field, list):
+            return field[0]
+    fields_name = list(map(get_field, fields)) 
+    form_fields = gets(post_form, *fields_name)
+
+    form_fields_adapted_format = []
+    for index, field_format in enumerate(fields):
+        field_adapted = []
+
+        field_format = field_format if isinstance(field_format, list) else [field_format]
+
+        match len(field_format):
+            case 1:
+                field_adapted = [form_fields[index], default_type, fields_name[index], default_validation]
+            case 2:
+                if isinstance(field_format[1], str):
+                    field_adapted = [form_fields[index], field_format[1], fields_name[index], default_validation]
+                elif isinstance(field_format[1], list):
+                    field_adapted = [form_fields[index], default_type, fields_name[index], field_format[1]]
+            case 3: 
+                field_adapted = [form_fields[index], field_format[1], fields_name[index], field_format[2]]
+
+        form_fields_adapted_format.append(field_adapted)
+
+    errors = get_post_form_errors(form_fields_adapted_format)
+
+    fields_value = {}
+
+    for field in form_fields_adapted_format:
+        fields_value[field[2]] = field[0]
+
+    if errors is None:
+        return {'status': 'valid', 'errors': {}, 'fields': fields_value}
+    else:
+        return {'status': 'invalid', 'errors': errors, 'fields': fields_value}
 
 
 
@@ -35,7 +79,7 @@ def convert_validation(field: Any, new_type: str):
      
         
         
-def get_post_form_errors(form: dict) -> dict[str, str]:
+def get_post_form_errors(form: list) -> dict[str, str]:
     """
     Form list fields
     [
@@ -93,6 +137,8 @@ def change_password(user, current_password: str, new_password: str, new_password
             return error
     
 
+
+
 class Form:
 
     def __init__(self):
@@ -108,6 +154,15 @@ class Form:
     def load_form(self, form_fields: list[dict]):
         self.form_fields = form_fields
         self._update_form()
+    
+    def load_form_with_values(self, form_fields: list[dict], values: dict):
+        print(values)
+        for field in form_fields:
+            if field['name'] in values.keys():
+                field['html'] = field['html'].replace('<input', f'<input value="{values[field["name"]]}"')
+        self.form_fields = form_fields
+        self._update_form() 
+        
 
     def _update_form(self):
         self.form = ''
@@ -151,9 +206,4 @@ class Form:
 
     def get_form(self):
         return format_html(self.form)  
-
-
-
-
-
 
