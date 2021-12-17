@@ -17,7 +17,7 @@ def get_register_form(request):
 
 def validate_register_form(request):
     form_validation = [
-        'name', ['email', [('max_length', 128), ('email',)]], 
+        'name', ['email', [('max_length', 128), ('email',), ('unique', User, 'email')]], 
         ['password', [('min_length', 8), ('max_length', 256)]], 'confirm_password'
     ]
 
@@ -26,6 +26,11 @@ def validate_register_form(request):
     if (validation['errors'].get('confirm_password') == None) and (request.POST.get('confirm_password') != request.POST.get('password')):
         validation['status'] = 'invalid'
         validation['errors'].update({'confirm_password': 'As senhas são diferentes'})
+
+    if validation['errors'].get('email') == 'Este campo já está em uso':
+        validation['errors']['email'] = 'Email já está em uso'
+
+    
 
     return validation
 
@@ -47,5 +52,11 @@ def create_user(fields: dict):
 def save_register_form_fields_values(request, fields: dict):
     request.session['register_fields'] = fields
 
+
 def delete_register_form_fields_values(request):
     request.session['register_fields'] = None
+
+
+def show_success_message_for_user_register(request):
+    request.session['show_success_message_for_user_register'] = True
+

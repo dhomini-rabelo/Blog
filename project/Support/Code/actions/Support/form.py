@@ -156,7 +156,6 @@ class Form:
         self._update_form()
     
     def load_form_with_values(self, form_fields: list[dict], values: dict):
-        print(values)
         for field in form_fields:
             if field['name'] in values.keys():
                 field['html'] = field['html'].replace('<input', f'<input value="{values[field["name"]]}"')

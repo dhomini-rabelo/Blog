@@ -30,8 +30,11 @@ def load_form(request):
         register_form.load_form(request.session['register_form'])
     else:
         register_form.load_form_with_values(request.session['register_form'], request.session['register_fields'])
+        request.session['register_form'] = None
+
     return register_form
 
 
 def save_form(request, form_class):
     request.session['register_form'] = form_class.form_for_save()
+    

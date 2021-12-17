@@ -25,9 +25,23 @@ def construct_form():
 
 def load_form(request):
     login_form = Form()
-    login_form.load_form(request.session['login_form'])
-    
+
+    if request.session.get('login_fields') is None:
+        login_form.load_form(request.session['login_form'])
+    else:
+        login_form.load_form_with_values(request.session['login_form'], request.session['login_fields'])
+        request.session['login_form'] = None
+       
     return login_form
 
 def save_form(request, form_class):
     request.session['login_form'] = form_class.form_for_save()
+    
+
+def check_for_message(request, check):
+    show = request.session.get(check)
+    if show:
+        request.session[check] = False
+    
+    return show if show is not None else False
+

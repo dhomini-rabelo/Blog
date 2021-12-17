@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/static/models/flex.css">
 <link rel="stylesheet" href="/static/includes/header.css">
 <link rel="stylesheet" href="/static/apps/accounts/login.css">
+<link rel="stylesheet" href="/static/components/messages.css">
 {% endblock %}
 
 
@@ -25,6 +26,9 @@
             </a>
         </div>
         <div class="form-group">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
             {{ form }}
             {% csrf_token %}
             <button type="submit">LOGIN</button>

@@ -117,3 +117,17 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+if DEBUG:
+    INSTALLED_APPS += [
+        "debug_toolbar",
+    ]
+
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
+
+    MIDDLEWARE += [
+       "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]

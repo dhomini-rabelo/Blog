@@ -1,24 +1,23 @@
-from django.db.models import fields
-from Support.Code.actions._accounts.register import get_register_form, validate_register_form, save_register_form_errors, create_user, save_register_form_fields_values, delete_register_form_fields_values
-from Support.Code.actions._accounts.login import get_login_form
+from Support.Code.actions._accounts.register import get_register_form, validate_register_form, save_register_form_errors, create_user, save_register_form_fields_values, delete_register_form_fields_values, show_success_message_for_user_register
+from Support.Code.actions._accounts.login import get_login_form, load_messages_in_login_page, validate_login_form, login, save_login_form_errors, save_login_form_fields_values, save_server_error_of_login_process
+from Support.Code.actions.Support.views import BaseView
 from django.shortcuts import render, redirect
-from django.views.generic import View
 
 
 
-
-class RegisterView(View):
+class RegisterView(BaseView):
     
     def get(self, request):
-        context = {}
-        context['form'] = get_register_form(request)
-        return render(request, 'accounts/register.html', context)
+        self.tc['form'] = get_register_form(request)
+        return render(request, 'accounts/register.html', self.tc)
 
     def post(self, request):
         validation = validate_register_form(request)
+
         if validation['status'] == 'valid':
             create_user(validation['fields'])
             delete_register_form_fields_values(request)
+            show_success_message_for_user_register(request)
             return redirect('login')
         else:
             save_register_form_errors(request, validation['errors'])
@@ -28,9 +27,30 @@ class RegisterView(View):
 
 
 
-class LoginView(View):
+class LoginView(BaseView):
 
     def get(self, request):
-        context = {}
-        context['form'] = get_login_form(request)
-        return render(request, 'accounts/login.html', context)
+        self.tc['form'] = get_login_form(request)
+        self.tc['messages'] = load_messages_in_login_page(request)
+        return render(request, 'accounts/login.html', self.tc)
+
+    def post(self, request):
+        login_validation = validate_login_form(request)
+
+        if login_validation['status'] == 'valid':
+            login_proccess = login(request)
+
+            if login_proccess['status'] == 'valid':
+                return redirect('latest_posts')
+            else:
+                save_login_form_errors(request, login_proccess['errors'])
+
+        else:
+            save_login_form_errors(request, login_validation['errors'])
+
+        save_login_form_fields_values(request, login_validation['fields'])
+        return redirect('login') 
+            
+
+
+
