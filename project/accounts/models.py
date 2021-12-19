@@ -6,9 +6,9 @@ from django.db.models import (Model, CharField, DateTimeField, TextField, EmailF
 
 
 class User(AbstractUser):
-    name = CharField(max_length=256, blank=True, null=True)
-    slug = SlugField(max_length=256, blank=True, null=True)
-    photo = ImageField(upload_to='users/%Y/%m/%d', blank=True, null=True)
+    name = CharField(max_length=256, blank=True, null=True, verbose_name='Nome')
+    slug = SlugField(max_length=256, blank=True, null=True, verbose_name='Slug')
+    photo = ImageField(upload_to='users/%Y/%m/%d', blank=True, null=True, verbose_name='Foto')
 
     def __str__(self):
         return self.username
@@ -16,3 +16,7 @@ class User(AbstractUser):
     @mark_safe
     def icon(self):
         return f'<a href="/media/{self.photo}" target="_blank"><img src="/media/{self.photo}" style="width: 35px; height: 25px;"></a>'
+
+    class Meta:
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'

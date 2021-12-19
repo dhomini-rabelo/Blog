@@ -23,7 +23,7 @@ def validate_register_form(request):
 
     validation = validate_form(request.POST, *form_validation)
 
-    if (validation['errors'].get('confirm_password') == None) and (request.POST.get('confirm_password') != request.POST.get('password')):
+    if (validation['errors'].get('confirm_password') is None) and (request.POST.get('confirm_password') != request.POST.get('password')):
         validation['status'] = 'invalid'
         validation['errors'].update({'confirm_password': 'As senhas são diferentes'})
 

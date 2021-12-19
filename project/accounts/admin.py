@@ -12,5 +12,6 @@ class UserAdmin(auth_admin.UserAdmin):
     fieldsets = auth_admin.UserAdmin.fieldsets + (
         ("Campos adicionais", {"fields": ('name', 'slug', "photo")}),
     )
-    list_display = 'icon', 'first_name', 'username'
-    list_display_links = 'first_name', 'username'
+    list_display = 'icon', 'username', 'name', 'email' 
+    list_display_links = 'username',
+    search_fields = 'name', 'email'

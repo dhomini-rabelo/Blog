@@ -10,7 +10,7 @@ app = DjangoApp(bp, app_name, project_name)
 
 #* MAIS USADOS
 # app.add_form('Pessoa')
-# app.register_admin('Gente')
+# app.register_admin('SubCategory')
 # app.create_view('form', logged=False)
 
 #* APÓS CRIAÇÃO

@@ -31,6 +31,7 @@ def load_form(request):
     else:
         register_form.load_form_with_values(request.session['register_form'], request.session['register_fields'])
         request.session['register_form'] = None
+        request.session['register_fields'] = None
 
     return register_form
 
