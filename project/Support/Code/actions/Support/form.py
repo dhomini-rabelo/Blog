@@ -145,8 +145,8 @@ class Form:
         self.form_fields = []
         self.form = ''
         self.error_space_html = '<div class="error">'
-        self.error_message_format = '<img src="/static/admin/img/icon-no.svg" alt="error-img"><span class="error-message"></span>'
-        self.error_message_space_html = '<span class="error-message">'
+        self.error_message_format = '<span class="error-message"><img src="/static/admin/img/icon-no.svg" alt="error-img"></span>'
+        self.error_message_space_html = '<span class="error-message"><img src="/static/admin/img/icon-no.svg" alt="error-img">'
 
     def form_for_save(self):
         return self.form_fields
@@ -162,7 +162,6 @@ class Form:
         self.form_fields = form_fields
         self._update_form() 
         
-
     def _update_form(self):
         self.form = ''
         for field in self.form_fields:

@@ -32,8 +32,11 @@
             {{ form }}
             {% csrf_token %}
             <button type="submit">LOGIN</button>
+            <div class="js-check">
+                <span><input type="checkbox" name="javascript" id="id_javascript" checked>Usar javascript para validação</span>
+            </div>            
         </div>
-        <div class="create-an-account"><a href="{% url 'register' %}">Cadastre-se</a>
+        <div class="create-an-account"><a href="{% url 'register' %}">Fazer cadastro</a>
         </div>
     </form>
 </main>
@@ -41,3 +44,7 @@
 {% endblock %}
 
 
+
+{% block javascript %}
+<script type="module" src="/static/managers/accounts/login.js"></script>
+{% endblock %}

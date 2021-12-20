@@ -60,7 +60,7 @@ button{
     width: 100%;
     background-color: black;
     color: white;
-    margin-top: 2.1rem;
+    margin-top: 1rem;
     padding-block: 0.4rem;
     font-size: 1.15rem;
 }
@@ -97,18 +97,45 @@ button:hover{
     min-height: 18.5px;
 }
 
-.error-message{
-    margin-left: 0.1rem;
-    color: rgb(210, 53, 53); 
-    font-size: 0.8rem;
+.error img{
+    width: 0.7rem;
+    position: relative;
+    top: 0.075rem;
+    margin-right: 0.15rem;
+
 }
 
+.error-message{
+    color: rgb(210, 53, 53); 
+    font-size: 0.75rem;
+}
 
+#id_javascript{
+    margin-right: 0.2rem;
+    width: 0.6rem;
+    position: relative;
+    top: 0.18rem;
+}
+
+.js-check{
+    padding-left: 0.15rem;
+}
+
+.js-check span{
+    font-size: 0.7rem;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
 
 @media(max-width: 375px){
     .block-logo{
         padding: 0.8rem 2.2rem;
     }    
+    .error-message{
+        max-width: 15.7rem;
+    }
 }
 
 

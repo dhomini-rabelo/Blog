@@ -13,7 +13,7 @@ messages_form_errors = {
     'equal_length': lambda length: f'Este campo deve ter {length} dígitos',
     'max_length': lambda length: f'Este campo deve ter no máximo {length} dígitos',
     'slug': 'Este campo não pode ser representado por uma url, use apenas letras, hífen e underline',
-    'email': 'Este email não está em um formato válido',
+    'email': 'Email inválido',
 }
 
 
