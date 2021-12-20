@@ -37,4 +37,3 @@ def set_slug(slug: str):
         slug_list.remove(letter)
     return "".join(slug_list)
     
-

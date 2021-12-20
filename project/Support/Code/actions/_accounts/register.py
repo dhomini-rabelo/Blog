@@ -2,6 +2,10 @@ from django.http import request
 from accounts.models import User
 from .support.register import construct_form, load_form, save_form
 from Support.Code.actions.Support.form import Form, validate_form
+from Support.Code.actions.Support.for_fields import set_slug
+
+
+
 
 
 def get_register_form(request):
@@ -45,9 +49,10 @@ def save_register_form_errors(request, errors: dict):
 def create_user(fields: dict):
     User.objects.create(
         username=fields['email'], name=fields['name'],
-        email=fields['email'], password=fields['password']
+        email=fields['email'], password=fields['password'],
+        slug=set_slug(fields['name'])
     )
-
+    
 
 def save_register_form_fields_values(request, fields: dict):
     request.session['register_fields'] = fields

@@ -18,7 +18,7 @@ class Post(Model):
     date = DateTimeField(auto_now_add=True, verbose_name='Data')
     sub_categories = ManyToManyField(SubCategory, verbose_name='Subcategorias')
     category = ForeignKey(Category, on_delete=RESTRICT, related_name='posts', verbose_name='Categoria')
-    code = PositiveIntegerField(verbose_name='Código')
+    code = PositiveIntegerField(unique=True, verbose_name='Código')
     published = BooleanField(verbose_name='Publicado')
 
     class Meta:
