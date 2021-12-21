@@ -82,3 +82,4 @@ def save_login_form_fields_values(request, fields: dict):
 
 def save_server_error_of_login_process(request):
     request.session['server_error_of_login_process'] = True
+    
