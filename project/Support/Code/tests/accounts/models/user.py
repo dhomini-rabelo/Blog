@@ -1,14 +1,11 @@
-from .size_user import UserStringSizeTest
-from .unique_user import UserUniqueFieldsTest
 from django.test import TestCase
 from accounts.models import User
-from posts.models import Post
 from Support.Code.actions.Support.for_fields import set_slug
 from unittest import expectedFailure
 
 
 
-class UserTest(TestCase, UserUniqueFieldsTest):
+class UserTest(TestCase):
 
     def setUp(self):
         self.user = User(
@@ -44,6 +41,11 @@ class UserTest(TestCase, UserUniqueFieldsTest):
        
     def test_str_method(self):
         self.assertEqual(str(self.user), self.user.username)
+
+    @expectedFailure
+    def test_username_unique(self):
+        user_for_test_1 = User.objects.create(username='test_unique')
+        user_for_test_2 = User.objects.create(username='test_unique')
 
     def tearDown(self):
         self.assertTrue(isinstance(self.user.username, str))
