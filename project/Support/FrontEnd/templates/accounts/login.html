@@ -33,7 +33,11 @@
             {% csrf_token %}
             <button type="submit">LOGIN</button>
             <div class="js-check">
-                <span><input type="checkbox" name="javascript" id="id_javascript" checked>Usar javascript para validação</span>
+                {% if request.session.not_use_javascript %}
+                <span><input type="checkbox" name="javascript" id="id_javascript" value="on">Usar javascript para validação</span>
+                {% else %}
+                <span><input type="checkbox" name="javascript" id="id_javascript" value="on" checked>Usar javascript para validação</span>
+                {% endif %}
             </div>            
         </div>
         <div class="create-an-account"><a href="{% url 'register' %}">Fazer cadastro</a>

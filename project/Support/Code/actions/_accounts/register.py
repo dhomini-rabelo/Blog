@@ -47,11 +47,16 @@ def save_register_form_errors(request, errors: dict):
 
 
 def create_user(fields: dict):
-    User.objects.create(
+    new_user = User(
         username=fields['email'], name=fields['name'],
-        email=fields['email'], password=fields['password'],
-        slug=set_slug(fields['name'])
+        email=fields['email'], slug=set_slug(fields['name'])
     )
+    new_user.set_password(fields['password'])
+    new_user.save()
+
+
+    
+    
     
 
 def save_register_form_fields_values(request, fields: dict):
