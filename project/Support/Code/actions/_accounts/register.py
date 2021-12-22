@@ -21,7 +21,8 @@ def get_register_form(request):
 
 def validate_register_form(request):
     form_validation = [
-        'name', ['email', [('max_length', 128), ('email',), ('unique', User, 'email')]], 
+        ['name', [('only_str',), ('max_length', 256)]], 
+        ['email', [('unique', User, 'email'), ('email',), ('max_length', 128)]], 
         ['password', [('min_length', 8), ('max_length', 256)]], 'confirm_password'
     ]
 
