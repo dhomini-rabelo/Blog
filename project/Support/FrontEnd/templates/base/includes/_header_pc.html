@@ -1,6 +1,6 @@
 <header>
     <div class="header-pc sb-x">
-        <div class="sb-p1">
+        <a href="/" class="sb-p1">
             <div class="logo sb-x">
                 <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
                 <div class="logo-title">
@@ -8,7 +8,7 @@
                     <h1 class="word-2">PORTAL</h1>
                 </div>
             </div>
-        </div>
+        </a>
         <nav class="sb-p2">
             <ul class="sb-x nav-x">
                 <li class="search sb-x">
@@ -16,7 +16,20 @@
                     <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
                 </li>
                 <li>
-                    <img src="/media/assets/global/user.png" alt="user-img" id="profile">
+                    <div class="menu">
+                        <div class="hamburguer">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <nav class="sub-menu">
+                            <a href="">CATEGORIAS</a>
+                            <a href="">AUTORES</a>
+                            <a href="{% url 'login' %}">LOGIN</a>
+                            <a href="{% url 'register' %}">CADASTRO</a>
+                        </nav>
+                    </div>
                 </li>
             </ul>
         </nav>

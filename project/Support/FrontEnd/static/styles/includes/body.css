@@ -1,0 +1,23 @@
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+header {
+    flex-shrink: 0;
+}
+main{
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 2em;
+    background-color: #343746;
+}
+footer{
+    flex-shrink: 0;
+    min-height: 3rem;
+    background-color: #000;
+
+}

@@ -3,9 +3,9 @@
 <html lang="pt-br">
 <head>
     {% include 'base/includes/_head.html' %}
-    <link rel="stylesheet" href="/static/core/base.css">
-    <link rel="stylesheet" href="/static/includes/header.css">
-    <link rel="stylesheet" href="/static/includes/body.css">
+    <link rel="stylesheet" href="/static/styles/core/base.css">
+    <link rel="stylesheet" href="/static/styles/includes/header.css">
+    <link rel="stylesheet" href="/static/styles/includes/body.css">
     <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
     {% block links %}
     {% endblock %}
@@ -20,7 +20,7 @@
         {% endblock %}
     </div>
 
-
+    <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>

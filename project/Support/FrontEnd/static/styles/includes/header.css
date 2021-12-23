@@ -1,0 +1,173 @@
+#dracula-logo{
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+header{
+    background-color: black;
+    font-family: 'Fira Code', Arial, Helvetica, sans-serif;
+}
+
+.header-pc{
+    background-color: black;
+    color: white;
+    padding: 0.8rem 1.1rem;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.nav-x li{
+    list-style: none;
+    
+}
+
+nav a{
+    color: white;
+    padding: 0.25rem 0.5rem;
+}
+
+
+.search{
+    background-color: white;
+    padding: 0.5rem 0.6rem 0.5rem 0.8rem;
+    border-radius: 25rem;
+    margin-left: 0.5rem;
+}
+
+.search input{
+    border: none;
+    background-color: transparent;
+    width: 22.5rem;
+    color: black;
+}
+
+
+#search-img{
+    width: 1rem;
+}
+
+#profile{
+    width: 2.2rem;
+    margin-inline: 0.5rem 0rem;
+    padding: 0.25rem;
+    border-radius: 50%;
+    border: 2px white solid;
+}
+
+
+.logo h1{
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+
+
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.02;
+}
+
+.logo-title .word-1{
+    font-size: 0.9rem;
+    letter-spacing: 0.3rem;
+}
+
+.logo-title .word-2{
+    font-size: 1.2rem;
+}
+
+.sb-p1{
+    color: white;
+}
+
+
+.hamburguer{
+    width: 1.6rem;
+    height: 1rem;
+    position: relative;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    margin-left: 0.6rem;
+}
+
+.hamburguer span{
+    display: block;
+    position: absolute;
+    height: 0.22rem;
+    width: 100%;
+    background: #FFF;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburguer span:nth-child(1){
+    top: 0;
+}
+
+.hamburguer span:nth-child(2), .hamburguer span:nth-child(3){
+    top: 0.45rem;
+}
+
+.hamburguer span:nth-child(4){
+    top: 0.9rem;
+}
+
+
+
+.hamburguer.open span:nth-child(1){
+    top: 0.9rem;
+    width: 0%;
+    left: 50%;
+}
+
+.hamburguer.open span:nth-child(2){
+    transform: rotate(45deg);
+}
+
+.hamburguer.open span:nth-child(3){
+    transform: rotate(-45deg);
+}
+
+.hamburguer.open span:nth-child(4){
+    top: 0.9rem;
+    width: 0%;
+    left: 50%;
+}
+
+
+.menu {
+    position: relative;
+    padding: 4px;
+}
+
+.menu .hamburguer{
+    padding: 6px;
+}
+
+.menu .sub-menu{
+    margin-top: 0.4rem;
+    flex-direction: column;
+    display: none;
+    background-color: black;
+    box-shadow: 0px 8px 8px rgb(0 0 0 / 5%);
+    border-radius: 8px;
+    padding: 6px;
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: -4rem;
+    z-index: 2;
+}
+
+.menu .sub-menu a:hover{
+    background-color: #e6e6e6;
+    transition: 200ms;
+    border-radius: 4px;
+    color: black;
+}

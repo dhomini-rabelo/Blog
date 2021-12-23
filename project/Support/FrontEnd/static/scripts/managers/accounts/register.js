@@ -1,5 +1,5 @@
-import { formValidator } from './../../features/formValidation/validation.js'
-import { clearError, clearSpaces } from './../../forms/clearInput.js'
+import { formValidator } from '../../features/formValidation/validation.js'
+import { clearError, clearSpaces } from '../../forms/clearInput.js'
 
 let textInputs = document.querySelectorAll('input[type="text"]')
 let passwordInputs = document.querySelectorAll('input[type="password"]')
