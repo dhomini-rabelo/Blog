@@ -30,3 +30,19 @@ li{
 a{
   text-decoration: none;
 }
+
+.flex{
+  display: flex !important;
+}
+
+.invisible{
+  display: none !important;
+}
+
+.visible{
+  display: block !important;
+}
+
+.inline{
+  display: inline-block !important;
+}

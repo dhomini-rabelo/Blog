@@ -11,9 +11,13 @@
         </a>
         <nav class="sb-p2">
             <ul class="sb-x nav-x">
-                <li class="search sb-x">
-                    <input type="text" name="search_box" id="search_box" placeholder="Posts, categorias e autores">
-                    <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
+                <li class="search">
+                    <form method="GET" class="sb-x">
+                        <input type="text" name="search" id="search_box" placeholder="Posts, categorias e autores">
+                        <button type="submit">
+                            <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
+                        </button>
+                    </form>
                 </li>
                 <li>
                     <div class="menu">
@@ -23,7 +27,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <nav class="sub-menu">
+                        <nav class="sub-menu invisible">
                             <a href="">CATEGORIAS</a>
                             <a href="">AUTORES</a>
                             <a href="{% url 'login' %}">LOGIN</a>

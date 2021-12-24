@@ -150,7 +150,7 @@ nav a{
     padding: 6px;
 }
 
-.menu .sub-menu{
+.menu .sub-menu {
     margin-top: 0.4rem;
     flex-direction: column;
     display: none;
@@ -158,16 +158,60 @@ nav a{
     box-shadow: 0px 8px 8px rgb(0 0 0 / 5%);
     border-radius: 8px;
     padding: 6px;
-    width: 200px;
+    width: 10rem;
     position: absolute;
     top: 100%;
-    left: -4rem;
+    left: -6.3rem;
     z-index: 2;
 }
 
-.menu .sub-menu a:hover{
+.menu .sub-menu a:hover {
     background-color: #e6e6e6;
     transition: 200ms;
     border-radius: 4px;
     color: black;
+}
+
+
+.search form button[type="submit"]{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media(max-width: 625px){
+    .menu{
+        display: none;
+    }
+    .search input{
+        display: none;
+        width: 100%;
+    }
+    .search{
+        padding: 0.6rem;
+    }
+    .search-input-mobile form input{
+        display: inline;
+    }
+    .search-input-mobile form{
+        width: 50vw;
+    }
+}
+
+@media(min-width: 450px){
+    #dracula-logo, .logo-title{
+        display: inline-flex !important;
+    }
+}
+
+
+@media(max-width: 450px){
+    .search-input-mobile form{
+        width: 85vw;
+        margin-right: 0 !important;
+    }
+     .search-input-mobile{
+         margin: 0;
+     }
 }

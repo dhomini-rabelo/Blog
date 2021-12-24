@@ -1,6 +1,8 @@
 let hamburguer = document.querySelector('.hamburguer')
 
+
 hamburguer.addEventListener('click', animateHamburguer)
+
 
 
 
@@ -9,8 +11,8 @@ function animateHamburguer(){
     hamburguer.classList.toggle('open')
     
     if (hamburguer.classList.contains('open')){
-        subMenu.style.display = 'flex'
+        subMenu.setAttribute('class', 'sub-menu flex')
     }else{
-        subMenu.style.display = 'none'
+        subMenu.setAttribute('class', 'sub-menu invisible')
     }
 }
