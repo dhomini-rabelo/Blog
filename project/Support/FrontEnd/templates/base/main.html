@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/styles/core/base.css">
     <link rel="stylesheet" href="/static/styles/includes/header.css">
     <link rel="stylesheet" href="/static/styles/includes/body.css">
+    <link rel="stylesheet" href="/static/styles/includes/footer.css">
     <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
     {% block links %}
     {% endblock %}
@@ -14,10 +15,14 @@
 <body>
     
     <div id="container">
-        {% include 'base/includes/_header_pc.html' %}
+        {% include 'base/includes/_header.html' %}
         
-        {% block content %}
-        {% endblock %}
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        
+        {% include 'base/includes/_footer.html' %}
     </div>
 
     <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>

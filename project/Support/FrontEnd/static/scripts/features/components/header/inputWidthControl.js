@@ -21,9 +21,15 @@ function controlInputWidth(event){
         if (search.classList.contains('search-input-mobile')){
             logoImg.classList.add('invisible')
             logoTitle.classList.add('invisible')
+
+            header.classList.add('search-control')
+            ulNav.classList.add('search-control')
         }else{
             logoImg.classList.remove('invisible')
             logoTitle.classList.remove('invisible')
+
+            header.classList.remove('search-control')
+            ulNav.classList.remove('search-control')
         }
         
         event.preventDefault()

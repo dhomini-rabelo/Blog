@@ -208,10 +208,13 @@ nav a{
 
 @media(max-width: 450px){
     .search-input-mobile form{
-        width: 85vw;
-        margin-right: 0 !important;
+        width: 100%;
+        margin: 0 auto !important;
     }
      .search-input-mobile{
          margin: 0;
      }
+     .search-control{
+        display: block !important;
+    }     
 }
