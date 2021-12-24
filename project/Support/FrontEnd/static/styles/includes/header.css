@@ -194,27 +194,56 @@ nav a{
     .search-input-mobile form input{
         display: inline;
     }
-    .search-input-mobile form{
+}
+
+@media(max-width: 625px) and (min-width: 450px){
+     .search-input-mobile form{
         width: 50vw;
+        animation-name: upInputMore450;
+        animation-duration: 0.8s;
     }
 }
 
 @media(min-width: 450px){
     #dracula-logo, .logo-title{
         display: inline-flex !important;
+
     }
 }
 
 
 @media(max-width: 450px){
     .search-input-mobile form{
-        width: 100%;
         margin: 0 auto !important;
+            
     }
      .search-input-mobile{
-         margin: 0;
+        margin: 0;
+        animation-name: upInputLess450;
+        animation-duration: 1s;
+        animation-direction: revers
      }
      .search-control{
         display: block !important;
     }     
+}
+
+@keyframes upInputMore450 {
+    from{
+        width: 10vw;
+    }
+    to{
+        width: 50vw;
+    }
+}
+
+@keyframes upInputLess450 {
+    from{
+        width: 15%;
+        margin-left: 85%;
+    }
+    to{
+        width: 100%;
+        margin-left: 0%;
+    }
 }
