@@ -39,6 +39,11 @@ nav a{
     background-color: transparent;
     width: 22.5rem;
     color: black;
+    font-size: 0.8rem;
+}
+
+.search input::placeholder{
+    font-size: 0.8rem;
 }
 
 
@@ -207,15 +212,20 @@ nav a{
 @media(min-width: 450px){
     #dracula-logo, .logo-title{
         display: inline-flex !important;
-
     }
 }
 
 
 @media(max-width: 450px){
     .search-input-mobile form{
-        margin: 0 auto !important;
-            
+        margin: 0 auto !important;    
+    }
+    .search input{
+        font-size: 0.7rem;
+    }
+
+    .search input::placeholder{
+        font-size: 0.7rem;
     }
      .search-input-mobile{
         margin: 0;
@@ -227,6 +237,20 @@ nav a{
         display: block !important;
     }     
 }
+
+@media(max-width: 275px){
+    .search-input-mobile form{
+        margin: 0 auto !important;    
+    }
+    .search input{
+        font-size: 0.65rem;
+    }
+
+    .search input::placeholder{
+        font-size: 0.55rem;
+    }
+}
+
 
 @keyframes upInputMore450 {
     from{
