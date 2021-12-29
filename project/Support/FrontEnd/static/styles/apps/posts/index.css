@@ -7,40 +7,69 @@
     border-right: 0.5px solid #ffc746;
 }
 
+.last-posts{
+    margin-top: 1.2rem;
+    font-size: 1.6rem;
+    color: #fafafa;
+}
 
-.posts{
-    max-width: 1500px;
-    margin: 0 auto;
+.posts-page{
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
 }
 
 .posts{
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 2rem;
+    justify-content: space-evenly;
 }
-
 
 .post{
-    background-color:white;
-    width: 22rem;
-    margin: 2rem 1.5rem;
-    padding: 0.8rem 1rem;
-    border-radius: 2rem;
-    height: 23rem;
-}
-
-.post-img img{
-    width: 20rem;
-    border-radius: 0.25rem;
-    height: 10rem;
-    object-fit: cover;
+    margin-bottom: 1rem;
 }
 
 .post-body{
-    width: 20rem;
-    padding: 0.5rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    border: 0.5px solid black;
+    padding: 0.4rem 0.8rem;
+    background-color: #fafafa;
+    color: black;
+    border-radius: 4px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.post-img{
+    width: 14rem;
+    max-height: 14rem;
+    display: block;    
 }
 
 .post-title{
-    margin-bottom: 0.4rem;
+    margin: 0.2rem auto;
+    font-size: 1rem;    
 }
+
+.post-description{
+    font-size: 0.75rem;
+}
+
+.post-info{
+    width: 100%;
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+}
+
+@media(max-width: 300px){
+    .post-body{
+        width: 90vw;
+    }
+
+    .post-img{
+        width: 80vw;
+    }
+}
+
