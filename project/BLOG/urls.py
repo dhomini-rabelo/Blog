@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('', include('categories.urls')),
     path('', include('accounts.urls')),
+    path('', include('authors.urls')),
 ]
 
 

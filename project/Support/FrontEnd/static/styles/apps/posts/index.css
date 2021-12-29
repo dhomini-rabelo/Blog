@@ -46,6 +46,7 @@
     width: 14rem;
     max-height: 14rem;
     display: block;    
+    object-fit: cover;
 }
 
 .post-title{
