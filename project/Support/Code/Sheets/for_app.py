@@ -4,7 +4,7 @@ from models.app import DjangoApp
 from time import sleep
 
 
-app_name = 'categories'
+app_name = 'authors'
 app = DjangoApp(bp, app_name, project_name)
 
 
