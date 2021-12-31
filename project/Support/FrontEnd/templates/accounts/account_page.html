@@ -1,0 +1,45 @@
+{% extends 'base/main.html' %}
+
+{% block title %}CODE PORTAL{% endblock %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/models/flex.css">
+<link rel="stylesheet" href="/static/styles/components/buttons.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_page.css">
+{% endblock %}
+
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<h1>olá</h1>
+
+{% else %}
+<div class="choice-container center-c">
+    <div class="choice-for-login">
+        <a href="{% url 'login' %}"><button class="bl-wh">LOGIN</button></a>
+        <div class="sb-x or">
+            <hr>
+            <span>ou</span>
+            <hr>
+        </div>
+        <a href="{% url 'register' %}"><button class="bl-wh">CADASTRO</button></a>
+    </div>
+</div>
+
+
+{% endif %}
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascript %}
+{% endblock %}

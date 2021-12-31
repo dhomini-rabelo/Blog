@@ -1,52 +1,32 @@
-{% extends 'base/base.html' %}
+{% extends 'base/login_group.html' %}
 
 {% block title %}CADASTRO{% endblock %}
 
 
 {% block links %}
-<link rel="stylesheet" href="/static/styles/models/flex.css">
-<link rel="stylesheet" href="/static/styles/includes/header.css">
-<link rel="stylesheet" href="/static/styles/apps/accounts/login.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/login_group/register.css">
 {% endblock %}
 
 
 
 {% block content %}
 
-<main>
-
-    <form method="POST" spellcheck="false">
-
-        <div class="block-logo">
-            <a href="{% url 'latest_posts' %}">
-                <div class="logo">
-                    <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
-                    <div class="logo-title">
-                        <h1>CODE PORTAL</h1>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="form-group">
-            {{form}}
-            {% csrf_token %}
-            <button type="submit">CADASTRE-SE</button>
-            <div class="js-check">
-                {% if request.session.not_use_javascript %}
-                <span><input type="checkbox" name="javascript" id="id_javascript" value="on">Usar javascript para validação</span>
-                {% else %}
-                <span><input type="checkbox" name="javascript" id="id_javascript" value="on" checked>Usar javascript para validação</span>
-                {% endif %}                
-            </div>
-        </div>
-        <div class="create-an-account"><a href="{% url 'login' %}">Fazer login</a>
-        </div>
-
-    </form>
+<div class="form-group">
+    {{form}}
+    {% csrf_token %}
+    <button class="bl-wh" type="submit">CADASTRE-SE</button>
+    <div class="js-check">
+        {% if request.session.not_use_javascript %}
+        <span><input type="checkbox" name="javascript" id="id_javascript" value="on">Usar javascript para validação</span>
+        {% else %}
+        <span><input type="checkbox" name="javascript" id="id_javascript" value="on" checked>Usar javascript para validação</span>
+        {% endif %}                
+    </div>
+</div>
+<div class="shortcut center-r"><a href="{% url 'login' %}">Fazer login</a>
+</div>
 
 
-
-</main>
 
 {% endblock %}
 

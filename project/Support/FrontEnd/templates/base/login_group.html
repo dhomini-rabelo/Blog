@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% include 'base/includes/_head.html' %}
+    <link rel="stylesheet" href="/static/styles/core/base.css">
+    <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
+    <!-- links for edition -->
+    <link rel="stylesheet" href="/static/styles/models/flex.css">
+    <link rel="stylesheet" href="/static/styles/components/buttons.css">
+    <link rel="stylesheet" href="/static/styles/components/messages.css">
+    <link rel="stylesheet" href="/static/styles/components/error.css">
+    <link rel="stylesheet" href="/static/styles/apps/accounts/login_group/model.css">
+    {% block links %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <main class="center-r">
+        <form method="POST" spellcheck="false">
+            <div class="block-logo">
+                <a href="{% url 'latest_posts' %}">
+                    <div class="logo center-r">
+                        <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
+                        <div class="logo-title">
+                            <h1>CODE PORTAL</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% block content %}
+            {% endblock %}
+        </form>
+    </main>
+    {% block javascript %}{% endblock %}
+</body>
+</html>

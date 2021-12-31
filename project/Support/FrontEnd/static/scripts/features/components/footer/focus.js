@@ -19,6 +19,9 @@ function focusInFooter(){
         case '/autores/':
             sourceImg = 'author'
             break
+        case '/minha-conta/':
+            sourceImg = 'user'
+            break
     }
 
     let oldSource = `${baseSource}/${sourceImg}.png`
