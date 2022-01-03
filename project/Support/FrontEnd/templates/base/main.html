@@ -5,10 +5,13 @@
     {% include 'base/includes/_head.html' %}
     <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/styles/core/base.css">
+    <link rel="stylesheet" href="/static/styles/models/flex.css">
     <link rel="stylesheet" href="/static/styles/includes/header.css">
     <link rel="stylesheet" href="/static/styles/includes/body.css">
     <link rel="stylesheet" href="/static/styles/includes/footer.css">
     <link rel="stylesheet" href="/static/styles/models/main.css">
+    <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
+    <link rel="stylesheet" href="/static/styles/utils/adaptAnimation.css">
     {% block links %}
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
@@ -18,7 +21,8 @@
     <div id="container">
         {% include 'base/includes/_header.html' %}
         
-        <main>
+        {% include 'base/includes/_load_animation.html' %}
+        <main class="invisible">
             <div class="main">
                 {% block content %}
                 {% endblock %}
@@ -27,7 +31,7 @@
         
         {% include 'base/includes/_footer.html' %}
     </div>
-
+    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
     <script type="module" src="/static/scripts/features/components/footer/focus.js"></script>
     <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>
     <script src="/static/scripts/features/components/header/inputWidthControl.js"></script>

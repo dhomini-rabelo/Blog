@@ -1,0 +1,14 @@
+.load-animation {
+    background-color: #fafafa;
+}
+.animated-border {
+    box-shadow: 0px -4px 4px -4px #000;
+    border: 1.6px solid #fafafa;
+    border-top-color: #000;
+}
+.black-logo-animation {
+    display: block;
+}
+.white-logo-animation {
+    display: none;
+}

@@ -60,3 +60,8 @@ class AccountView(BaseView):
 
     def get(self, request):
         return render(request, 'accounts/account_page.html', self.tc)
+
+
+
+
+

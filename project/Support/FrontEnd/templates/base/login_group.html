@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="/static/styles/components/messages.css">
     <link rel="stylesheet" href="/static/styles/components/error.css">
     <link rel="stylesheet" href="/static/styles/apps/accounts/login_group/model.css">
+    <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
+    <link rel="stylesheet" href="/static/styles/features/colors/la1-1.css">
     {% block links %}
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <main class="center-r">
+    {% include 'base/includes/_load_animation.html' %}
+    <main class="center-r invisible">
         <form method="POST" spellcheck="false">
             <div class="block-logo">
                 <a href="{% url 'latest_posts' %}">
@@ -31,6 +34,7 @@
             {% endblock %}
         </form>
     </main>
+    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>
