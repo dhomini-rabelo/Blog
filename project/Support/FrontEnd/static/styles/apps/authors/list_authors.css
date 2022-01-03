@@ -7,33 +7,22 @@
     border-right: 0.5px solid #ffc746;
 }
 
-#posts-link .mobile-navigation-text {
-    color: #fff;
-}
-
-#posts-link {
-    border-top: 0.2px solid #fff;
-    border-right: 0.5px solid #ffc746;
-}
-
 #categories-link {
-    border-top: 0.2px solid #fff;
-    border-left: 0.5px solid #fff;
     border-right: 0.5px solid #ffc746;
 }
 
-.post-body{
+.box-body{
     width: 12rem;
 }
 
-.post-img{
+.box-img{
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
 }
 
-@media(max-width: 300px){
-    .post-body{
+@media(max-width: 450px){
+    .box-body{
         width: 70vw;
         text-align: center;
     }

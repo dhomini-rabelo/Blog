@@ -1,10 +1,12 @@
 import { validateStringLength, validateEmail, validateEqualTheAField } from './support/string.js'
+import { clearField } from '../../../forms/clearInput.js'
 import { showError } from '../createError.js'
 
 export function validateStringField(fieldModel){
 
     let valid = true
     let field = document.querySelector(`input#id_${fieldModel[0]}`)
+    clearField(field)
     let validations = fieldModel[1]
     let errorMessage = ''
 
