@@ -1,19 +1,22 @@
 #container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    position: absolute;
 }
 
 header {
-    flex-shrink: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 main{
-    flex-grow: 1;
-    overflow: auto;
     background-color: #343746;
+    flex-grow: 1;
 }
 
 .main{
@@ -23,6 +26,11 @@ main{
 }
 
 footer{
-    flex-shrink: 0;
+    position: fixed;
+    width: 100%;    
+    bottom: 0;
+    left: 0;
+}
+.mobile-footer {
     background-color: #000;
 }

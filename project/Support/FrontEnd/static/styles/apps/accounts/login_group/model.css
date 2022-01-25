@@ -14,12 +14,18 @@ form{
     flex-direction: column;
     background-color: white;
     color: black;
+    margin-bottom: 12vh;
+    min-width: 64%;
+    max-width: 540px;
 }
 
 .block-logo{
     background-color: black;
-    padding-block: 0.8rem;
     font-family: 'Fira Code', Arial, Helvetica, sans-serif;
+    min-height: 6.8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .block-logo a{
@@ -57,6 +63,7 @@ input[type="text"], input[type="password"]{
     height: 2.2rem;
     border: 1.5px solid black;
     text-indent: 0.4rem;
+    min-height: 6vh;
 }
 
 .field-group{

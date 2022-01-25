@@ -10,7 +10,7 @@
 }
 
 form{
-    margin-bottom: 12vh;
+    margin-bottom: 14vh;
 }
 
 .bl-wh{
@@ -25,8 +25,6 @@ form{
 
 @media(max-width: 625px) and (min-width: 450px){
     form {
-        height: 80vh;
-        max-height: 450px;
         margin-bottom: 16vh;
     }
     .shortcut {
