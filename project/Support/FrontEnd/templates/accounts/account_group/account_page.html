@@ -1,0 +1,52 @@
+{% extends 'base/account_group.html' %}
+
+{% block title %}CODE PORTAL{% endblock %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/account_page.css">
+<link rel="stylesheet" href="/static/styles/components/buttons.css">
+{% endblock %}
+
+
+{% block content %}
+<div class="page-container">
+    <div class="title-menu-container sb-x">
+        <h1 class="title-menu">Conta</h1>
+        <div class="hamburguer hamburguer-in-page-container">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="profile">
+        <div class="profile-photo center-c">
+            <img src="/media/assets/posts/mobile-footer/user-yellow.png" alt="profile-photo-img" class="account-img">
+        </div>
+        <div class="profile-data">
+            <div class="basic-data">
+                <span class="basic-data-description">NOME</span>
+                <span class="basic-data-information">{{ user.name }}</span>
+            </div>
+            <div class="basic-data">
+                <span class="basic-data-description">EMAIL</span>
+                <span class="basic-data-information">{{ user.email }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="account-group-menu invisible">
+    <div class="close-account-menu">
+        <div class="hamburguer hamburguer-mobile-menu open">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>        
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

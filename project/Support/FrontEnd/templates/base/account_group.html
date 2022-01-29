@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% include 'base/includes/_head.html' %}
+    <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/core/base.css">
+    <link rel="stylesheet" href="/static/styles/models/flex.css">
+    <link rel="stylesheet" href="/static/styles/includes/header.css">
+    <link rel="stylesheet" href="/static/styles/includes/body.css">
+    <link rel="stylesheet" href="/static/styles/includes/footer.css">
+    <link rel="stylesheet" href="/static/styles/models/main.css">
+    <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
+    <link rel="stylesheet" href="/static/styles/utils/adaptAnimation.css">
+    <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/model.css">
+    <link rel="stylesheet" href="/static/styles/features/colors/la1-2.css">
+    {% block links %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    
+    <div id="container">
+        {% include 'base/includes/_header.html' %}
+        
+        {% include 'base/includes/_load_animation.html' %}
+        <main class="invisible">
+            <div class="main">
+                {% if request.user.is_authenticated %}
+                {% block content %}
+                {% endblock %}
+                {% else %}
+                {% include 'base/includes/account_group/_choice_for_login.html' %}
+                {% endif %}
+            </div>
+        </main>
+        
+        {% include 'base/includes/_footer.html' %}
+    </div>
+    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
+    <script type="module" src="/static/scripts/features/components/footer/focus.js"></script>
+    <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>
+    <script src="/static/scripts/features/components/header/inputWidthControl.js"></script>
+    {% if request.user.is_authenticated %}
+        <script src="/static/scripts/features/components/main/account_pages/menu.js"></script>
+    {% endif %}
+    {% block javascript %}{% endblock %}
+</body>
+</html>

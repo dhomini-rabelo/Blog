@@ -100,3 +100,9 @@ label{
 .js-check span{
     font-size: 0.7rem;
 }
+
+@media(min-width: 540px) {
+    form {
+        min-width: auto;
+    }
+}

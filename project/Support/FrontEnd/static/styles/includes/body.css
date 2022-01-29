@@ -17,6 +17,8 @@ header {
 main{
     background-color: #343746;
     flex-grow: 1;
+    margin-top: 10vh;
+    padding-bottom: 160px;
 }
 
 .main{

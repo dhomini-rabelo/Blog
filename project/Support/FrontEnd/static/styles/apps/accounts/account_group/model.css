@@ -1,0 +1,21 @@
+#authors-link{
+    border-right: 0.5px solid #ffc746;
+}
+
+#account-link {
+    border-top: 0.2px solid #ffc746;
+}
+
+#account-link .mobile-navigation-text {
+    color: #ffc746;
+}
+
+main{
+    background-color: #fafafa;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+}
+

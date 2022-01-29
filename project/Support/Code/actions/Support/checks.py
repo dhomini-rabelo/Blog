@@ -30,7 +30,7 @@ def checks_null(object_list: list):
 
 def check_is_logged(request):
     # checks if user is logged in from a request
-    user = auth.get_user(request)
-    if user.is_authenticated():
+    user = request.user
+    if user.is_authenticated:
         return True
     return False
