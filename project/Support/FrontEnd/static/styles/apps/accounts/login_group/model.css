@@ -14,7 +14,7 @@ form{
     flex-direction: column;
     background-color: white;
     color: black;
-    margin-bottom: 12vh;
+    margin-bottom: 4vh;
     min-width: 64%;
     max-width: 540px;
 }
@@ -22,7 +22,7 @@ form{
 .block-logo{
     background-color: black;
     font-family: 'Fira Code', Arial, Helvetica, sans-serif;
-    min-height: 6.8vh;
+    min-height: 8vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,8 +101,15 @@ label{
     font-size: 0.7rem;
 }
 
+
 @media(min-width: 540px) {
     form {
         min-width: auto;
+    }
+}
+
+@media(max-width: 450px){
+    .block-logo {
+        min-height: 10vh;
     }
 }

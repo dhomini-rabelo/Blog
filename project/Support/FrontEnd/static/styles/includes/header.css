@@ -10,9 +10,10 @@ header{
 }
 
 .header-pc{
+    width: 100%;
     background-color: black;
     color: white;
-    padding: 0.8rem 1.1rem;
+    padding-inline: 0.8rem;
     max-width: 1200px;
     margin: 0 auto;
 }

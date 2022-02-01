@@ -19,7 +19,6 @@ hr{
 }
 
 .title-menu-container {
-    margin-top: 1.2rem;
     font-size: 0.75rem;
     border-bottom: 1.8px solid black;
 }
@@ -66,15 +65,20 @@ hr{
 
 .account-group-menu {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
+    margin-top: 10vh;
+    padding-top: 1.2rem;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
 .close-account-menu {
-    padding-top: 4vh;
     display: flex;
     justify-content: flex-end;
-    margin-right: 0.5rem;
+}
+
+.hamburguer-mobile-menu {
+
+    margin-right: 5vw;
 }
 
 

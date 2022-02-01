@@ -19,7 +19,8 @@
     .shortcut{
         margin: 0;
         flex-grow: 1;
-        margin-bottom: 5vh;
+        margin-bottom: 15vh;
+        height: 3rem;
     }
     input[type="text"], input[type="password"], .bl-wh{
         min-height: 6vh;
