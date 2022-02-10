@@ -1,0 +1,26 @@
+{% extends 'accounts/account_group/post/_model.html' %}
+
+{% block moreLinks %}
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/post/create.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/form.css">
+{% endblock %}
+
+
+{% block mainContent %}
+<h1 class="ag-title">Novo Post</h1>
+<div class="ag-form center-c">
+    <div class="ag-form-group">
+        <label for="title" class="ag-label">Título:</label>
+        <input type="text" name="title" id="id_title" class="input" placeholder="Adicionar título">
+    </div>
+    <div class="ag-form-group">
+        <label for="body" class="ag-label">Descrição:</label>
+        <textarea type="text" name="body" id="id_description" class="input" placeholder="Adicionar descrição"></textarea>
+    </div>
+    <div class="ag-form-group">
+        <label for="body" class="ag-label">Conteúdo:</label>
+        <textarea type="text" name="body" id="id_body" class="input" placeholder="Adicionar conteúdo"></textarea>
+    </div>
+    <button class="bl-wh">CRIAR</button>
+</div>
+{% endblock %}

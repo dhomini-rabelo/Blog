@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/static/styles/includes/footer.css">
     <link rel="stylesheet" href="/static/styles/models/main.css">
     <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
-    <link rel="stylesheet" href="/static/styles/utils/adaptAnimation.css">
     {% block links %}
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
@@ -31,10 +30,7 @@
         
         {% include 'base/includes/_footer.html' %}
     </div>
-    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
-    <script type="module" src="/static/scripts/features/components/footer/focus.js"></script>
-    <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>
-    <script src="/static/scripts/features/components/header/inputWidthControl.js"></script>
+    <script type="module" src="/static/scripts/loaders/main.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>

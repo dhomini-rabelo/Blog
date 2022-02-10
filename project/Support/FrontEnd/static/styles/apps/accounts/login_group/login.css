@@ -4,25 +4,18 @@
     display: flex;
     justify-content: flex-end;
 }
-
 .block-forgot-password a{
     color: black;
 }
-
 form{
     margin-bottom: 14vh;
 }
-
 .bl-wh{
     margin-top: 0.4rem;
 }
-
 .shortcut{
     margin: 1.2rem auto 1.6rem auto;
 }
-
-
-
 @media(max-width: 625px) and (min-width: 450px){
     form {
         margin-bottom: 16vh;
@@ -30,16 +23,13 @@ form{
     .shortcut {
         flex-grow: 1;
     }
-    input[type="text"], input[type="password"], .bl-wh{
-        min-height: 6vh;
-    }
 }
-
 @media(max-width: 450px){
     form {
        min-height: 100vh;
        width: 100vw;
        margin-bottom: 0;
+       max-width: none;
     }
     .form-group{
         width: 92%;
@@ -49,20 +39,5 @@ form{
     .shortcut {
         flex-grow: 1;
         margin-bottom: 15vh;
-    }    
-    input[type="text"], input[type="password"], .bl-wh{
-        min-height: 6.5vh;
-    }
-
-}
-
-@media(max-width: 350px){
-    #dracula-logo{
-        width: 1.25rem;
-    }
-
-    .logo-title h1{
-        font-size: 1.2rem;
     }
 }
-

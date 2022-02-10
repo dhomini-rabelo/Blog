@@ -1,0 +1,26 @@
+{% extends 'base/account_group.html' %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/components/buttons.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/post/model.css">
+{% block moreLinks %}
+{% endblock %}
+{% endblock %}
+
+{% block mobileTitle %}Post{% endblock %}
+
+{% block content %}
+<nav class="pc-ag-navigation center-r">
+    <a href="{% url 'account_group_post_create' %}" class="ag-edit-a ag-create">CRIAR</a>
+    <a href="{% url 'account_group_post_list_posts' %}" class="ag-edit-a ag-edit">EDITAR</a>
+    <a href="{% url 'account_group_post_list_drafts' %}" class="ag-edit-a ag-drafts">RASCUNHOS</a>
+</nav>
+<div class="ag-main-container flex-pass">
+{% block mainContent %}
+{% endblock %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

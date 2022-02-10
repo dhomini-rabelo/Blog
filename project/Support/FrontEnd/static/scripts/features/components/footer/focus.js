@@ -1,10 +1,6 @@
 import {changeSourceImg} from './../../core/utils.js'
 
-document.addEventListener('DOMContentLoaded', focusInFooter)
-
-
-
-function focusInFooter(){
+export function focusInFooter(){
     let urlRest = window.location.pathname
     let baseSource = '/media/assets/posts/mobile-footer'
     let sourceImg
@@ -36,3 +32,14 @@ function focusInFooter(){
 }
 
 
+export function loseFocusInFooter() {
+    let mobileFooterImgs = document.querySelectorAll('.navigation-img')
+
+    mobileFooterImgs.forEach((img) => {
+        let source = img.getAttribute('src')
+        if (source.slice(-11) === '-yellow.png') {
+            changeSourceImg(source, `${source.replace('-yellow.png', '.png')}`)
+        }
+    })
+
+}

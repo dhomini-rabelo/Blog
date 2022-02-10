@@ -1,0 +1,32 @@
+{% extends 'base/account_group.html' %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/components/buttons.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/suggestions/model.css">
+{% block moreLinks %}
+{% endblock %}
+{% endblock %}
+
+{% block mobileTitle %}Sugestões{% endblock %}
+
+{% block contentMobile %}
+<h2 class="title">{% block editTitleMobile %}{% endblock %}</h2>
+{% block editContentMobile %}
+{% endblock %}
+{% endblock %}
+
+
+{% block content %}
+<nav class="pc-ag-navigation center-r">
+    <a href="{% url 'account_group_suggestions_categories' %}" class="ag-edit-a ag-categories">CATEGORIAS</a>
+    <a href="{% url 'account_group_suggestions_sub_categories' %}" class="ag-edit-a ag-sub-categories">SUBCATEGORIAS</a>
+</nav>
+<div class="ag-main-container flex-pass">
+{% block mainContent %}
+{% endblock %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

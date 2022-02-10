@@ -1,0 +1,26 @@
+{% extends 'base/account_group.html' %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/components/buttons.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/edit/model.css">
+{% block moreLinks %}
+{% endblock %}
+{% endblock %}
+
+{% block mobileTitle %}Editar{% endblock %}
+
+{% block content %}
+<nav class="pc-ag-navigation center-r">
+    <a href="{% url 'account_group_edit_basic' %}" class="ag-edit-a ag-basic">BÁSICO</a>
+    <a href="{% url 'account_group_edit_email' %}" class="ag-edit-a ag-email">EMAIL</a>
+    <a href="{% url 'account_group_edit_password' %}" class="ag-edit-a ag-password">SENHA</a>
+</nav>
+<div class="ag-main-container flex-pass">
+{% block mainContent %}
+{% endblock %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

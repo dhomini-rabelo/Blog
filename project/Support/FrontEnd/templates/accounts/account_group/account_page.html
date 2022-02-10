@@ -1,6 +1,5 @@
 {% extends 'base/account_group.html' %}
 
-{% block title %}CODE PORTAL{% endblock %}
 
 
 {% block links %}
@@ -9,17 +8,10 @@
 {% endblock %}
 
 
+{% block mobileTitle %}Conta{% endblock %}
+
+
 {% block content %}
-<div class="page-container">
-    <div class="title-menu-container sb-x">
-        <h1 class="title-menu">Conta</h1>
-        <div class="hamburguer hamburguer-in-page-container">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
     <div class="profile">
         <div class="profile-photo center-c">
             <img src="/media/assets/posts/mobile-footer/user-yellow.png" alt="profile-photo-img" class="account-img">
@@ -35,17 +27,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="account-group-menu invisible">
-    <div class="close-account-menu">
-        <div class="hamburguer hamburguer-mobile-menu open">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>        
-    </div>
-</div>
 {% endblock %}
 
 {% block javascript %}

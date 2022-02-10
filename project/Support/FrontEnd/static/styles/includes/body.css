@@ -3,36 +3,29 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     position: absolute;
 }
-
+#container > *{
+    width: 100%;
+}
 header {
     position: fixed;
-    width: 100%;
     top: 0;
     left: 0;
 }
-
 main{
     background-color: #343746;
     flex-grow: 1;
     display: flex;
 }
-
 .main{
-    max-width: 1000px;
-    display: block;
+    max-width: 1200px;
+    display: flex;
     margin: 0 auto;
     flex-grow: 1;
 }
-
 footer{
-    position: fixed;
-    width: 100%;    
+    position: fixed;  
     bottom: 0;
     left: 0;
-}
-.mobile-footer {
-    background-color: #000;
 }

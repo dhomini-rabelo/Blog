@@ -1,6 +1,6 @@
 from django.test import TestCase
 from accounts.models import User
-from Support.Code.actions.Support.for_fields import set_slug
+from Support.Code.actions.Support.forms.for_fields import set_slug
 from unittest import expectedFailure
 
 

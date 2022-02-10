@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from Support.Code.actions._accounts.support.register import construct_form
-from Support.Code.actions.Support.messages import success_message
+from Support.Code.actions.Support.django.messages import success_message
 from accounts.models import User
 
 

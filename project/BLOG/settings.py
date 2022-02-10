@@ -124,6 +124,10 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
+LOGIN_REDIRECT_URL = 'account_page'
+
+LOGIN_URL = 'login'
+
 
 if DEBUG:
     INSTALLED_APPS += [

@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', changeContent)
+let animationContent = document.querySelector('.load-animation')
+let animationMainContent = document.querySelector('main')
 
-
-function changeContent(){
-    let animationContent = document.querySelector('.load-animation')
-    let mainContent = document.querySelector('main')
-
+export function endAnimation(){
     animationContent.classList.add('invisible')
-    mainContent.classList.remove('invisible')
+    animationMainContent.classList.remove('invisible')
+}
+
+export function startAnimation() {
+    animationContent.classList.remove('invisible')
+    animationMainContent.classList.add('invisible')
 }

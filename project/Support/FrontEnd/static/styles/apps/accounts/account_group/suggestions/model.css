@@ -1,0 +1,17 @@
+.menu-pc-item a{
+    font-weight: normal;
+}
+.suggestions-pc-item a{
+    font-weight: bold;
+}
+.suggestions {
+    justify-content:  center;
+    align-items: flex-start;
+}
+.no-suggestions {
+    align-self: center;
+    text-align: center;
+}
+.no-suggestions span {
+    font-size: 0.88rem;
+}

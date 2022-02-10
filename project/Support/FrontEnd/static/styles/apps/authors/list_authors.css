@@ -1,30 +1,30 @@
 #authors-link .mobile-navigation-text {
     color: #ffc746;
 }
-
 #authors-link {
     border-top: 0.2px solid #ffc746;
     border-right: 0.5px solid #ffc746;
 }
-
 #categories-link {
     border-right: 0.5px solid #ffc746;
 }
-
 .box-body{
-    width: 12rem;
+    width: 14rem;
 }
-
 .box-img{
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
 }
-
 @media(max-width: 450px){
     .box-body{
-        width: 70vw;
+        width: 57.5vw;
         text-align: center;
     }
 }
-
+@media(max-width: 300px){
+    .box-body{
+        width: 72.5vw;
+        text-align: center;
+    }
+}

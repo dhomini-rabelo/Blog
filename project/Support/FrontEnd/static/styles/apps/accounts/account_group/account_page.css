@@ -1,12 +1,12 @@
 .choice-container{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .choice-for-login{
     margin: 5vw;
     max-width: 300px;
-    width: 100%
+    width: 100%;
 }
 
 hr{
@@ -18,19 +18,6 @@ hr{
     margin: 0.25rem auto;
 }
 
-.title-menu-container {
-    font-size: 0.75rem;
-    border-bottom: 1.8px solid black;
-}
-
-.hamburguer-in-page-container span{
-    background-color: black;
-}
-
-.profile-photo {
-    margin-block: 1.5rem;
-}
-
 .account-img {
     width: 125px;
     height: 125px;
@@ -38,6 +25,16 @@ hr{
     object-fit: cover;
     padding: 5px;
     border: 1px solid black;
+}
+
+.profile {
+    width: 100%;
+}
+
+
+.profile-data {
+    margin: 0 auto;
+    max-width: 540px;
 }
 
 .basic-data {
@@ -63,24 +60,9 @@ hr{
     font-size: 0.9rem;
 }
 
-.account-group-menu {
-    width: 100%;
-    min-height: 90vh;
-    margin-top: 10vh;
-    padding-top: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.8);
+.account-pc-item a{
+    font-weight: bold;
 }
-
-.close-account-menu {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.hamburguer-mobile-menu {
-
-    margin-right: 5vw;
-}
-
 
 @media(max-width: 350px){
     .choice-for-login{

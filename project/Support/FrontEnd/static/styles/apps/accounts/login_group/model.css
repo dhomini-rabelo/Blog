@@ -1,47 +1,37 @@
 body{
     background-color: #343746;
 }
-
 main{
     min-height: 100vh;
     color: white;
     background-color: #343746;
 }
-
 form{
     display: flex;
-    width: 20rem;
     flex-direction: column;
     background-color: white;
     color: black;
     margin-bottom: 4vh;
-    min-width: 64%;
-    max-width: 540px;
+    width: 64%;
+    max-width: 375px;
 }
-
 .block-logo{
     background-color: black;
     font-family: 'Fira Code', Arial, Helvetica, sans-serif;
-    min-height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 8vh;
+    min-height: 70px;
 }
-
 .block-logo a{
     color: white;
 }
-
 #dracula-logo{
     width: 2rem;
     margin-right: 0.5rem;
 }
-
 .logo h1{
     font-weight: 200;
     font-size: 1.5rem;
 }
-
 .logo-title{
     display: flex;
     flex-direction: column;
@@ -49,67 +39,63 @@ form{
     justify-content: center;
     line-height: 1.02;
 }
-
 .logo-title{
     word-spacing: -0.5rem;
 }
-
 .form-group{
     margin: 1.5rem 1rem; 
 }
-
 input[type="text"], input[type="password"]{
     width: 100%;
-    height: 2.2rem;
     border: 1.5px solid black;
     text-indent: 0.4rem;
-    min-height: 6vh;
+    height: 6vh;
+    min-height: 57.5px !important;
 }
-
 .field-group{
     margin-bottom: 0.2rem;
 }
-
 label{
     display: block;
     margin-bottom: 0.35rem;
 }
-
 .shortcut{
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
-
 .shortcut a{
     word-spacing: -0.2rem;
     color: black;
 }
-
 #id_javascript{
     margin-right: 0.2rem;
     width: 0.6rem;
     position: relative;
     top: 0.18rem;
 }
-
 .js-check{
     padding-left: 0.15rem;
 }
-
 .js-check span{
     font-size: 0.7rem;
 }
-
-
 @media(min-width: 540px) {
     form {
         min-width: auto;
     }
 }
-
 @media(max-width: 450px){
     .block-logo {
-        min-height: 10vh;
+        height: 10vh;
+    }
+}
+@media(max-width: 350px){
+    #dracula-logo{
+        width: 1.5rem;
+    }
+
+    .logo-title h1{
+        font-size: 1.4rem;
     }
 }

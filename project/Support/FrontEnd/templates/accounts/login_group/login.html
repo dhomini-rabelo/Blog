@@ -14,17 +14,13 @@
 
 <div class="form-group">
     {% for message in messages %}
-    {{ message }}
+        {{ message }}
     {% endfor %}
     {{ form }}
     {% csrf_token %}
     <button class="bl-wh" type="submit">LOGIN</button>
     <div class="js-check">
-        {% if request.session.not_use_javascript %}
-        <span><input type="checkbox" name="javascript" id="id_javascript" value="on">Usar javascript para validação</span>
-        {% else %}
-        <span><input type="checkbox" name="javascript" id="id_javascript" value="on" checked>Usar javascript para validação</span>
-        {% endif %}
+        <span><input type="checkbox" name="javascript" id="id_javascript" value="on" {{js_use}}>Usar javascript para validação</span>
     </div>            
 </div>
 <div class="shortcut center-r"><a href="{% url 'register' %}">Fazer cadastro</a>
@@ -36,5 +32,5 @@
 
 
 {% block javascript %}
-<script type="module" src="/static/scripts/managers/accounts/login.js"></script>
+<script type="module" src="/static/scripts/managers/apps/accounts/login_group/login.js"></script>
 {% endblock %}

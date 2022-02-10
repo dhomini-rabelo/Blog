@@ -4,7 +4,6 @@ let headerForm = document.querySelector('.search form')
 headerForm.addEventListener('submit', controlInputWidth)
 
 
-
 function controlInputWidth(event){
     let search = document.querySelector('.search')
     let input = document.querySelector('.search form input')

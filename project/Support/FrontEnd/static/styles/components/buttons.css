@@ -6,10 +6,10 @@
     padding-block: 0.4rem;
     font-size: 1.15rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    min-height: 6vh;
+    height: 6vh;
+    min-height: 57.5px !important;
 }
 
 .bl-wh:active{
     opacity: 0.5;
 }
-

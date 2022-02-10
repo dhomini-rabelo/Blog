@@ -1,0 +1,17 @@
+{% extends 'accounts/account_group/edit/_model.html' %}
+
+{% block moreLinks %}
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/edit/basic.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/form.css">
+{% endblock %}
+
+{% block mainContent %}
+<h1 class="ag-title">Informações básicas</h1>
+<div class="ag-form center-c">
+    <div class="ag-form-group">
+        <label for="name" class="ag-label">Nome:</label>
+        <input type="text" name="name" id="id_name" class="input" placeholder="Alterar nome">
+    </div>
+    <button class="bl-wh">SALVAR</button>
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@
     {% include 'base/includes/_load_animation.html' %}
     <main class="center-r invisible">
         <form method="POST" spellcheck="false">
-            <div class="block-logo">
+            <div class="block-logo center-c">
                 <a href="{% url 'latest_posts' %}">
                     <div class="logo center-r">
                         <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
@@ -34,7 +34,6 @@
             {% endblock %}
         </form>
     </main>
-    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>

@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="/static/styles/includes/footer.css">
     <link rel="stylesheet" href="/static/styles/models/main.css">
     <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
-    <link rel="stylesheet" href="/static/styles/utils/adaptAnimation.css">
     <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/model.css">
     <link rel="stylesheet" href="/static/styles/features/colors/la1-2.css">
     {% block links %}
     {% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}CODE PORTAL{% endblock %}</title>
 </head>
 <body>
     
@@ -27,23 +26,80 @@
         <main class="invisible">
             <div class="main">
                 {% if request.user.is_authenticated %}
-                {% block content %}
-                {% endblock %}
-                {% else %}
-                {% include 'base/includes/account_group/_choice_for_login.html' %}
-                {% endif %}
+                <div class="page-container flex-pass">
+                    <div class="init-mobile-container">
+                        <div class="title-menu-container sb-x">
+                            <h1 class="title-menu">{% block mobileTitle %}{% endblock %}</h1>
+                            <div class="hamburguer hamburguer-in-page-container">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="init-pc-container">
+                        <nav class="menu-pc">
+                            <ul class="menu-pc-list">
+                                <li class="menu-pc-item account-pc-item"><a href="{% url 'account_page' %}">Conta</a></li>
+                                <li class="menu-pc-item post-pc-item"><a href="{% url 'account_group_post_create' %}">Post</a></li>
+                                <li class="menu-pc-item suggestions-pc-item"><a href="{% url 'account_group_suggestions_categories' %}">Sugestões</a></li>
+                                <li class="menu-pc-item edit-pc-item"><a href="{% url 'account_group_edit_basic' %}">Editar</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="main-content center-c">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="account-group-menu invisible">
+                    <div class="close-account-menu end-r">
+                        <div class="hamburguer hamburguer-mobile-menu open">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>        
+                    </div>
+                
+                    <nav class="menu-mobile">
+                        <ul class="menu-mobile-list main-list">
+                            <li class="menu-mobile-item" open="post-list">POST</li>
+                            <li class="menu-mobile-item" open="suggestions-list">SUGESTÕES</li>
+                            <li class="menu-mobile-item" open="edit-list">EDITAR</li>
+                        </ul>
+                        <ul class="menu-mobile-list post-list invisible">
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_post_create' %}">CRIAR</a></li>
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_post_list_posts' %}">EDITAR</a></li>
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_post_list_drafts' %}">RASCUNHOS</a></li>
+                        </ul>
+                        <ul class="menu-mobile-list suggestions-list invisible">
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_suggestions_categories' %}">CATEGORIA</a></li>
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_suggestions_sub_categories' %}">SUBCATEGORIA</a></li>
+                        </ul>
+                        <ul class="menu-mobile-list edit-list invisible">
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_edit_basic' %}">BÁSICO</a></li>
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_edit_email' %}">EMAIL</a></li>
+                            <li class="menu-mobile-item"><a href="{% url 'account_group_edit_password' %}">SENHA</a></li>
+                        </ul>
+                    </nav>
+                    </div>
+                    {% else %}
+                    {% include 'base/includes/account_group/_choice_for_login.html' %}
+                    {% endif %}
             </div>
         </main>
+
         
         {% include 'base/includes/_footer.html' %}
     </div>
-    <script src="/static/scripts/features/components/main/loadAnimation.js"></script>
-    <script type="module" src="/static/scripts/features/components/footer/focus.js"></script>
-    <script src="/static/scripts/features/components/header/hamburguerAnimation.js"></script>
-    <script src="/static/scripts/features/components/header/inputWidthControl.js"></script>
+    <script type="module" src="/static/scripts/loaders/main.js"></script>
     {% if request.user.is_authenticated %}
-        <script src="/static/scripts/features/components/main/account_pages/menu.js"></script>
+        <script src="/static/scripts/features/apps/accounts/account_group/menu.js"></script>
+        <script src="/static/scripts/features/apps/accounts/account_group/changeMenuMobile.js"></script>
     {% endif %}
+    </div>
     {% block javascript %}{% endblock %}
 </body>
 </html>

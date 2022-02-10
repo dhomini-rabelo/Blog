@@ -1,9 +1,6 @@
 let hamburguer = document.querySelector('.hamburguer')
 
-
 hamburguer.addEventListener('click', animateHamburguer)
-
-
 
 
 function animateHamburguer(){

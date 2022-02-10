@@ -1,46 +1,46 @@
 .page-container{
     margin-inline: 5vw;
-    margin-top: 10vh;
-    padding-top: 0.6rem;
+    margin-top: 65px;
+    margin-bottom: 52.5px;
 }
-
 .page-title{
+    padding-top: 1.8rem;
     font-size: 1.6rem;
     color: #fafafa;
 }
-
 .main-container{
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 2rem;
-    justify-content: flex-start;
 }
-
 .box{
     margin-bottom: 1rem;
 }
-
 .box-body{
-    display: flex;
-    flex-direction: column;
     width: 16rem;
     border: 0.5px solid black;
     padding: 0.4rem 0.8rem;
     background-color: #fafafa;
     color: black;
     border-radius: 4px;
-    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
 .box-img{
     width: 14rem;
     max-height: 14rem;
     display: block;    
     object-fit: cover;
 }
-
 .box-title{
     margin: 0.2rem auto;
     font-size: 1rem;    
+}
+@media(max-width: 400px){
+    .box-body{
+        width: 90vw;
+    }
+    .box-img{
+        width: 80vw;
+    }
+    .page-title{
+        font-size: 1.1rem;
+    }
 }
