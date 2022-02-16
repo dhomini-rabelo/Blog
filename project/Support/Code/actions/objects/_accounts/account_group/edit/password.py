@@ -1,6 +1,3 @@
-from accounts.models import User
-
-
 password_form = {
     
     'fields' : [

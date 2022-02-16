@@ -25,7 +25,6 @@
         {% include 'base/includes/_load_animation.html' %}
         <main class="invisible">
             <div class="main">
-                {% if request.user.is_authenticated %}
                 <div class="page-container flex-pass">
                     <div class="init-mobile-container">
                         <div class="title-menu-container sb-x">
@@ -68,6 +67,7 @@
                             <li class="menu-mobile-item" open="post-list">POST</li>
                             <li class="menu-mobile-item" open="suggestions-list">SUGESTÕES</li>
                             <li class="menu-mobile-item" open="edit-list">EDITAR</li>
+                            <li class="menu-mobile-item" open=""><a href="{% url 'logout' %}">SAIR</a></li>
                         </ul>
                         <ul class="menu-mobile-list post-list invisible">
                             <li class="menu-mobile-item"><a href="{% url 'account_group_post_create' %}">CRIAR</a></li>
@@ -85,9 +85,6 @@
                         </ul>
                     </nav>
                     </div>
-                    {% else %}
-                    {% include 'base/includes/account_group/_choice_for_login.html' %}
-                    {% endif %}
             </div>
         </main>
 
@@ -95,10 +92,8 @@
         {% include 'base/includes/_footer.html' %}
     </div>
     <script type="module" src="/static/scripts/loaders/main.js"></script>
-    {% if request.user.is_authenticated %}
-        <script src="/static/scripts/features/apps/accounts/account_group/menu.js"></script>
-        <script src="/static/scripts/features/apps/accounts/account_group/changeMenuMobile.js"></script>
-    {% endif %}
+    <script src="/static/scripts/features/apps/accounts/account_group/menu.js"></script>
+    <script src="/static/scripts/features/apps/accounts/account_group/changeMenuMobile.js"></script>
     </div>
     {% block javascript %}{% endblock %}
 </body>

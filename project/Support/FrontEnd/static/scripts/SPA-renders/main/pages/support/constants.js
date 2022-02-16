@@ -13,7 +13,6 @@ export const baseHeader = `
 <link rel="stylesheet" href="/static/styles/includes/footer.css">
 <link rel="stylesheet" href="/static/styles/models/main.css">
 <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
-<link rel="stylesheet" href="/static/styles/utils/adaptAnimation.css">
 {% block links %}
 <title>CODE PORTAL</title>
 `

@@ -5,7 +5,7 @@ loaded_forms = {
           '    <div class="field-group">\n'
           '        <label for="id_email">Email:</label>\n'
           '        <input type="text" name="email" id="id_email" '
-          'placeholder="Digite seu email">\n'
+          'placeholder="Digite seu email" inputmode="email">\n'
           '        \n'
           '        <div class="error"></div>\n'
           '    </div>\n'
@@ -27,7 +27,7 @@ loaded_forms = {
     'fast_login_form': """
             <div class="field-group">
             <label for="id_email">Email:</label>
-            <input type="text" name="email" id="id_email" placeholder="Digite seu email">
+            <input type="text" name="email" id="id_email" placeholder="Digite seu email" inputmode="email">
 
             <div class="error"></div>
         </div>
@@ -54,7 +54,7 @@ loaded_forms = {
                 '        <div class="field-group">\n'
                 '            <label for="id_email">Email:</label>\n'
                 '            <input type="text" name="email" id="id_email" '
-                'placeholder="Digite seu email">\n'
+                'placeholder="Digite seu email" inputmode="email">\n'
                 '            <div class="error"></div>\n'
                 '        </div>\n'
                 '    ',
@@ -89,7 +89,7 @@ loaded_forms = {
 
         <div class="field-group">
             <label for="id_email">Email:</label>
-            <input type="text" name="email" id="id_email" placeholder="Digite seu email">
+            <input type="text" name="email" id="id_email" placeholder="Digite seu email" inputmode="email">
             <div class="error"></div>
         </div>
 

@@ -26,3 +26,10 @@ export function validateEqualTheAField(inputValue, inputForCopyAddress){
 
     return inputForCopy === inputValue ? true : false
 }
+
+
+export function validateCPF(inputValue){
+    let cpfRegexExpression = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/
+    
+    return inputValue.match(cpfRegexExpression) === null ? false : true
+}

@@ -4,7 +4,7 @@ from Support.Code.actions._accounts.login_group.js_use import save_javascript_us
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete_used_form
 from Support.Code.actions.Support.forms.main import validate_form
-from Support.Code.actions.Support.django.auth import login, create_user_with_email
+from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
 from django.shortcuts import render, redirect
 
@@ -55,3 +55,7 @@ class LoginView(BaseView):
         save_javascript_use(request)
         return redirect('login') 
     
+    
+def logout_view(request):
+    logout(request)
+    return redirect('login')

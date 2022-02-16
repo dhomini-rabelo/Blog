@@ -1,14 +1,14 @@
 login_form = {
     
     'fields' : [
-        {'name': 'email', 'label': 'Email', 'placeholder': 'Digite seu email', 'type': 'text', 'forgot': ''},
-        {'name': 'password', 'label': 'Senha', 'placeholder': 'Digite sua senha', 'type': 'password', 'forgot': '<div class="block-forgot-password"><a href="">Esqueceu a senha?</a></div>'},
+        {'name': 'email', 'label': 'Email', 'placeholder': 'Digite seu email', 'type': 'text', 'forgot': '', 'input_mode': ' inputmode="email"'},
+        {'name': 'password', 'label': 'Senha', 'placeholder': 'Digite sua senha', 'type': 'password', 'forgot': '<div class="block-forgot-password"><a href="">Esqueceu a senha?</a></div>', 'input_mode': ''},
     ],
 
     'html_structure' : """
     <div class="field-group">
         <label for="id_[name]">[label]:</label>
-        <input type="[type]" name="[name]" id="id_[name]" placeholder="[placeholder]">
+        <input type="[type]" name="[name]" id="id_[name]" placeholder="[placeholder]"[input_mode]>
         [forgot]
         <div class="error"></div>
     </div>

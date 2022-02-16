@@ -12,6 +12,7 @@ from .views.account_group.suggestions import *
 urlpatterns = [
     path('cadastro/', no_login_required(RegisterView.as_view()), name='register'),
     path('login/', no_login_required(LoginView.as_view()), name='login'),
+    path('logout/', login_required(logout_view), name='logout'),
     path('minha-conta/', AccountView.as_view(), name='account_page'),
     path('minha-conta/post/criar', login_required(CreatePostsAccountView.as_view()), name='account_group_post_create'),
     path('minha-conta/post/editar/meus-posts', login_required(ListPostsAccountView.as_view()), name='account_group_post_list_posts'),

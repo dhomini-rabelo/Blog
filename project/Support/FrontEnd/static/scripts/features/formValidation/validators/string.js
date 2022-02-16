@@ -1,4 +1,4 @@
-import { validateStringLength, validateEmail, validateEqualTheAField } from './support/string.js'
+import { validateStringLength, validateEmail, validateEqualTheAField, validateCPF } from './support/string.js'
 import { clearField } from '../../../forms/clearInput.js'
 import { showError } from '../createError.js'
 
@@ -55,10 +55,18 @@ export function validateStringField(fieldModel){
                         errorMessage = `${validation[2]} são diferentes`
                     }
                     break
+                case 'cpf':
+                    validationProcess = validateCPF(field.value)
+                    if (!validationProcess){
+                        errorMessage = 'CPF inválido'
+                    }
+                    break
+
             }
     
             if (!validationProcess){
                 valid = false
+                break
             }
 
         }

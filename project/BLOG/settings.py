@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'posts.PostsConfig',
     'accounts.AccountsConfig',
     # Others apps
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

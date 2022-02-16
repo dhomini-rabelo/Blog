@@ -34,6 +34,7 @@ def get_post_form_errors(form: list) -> dict[str, str]:
                 validation = other_errors_functions[other_validation[0]]
                 if not validation(*args):
                     other_errors.append([other_validation[0], name, args])
+                    break
                 
     form_errors = {'invalid_fields': invalid_fields, 'none_fields': none_fields,
                     'other_errors': other_errors}

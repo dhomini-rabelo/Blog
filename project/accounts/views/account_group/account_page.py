@@ -7,5 +7,8 @@ from django.shortcuts import render, redirect
 class AccountView(BaseView):
 
     def get(self, request):
-        self.tc['user'] = request.user
-        return render(request, 'accounts/account_group/account_page.html', self.tc)
+        if check_is_logged(request):
+            return render(request, 'accounts/account_group/account_page.html', self.tc)
+        else:
+            return render(request, 'accounts/account_group/no_login_account_page.html', self.tc)
+            

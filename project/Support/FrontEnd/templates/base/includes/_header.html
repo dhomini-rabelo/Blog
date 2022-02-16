@@ -33,6 +33,7 @@
                             <a href="{% url 'authors' %}" destiny="authors" class="pc-link-navigation">AUTORES</a>
                             {% if  request.user.is_authenticated %}
                             <a href="{% url 'account_page' %}" destiny="pass" class="pc-link-navigation">CONTA</a>
+                            <a href="{% url 'logout' %}" destiny="pass" class="pc-link-navigation">SAIR</a>
                             {% else %}
                             <a href="{% url 'login' %}" destiny="pass" class="pc-link-navigation">LOGIN</a>
                             <a href="{% url 'register' %}" destiny="pass" class="pc-link-navigation">CADASTRO</a>
