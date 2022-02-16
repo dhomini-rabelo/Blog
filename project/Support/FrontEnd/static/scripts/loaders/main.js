@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', useInitialScripts)
 
 function useInitialScripts() {
     focusInFooter()
-    endAnimation()
+    setTimeout(endAnimation, 100)
     addScripts([
         ['/static/scripts/features/components/header/hamburguerAnimation.js'],
         ['/static/scripts/features/components/header/inputWidthControl.js'],

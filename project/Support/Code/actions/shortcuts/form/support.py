@@ -2,12 +2,13 @@ from Support.Code.actions.Support.forms.form import Form
 from .loaded import loaded_forms
 from Support.Code.actions.Support.utils.main import gets
 
+    
 
 base_changes = [('[name]', 'name'), ('[label]', 'label'), ('[placeholder]', 'placeholder')]
 def construct_form(form_name: str, fields: list[dict], html_structure: str, changes=base_changes) -> Form:
     page_form = Form()
 
-    if form_name in loaded_forms.keys():
+    if form_name in loaded_forms.keys() and f'fast_{form_name}' in loaded_forms.keys():
         page_form.fast_load_form(loaded_forms[form_name], loaded_forms[f'fast_{form_name}'])
     else:
         page_form.add_fields(fields, html_structure, changes)

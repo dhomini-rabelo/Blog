@@ -1,46 +1,42 @@
 .page-container{
-    margin-inline: 5vw;
     margin-top: 65px;
     margin-bottom: 52.5px;
 }
 .page-title{
+    padding-left: 1.4rem;
     padding-top: 1.8rem;
     font-size: 1.6rem;
     color: #fafafa;
 }
 .main-container{
+    margin: 0 auto;
     margin-top: 2rem;
+    columns: 300px 3;
+    column-gap: 0px;
 }
 .box{
-    margin-bottom: 1rem;
+    display: inline-block;
+    width: 100%;
 }
 .box-body{
-    width: 16rem;
+    max-width: 400px;
+    width: 90%;
+    margin: 0 auto;
     border: 0.5px solid black;
     padding: 0.4rem 0.8rem;
     background-color: #fafafa;
     color: black;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 14px;
 }
 .box-img{
-    width: 14rem;
-    max-height: 14rem;
+    width: 96%;
+    max-height: 20rem;
     display: block;    
     object-fit: cover;
 }
 .box-title{
     margin: 0.2rem auto;
     font-size: 1rem;    
-}
-@media(max-width: 400px){
-    .box-body{
-        width: 90vw;
-    }
-    .box-img{
-        width: 80vw;
-    }
-    .page-title{
-        font-size: 1.1rem;
-    }
 }

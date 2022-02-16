@@ -33,3 +33,4 @@ export function validateCPF(inputValue){
     
     return inputValue.match(cpfRegexExpression) === null ? false : true
 }
+
