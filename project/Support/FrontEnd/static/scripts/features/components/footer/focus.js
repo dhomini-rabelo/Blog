@@ -24,22 +24,19 @@ export function focusInFooter(){
             break
     }
 
-
-    let oldSource = `${baseSource}/${sourceImg}.png`
-    let newSource = `${baseSource}/${sourceImg}-yellow.png`
-
-    changeSourceImg(oldSource, newSource)
+    loseFocusInFooter()
+    let img = document.querySelector(`img[src="${baseSource}/${sourceImg}.svg"]`)
+    setTimeout(() => {img.setAttribute('style', 'background-color: #ffc746;')}, 100)
 }
 
 
 export function loseFocusInFooter() {
     let mobileFooterImgs = document.querySelectorAll('.navigation-img')
 
-    mobileFooterImgs.forEach((img) => {
-        let source = img.getAttribute('src')
-        if (source.slice(-11) === '-yellow.png') {
-            changeSourceImg(source, `${source.replace('-yellow.png', '.png')}`)
-        }
-    })
+    setTimeout(() =>{
+        mobileFooterImgs.forEach((img) => {
+        img.setAttribute('style', 'background-color: #fff;')
+        })
+    }, 80)
 
 }

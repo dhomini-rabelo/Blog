@@ -36,6 +36,7 @@
     display: block;
     margin: 0 auto;
     margin: 0.5rem auto 0.3rem auto;
+    /* background-color: white; */
 }
 @media(max-width: 500px){
     .navigation .mobile-navigation-text {
