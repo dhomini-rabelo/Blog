@@ -1,3 +1,4 @@
+from ast import FunctionDef
 from accounts.models import User
 from ..forms.for_fields import set_slug
 from django.contrib import auth
@@ -51,3 +52,16 @@ def change_password(request, current_password: str, new_password: str):
 def logout(request):
     auth.logout(request)
     
+
+def create_login_save(request, obj: dict):
+    request.session['user_save'] = {}
+    for key in obj.keys():
+        match str(type(obj[key])):
+
+            case "<class 'str'>":
+                attribute_name = obj[key]
+                request.session['user_save'][key] = getattr(request.user, attribute_name)
+                
+            case "<class 'function'>":
+                get_atribute_function: function = obj[key]
+                request.session['user_save'][key] = get_atribute_function(request.user)

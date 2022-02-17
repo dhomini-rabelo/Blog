@@ -8,6 +8,7 @@ class AccountView(BaseView):
 
     def get(self, request):
         if check_is_logged(request):
+            self.tc['user'] = request.session['user_save'].copy()
             return render(request, 'accounts/account_group/account_page.html', self.tc)
         else:
             return render(request, 'accounts/account_group/no_login_account_page.html', self.tc)

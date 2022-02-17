@@ -39,3 +39,9 @@ login_obj = {
     'error_message': 'Email não encontrado'
     
 }
+
+user_save = {
+    'photo_path': lambda user: user.photo.url,
+    'name': 'name',
+    'email': 'email'
+}

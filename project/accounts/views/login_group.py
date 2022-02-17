@@ -1,10 +1,10 @@
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message
-from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj
+from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete_used_form
 from Support.Code.actions.Support.forms.main import validate_form
-from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout
+from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
 from django.shortcuts import render, redirect
 
@@ -48,6 +48,7 @@ class LoginView(BaseView):
 
         if login_validation['status'] == 'valid' and login_proccess['status'] == 'valid':
             delete_used_form(request, 'login')
+            create_login_save(request, user_save)
             return redirect('latest_posts')
         else:
             save_form(request, 'login', login_validation['fields'], {**login_proccess['errors'], **login_validation['errors']})

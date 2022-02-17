@@ -6,6 +6,7 @@ from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.django.messages.main import save_message
 from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete_used_form
 from Support.Code.actions.objects._accounts.account_group.edit.password import password_form, password_form_validation, password_message
+from Support.Code.actions.objects._accounts.account_group.edit.basic import basic_form_validation
 
 
 
@@ -14,8 +15,11 @@ from Support.Code.actions.objects._accounts.account_group.edit.password import p
 class EditBasicAccountView(BaseView):
 
     def get(self, request):
-        self.tc['user'] = request.user
+        self.tc['user'] = request.session['user_save'].copy()
         return render(request, 'accounts/account_group/edit/basic.html', self.tc)
+    
+    def post(self, request):
+        validation = validate_form({**request.POST, **request.FILES}, basic_form_validation)
     
 
 class EditEmailAccountView(BaseView):

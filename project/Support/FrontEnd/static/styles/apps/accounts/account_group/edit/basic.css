@@ -4,3 +4,22 @@
 .ag-basic {
     font-weight: bold;
 }
+
+input[type="file"] {
+    display: none;
+}
+.account-img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 5px;
+    border: 1px solid black;
+}
+.account-img:hover {
+    opacity: 0.5;
+}
+.help-ag-edit-basic {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
