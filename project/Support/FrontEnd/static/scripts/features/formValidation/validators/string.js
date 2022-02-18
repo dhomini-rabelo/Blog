@@ -62,7 +62,7 @@ export function validateStringField(fieldModel){
                     }
                     break
                 case 'onlyStr':
-                    validateProcess = onlyLetters(field.value)
+                    validationProcess = onlyLetters(field.value)
                     if (!validationProcess){
                         errorMessage = 'Este campo aceita apenas letras'
                     }
