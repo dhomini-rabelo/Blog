@@ -10,7 +10,7 @@ function makeValidation() {
 
     let fieldsObj = {
         stringFields: [
-            ['name', [['maxLength', 256]]],
+            ['name', [['onlyStr'], ['maxLength', 256]]],
             ['email', [['maxLength', 128], ['email']]],
             ['password', [['minLength', 8], ['maxLength', 256]]],
             ['confirm_password', [['equalTheAField', 'password', 'As senhas']]],

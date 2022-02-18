@@ -1,4 +1,4 @@
-import { validateStringLength, validateEmail, validateEqualTheAField, validateCPF } from './support/string.js'
+import { validateStringLength, validateEmail, validateEqualTheAField, validateCPF, onlyLetters } from './support/string.js'
 import { clearField } from '../../../forms/clearInput.js'
 import { showError } from '../createError.js'
 
@@ -61,7 +61,12 @@ export function validateStringField(fieldModel){
                         errorMessage = 'CPF inválido'
                     }
                     break
-
+                case 'onlyStr':
+                    validateProcess = onlyLetters(field.value)
+                    if (!validationProcess){
+                        errorMessage = 'Este campo aceita apenas letras'
+                    }
+                    break
             }
     
             if (!validationProcess){

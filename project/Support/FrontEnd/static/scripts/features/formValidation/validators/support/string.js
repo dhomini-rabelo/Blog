@@ -34,3 +34,8 @@ export function validateCPF(inputValue){
     return inputValue.match(cpfRegexExpression) === null ? false : true
 }
 
+export function onlyLetters(inputValue){
+    let onlyLettersRegexExpression = /^[a-zA-z\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/
+
+    return inputValue.match(onlyLettersRegexExpression) === null ? false : true
+}
