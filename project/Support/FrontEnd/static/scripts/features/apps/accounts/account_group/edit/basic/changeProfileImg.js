@@ -12,11 +12,11 @@ function addImgInInput() {
 function changeImgInInput() {
     if (fileInput.files.length <= 0) return
 
-    let reader = new FileReader();
+    let reader = new FileReader()
 
     reader.onload = () => {
-        img.src = reader.result;
+        img.src = reader.result
     }
-
-    reader.readAsDataURL(fileInput.files[0]);
+    
+    reader.readAsDataURL(fileInput.files[0])
 }

@@ -4,7 +4,7 @@ from Support.Code.actions._accounts.login_group.js_use import save_javascript_us
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete_used_form
 from Support.Code.actions.Support.forms.main import validate_form
-from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save
+from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save, validate_login
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
 from django.shortcuts import render, redirect
 
@@ -44,15 +44,16 @@ class LoginView(BaseView):
 
     def post(self, request):
         login_validation = validate_form(request.POST, login_form_validation)
-        login_proccess = login(request, login_obj)
+        login_proccess = validate_login(request, login_obj)
 
         if login_validation['status'] == 'valid' and login_proccess['status'] == 'valid':
+            login(request, login_proccess['user'])
             delete_used_form(request, 'login')
             create_login_save(request, user_save)
             return redirect('latest_posts')
-        else:
-            save_form(request, 'login', login_validation['fields'], {**login_proccess['errors'], **login_validation['errors']})
+        
 
+        save_form(request, 'login', login_validation['fields'], {**login_proccess['errors'], **login_validation['errors']})
         save_javascript_use(request)
         return redirect('login') 
     
