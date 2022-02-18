@@ -1,3 +1,5 @@
+import { controlBackButton } from './changeMenuMobile.js'
+
 document.querySelector('.hamburguer-in-page-container').addEventListener('click', showMenu)
 document.querySelector('.hamburguer-mobile-menu').addEventListener('click', closeMenu)
 
@@ -10,12 +12,14 @@ function showMenu() {
 }
 
 function closeMenu() {
-    let subMenus = document.querySelectorAll('.menu-mobile-list')
-    let mainList = document.querySelector('.main-list')
-
     mobileMenu.classList.toggle('invisible')
     pageContainer.classList.toggle('invisible')
 
+    let subMenus = document.querySelectorAll('.menu-mobile-list')
+    let mainList = document.querySelector('.main-list')
+    
+    controlBackButton('remove')
+    
     subMenus.forEach((menu) => {
         menu.classList.add('invisible')
     })

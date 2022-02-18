@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
     <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/model.css">
     <link rel="stylesheet" href="/static/styles/features/colors/la1-2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% block links %}
     {% endblock %}
     <title>{% block title %}CODE PORTAL{% endblock %}</title>
@@ -54,6 +55,7 @@
                 </div>
                 <div class="account-group-menu invisible">
                     <div class="close-account-menu end-r">
+                        <i class="fa-solid fa-angle-left invisible"></i>
                         <div class="hamburguer hamburguer-mobile-menu open">
                             <span></span>
                             <span></span>
@@ -92,8 +94,8 @@
         {% include 'base/includes/_footer.html' %}
     </div>
     <script type="module" src="/static/scripts/loaders/main.js"></script>
-    <script src="/static/scripts/features/apps/accounts/account_group/menu.js"></script>
-    <script src="/static/scripts/features/apps/accounts/account_group/changeMenuMobile.js"></script>
+    <script type="module" src="/static/scripts/features/apps/accounts/account_group/menu.js"></script>
+    <script type="module" src="/static/scripts/features/apps/accounts/account_group/changeMenuMobile.js"></script>
     </div>
     {% block javascript %}{% endblock %}
 </body>
