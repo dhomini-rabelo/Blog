@@ -24,6 +24,7 @@ basic_form = {
                 ('[user_path]', 'src'), 
             ],
             'validation_type': 'img',
+            'history': 'src',
 
         },
         
@@ -39,7 +40,8 @@ basic_form = {
             'changes': [
                 ('[value]', 'value'), 
             ],
-            'validation_type': 'img',
+            'validation_type': 'input',
+            'history': 'value',
 
         },
         
@@ -55,5 +57,14 @@ basic_form_validation = {
             ['name', [('only_str',), ('max_length', 256)]], 
         ]
     },
+    
+}
+
+
+basic_form_message = {
+    
+    'title': 'success_basic_form',
+    'message': 'Usuário alterado com sucesso',
+    'type': 'success'
     
 }

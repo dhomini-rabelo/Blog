@@ -2,7 +2,7 @@ from .checks import check_null
 from .support import adapt_form_errors, adapt_list_of_post_form, convert_validation
 from .functions_dict import other_errors_functions
 from ..utils.main import gets
-
+from django.db.models import Model
 
 
 
@@ -86,3 +86,10 @@ def validate_form_base(post_form, fields, default_type='str', default_validation
         return {'status': 'valid', 'errors': {}, 'fields': fields_value}
     else:
         return {'status': 'invalid', 'errors': errors, 'fields': fields_value}
+    
+    
+def check_and_change_image_field(request, field_name: str):
+    new_file = request.FILES.get(field_name)
+    if new_file:
+        setattr(request.user, field_name, new_file)
+        request.user.save()

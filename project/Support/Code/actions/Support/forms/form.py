@@ -5,7 +5,7 @@ from django.utils.html import format_html
 class BlockForm:
 
     def __init__(self):
-        self.form_fields = []
+        self.form_fields: list[dict] = []
         self.form = ''
         self.blocks = {}
         self.error_space_html = '<div class="error">'
@@ -34,19 +34,23 @@ class BlockForm:
                     case 'input':
                         field['html'] = field['html'].replace('<input', f'<input value="{values[field["name"]]}"')
                     case 'img':
-                        field['html'] = field['html'].replace('<img src=', f'<img src="{values[field["name"]]}"')
-                        
+                        continue
         self.form_fields = copy_form_fields
         self._update_form()
         
-    def change_form_with_values(self, values: dict):
-        for field in self.form_fields:
+    def change_form_with_values(self, form_fields: list[dict], values: dict):
+        copy_form_fields = [item.copy() for item in form_fields]
+        
+        for field in copy_form_fields:
             if field['name'] in values.keys():
                 match field['block']['validation_type']:
                     case 'input':
-                        field['html'] = field['html'].replace(f'value="{field["initial_list"]["value"]}"', f'<input value="{values[field["name"]]}"')
+                        field['html'] = field['html'].replace(f'value="{field["history"][0]}"', f'value="{values[field["name"]]}"')
                     case 'img':
-                        field['html'] = field['html'].replace(f'<img src="{field["initial_list"]["src"]}"', f'<img src="{values[field["name"]]}"')
+                        continue
+                field['history'].append(values[field["name"]])
+            
+        self.form_fields = copy_form_fields
         self._update_form()
         
     def _update_form(self):
@@ -57,9 +61,10 @@ class BlockForm:
             block = self.blocks[field['block']]
             field_structure = block['html_structure']
             changes = block['changes']
+            history = field[block['history']]
             for place, key in changes:
                 field_structure = field_structure.replace(place, field[key])
-            self.form_fields.append({'name': field['name'], 'html': field_structure, 'block': block, 'initial_list': [item.copy() for item in fields]}) 
+            self.form_fields.append({'name': field['name'], 'html': field_structure, 'block': block, 'history': [history]}) 
         self._update_form()
 
     def show_errors(self, errors: dict):
@@ -67,7 +72,6 @@ class BlockForm:
             if input['name'] in errors.keys():
                 input['html'] = input['html'].replace(self.error_space_html, f'{self.error_space_html}{self.error_message_format}').replace(self.error_message_space_html, f'{self.error_message_space_html}{errors[input["name"]]}')
         self._update_form()
-
 
     def clear_form(self):
         self.form = ''
@@ -83,6 +87,9 @@ class BlockForm:
 
     def get_form(self):
         return format_html(self.form)  
+
+
+
 
 
 
@@ -126,20 +133,10 @@ class Form:
         self._update_form()
 
     def show_errors(self, errors: dict):
-        
-        fields_name = list(map(lambda field: field['name'][:], self.form_fields))
-        
-        for error_key in errors.keys():
-            if error_key in fields_name:
-                error_position = fields_name.index(error_key)
-                field = self.form_fields[error_position]
-                field['html'] = field['html'].replace(self.error_space_html, f'{self.error_space_html}{self.error_message_format}').replace(self.error_message_space_html, f'{self.error_message_space_html}{errors[field["name"]]}')
-        
-        # for input in self.form_fields:
-        #     if input['name'] in errors.keys():
-        #         input['html'] = input['html'].replace(self.error_space_html, f'{self.error_space_html}{self.error_message_format}').replace(self.error_message_space_html, f'{self.error_message_space_html}{errors[input["name"]]}')
+        for input in self.form_fields:
+            if input['name'] in errors.keys():
+                input['html'] = input['html'].replace(self.error_space_html, f'{self.error_space_html}{self.error_message_format}').replace(self.error_message_space_html, f'{self.error_message_space_html}{errors[input["name"]]}')
         self._update_form()
-
 
     def clear_form(self):
         self.form = ''

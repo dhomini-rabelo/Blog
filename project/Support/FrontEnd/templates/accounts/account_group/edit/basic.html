@@ -9,19 +9,7 @@
 {% block mainContent %}
 <h1 class="ag-title">Informações básicas</h1>
 <form method="POST" class="ag-form center-c flex-pass"  enctype="multipart/form-data">
-    <div class="ag-form-group">
-        <label for="name" class="ag-label">Perfil:</label>
-        <div class="profile-photo center-c">
-            <span class="help-ag-edit-basic">clique para alterar</span>
-            <img src="{{ user.photo_path }}" alt="profile-photo-img" class="account-img" id="id_profile_img">
-        </div>
-        <input type="file" accept="image/*" name="photo" id="id_photo">
-        <input type="hidden" name="base64" id="base64">
-    </div>
-    <div class="ag-form-group">
-        <label for="name" class="ag-label">Nome:</label>
-        <input type="text" name="name" id="id_name" class="input" placeholder="Alterar nome" value={{user.name}}>
-    </div>
+    {{ form }}
     {% csrf_token %}
     <div class="btn-save">
         <button class="bl-wh" type="submit">SALVAR</button>

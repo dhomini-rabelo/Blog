@@ -5,6 +5,7 @@
 {% block links %}
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/account_page.css">
 <link rel="stylesheet" href="/static/styles/components/buttons.css">
+<link rel="stylesheet" href="/static/styles/components/messages.css">
 {% endblock %}
 
 
@@ -12,6 +13,9 @@
 
 
 {% block content %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
     <div class="profile">
         <div class="profile-photo center-c">
             <img src="{{ user.photo_path }}" alt="profile-photo-img" class="account-img">
