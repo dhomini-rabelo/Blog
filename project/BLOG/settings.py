@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'accounts.AccountsConfig',
     # Others apps
     'django_summernote',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
