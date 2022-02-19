@@ -8,7 +8,7 @@
     padding-block: 0.75rem;
     width: 100%;
 }
-.ag-form-group .input{
+.input{
     border: 1.5px solid black;
     text-indent: 0.4rem;
     height: 6vh;

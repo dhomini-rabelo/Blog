@@ -7,6 +7,39 @@
 {% block mainContent %}
 <h1 class="ag-title">Minhas sugestões</h1>
 <div class="suggestions flex-pass">
-    <div class="no-suggestions"><span class="no-suggestions-msg">Você não fez nenhuma sugestão</span></div>
+    <div class="suggestion-block center-c">
+        <div class="suggestion-block-top sb-x">
+            <span class="suggestion-name">Futebol</span>
+            <div class="suggestion-status-color"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="suggestion-block-bottom sb-x">
+            <span>Status</span>
+            <span>Recusado</span>
+        </div>
+    </div>
+    <div class="suggestion-block center-c">
+        <div class="suggestion-block-top sb-x">
+            <span class="suggestion-name">Futebol</span>
+            <div class="suggestion-status-color"><i class="fa-solid fa-circle-exclamation"></i></div>
+        </div>
+        <div class="suggestion-block-bottom sb-x">
+            <span>Status</span>
+            <span>Em andamento</span>
+        </div>
+    </div>
+    <div class="suggestion-block center-c">
+        <div class="suggestion-block-top sb-x">
+            <span class="suggestion-name">Futebol</span>
+            <div class="suggestion-status-color"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+        <div class="suggestion-block-bottom sb-x">
+            <span>Status</span>
+            <span>Sucesso</span>
+        </div>
+    </div>
+    <div class="add-suggestion">
+        <span><i class="fa-solid fa-plus"></i> Adicionar</span>
+    </div>
+    <!-- <div class="no-suggestions flex-pass"><span class="no-suggestions-msg">Você não fez nenhuma sugestão</span></div> -->
 </div>
 {% endblock %}

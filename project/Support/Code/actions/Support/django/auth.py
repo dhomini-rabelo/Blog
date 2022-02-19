@@ -1,9 +1,8 @@
-from ast import FunctionDef
 from accounts.models import User
 from ..forms.for_fields import set_slug
 from django.contrib import auth
 from ..utils.main import gets
-
+from Support.Code.actions._accounts.login_group.login import get_aleatory_profile_photo
 
 
 def validate_login(request, process: dict):
@@ -31,7 +30,8 @@ def login(request, user):
 def create_user_with_email(fields: dict):
     new_user = User(
         username=fields['email'], name=fields['name'].title(),
-        email=fields['email'], slug=set_slug(fields['name'])
+        email=fields['email'], slug=set_slug(fields['name']),
+        photo=get_aleatory_profile_photo(),        
     )
     new_user.set_password(fields['password'])
     new_user.save()

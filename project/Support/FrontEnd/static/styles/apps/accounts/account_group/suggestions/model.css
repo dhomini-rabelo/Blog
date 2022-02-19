@@ -5,13 +5,49 @@
     font-weight: bold;
 }
 .suggestions {
-    justify-content:  center;
     align-items: flex-start;
 }
 .no-suggestions {
-    align-self: center;
+    justify-content: center;
     text-align: center;
 }
 .no-suggestions span {
     font-size: 0.88rem;
+}
+.suggestion-block {
+    padding-inline: 1%;
+    margin-top: 1.2rem;
+    padding-block: 0.5rem;
+    border: 2.2px solid #000;
+    border-radius: 20px;
+    background-color: black;
+}
+.suggestion-block > * {
+    width: 100%;
+    padding-inline: 0.5rem;
+}
+.suggestion-block-top {
+    font-size: 1.25rem;
+    padding-block: 0.2rem;
+    background-color: white;
+    border-radius: 10px;
+}
+.suggestion-block-bottom {
+    font-size: 0.88rem;
+    color: white;
+    padding-top: 0.2rem;
+}
+.input {
+    height: auto;
+    min-height: 40px !important;
+}
+.add-suggestion {
+    margin-top: 1.2rem;
+    text-align: center;
+    border: 3px dotted #ccc;
+    padding: 0.8rem;
+    border-radius: 20px;
+}
+.add-suggestion:hover {
+    cursor: pointer;
 }
