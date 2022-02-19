@@ -27,7 +27,7 @@
     padding-inline: 0.5rem;
 }
 .suggestion-block-top {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     padding-block: 0.2rem;
     background-color: white;
     border-radius: 10px;
@@ -50,4 +50,14 @@
 }
 .add-suggestion:hover {
     cursor: pointer;
+}
+.suggestion-name, .input-suggestion-name {
+    width: 100%;
+}
+.input-suggestion-name {
+    width: 100%;
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
