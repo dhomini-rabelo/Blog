@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'categories.CategoriesConfig',
     'posts.PostsConfig',
     'accounts.AccountsConfig',
+    'suggestions.SuggestionsConfig',
+    'api.ApiConfig',
     # Others apps
     'django_summernote',
     'rest_framework',
