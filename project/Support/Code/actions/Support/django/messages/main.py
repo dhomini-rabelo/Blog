@@ -8,6 +8,7 @@ def save_message(request, message_obj: dict):
     # message_obj -> title: str, message: str, type: str
     request.session['messages'] = if_none(request.session.get('messages'), {})
     request.session['messages'][message_obj['title']] = message_obj.copy()
+    request.session.save()
 
 
 def load_message(request, message_title):
@@ -37,6 +38,7 @@ def save_many_messages(request, message_obj: dict):
     # message_obj -> title: str, messages_list: list[message: str, type: str]
     request.session['many_messages'] = if_none(request.session.get('many_messages'), {})
     request.session['many_messages'][message_obj['title']] = message_obj.copy()
+    request.session.save()
 
 
 def load_many_messages(request, message_title):

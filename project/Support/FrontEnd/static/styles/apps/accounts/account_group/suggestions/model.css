@@ -7,20 +7,11 @@
 .suggestions {
     align-items: flex-start;
 }
-.no-suggestions {
-    justify-content: center;
-    text-align: center;
-}
-.no-suggestions span {
-    font-size: 0.88rem;
-}
 .suggestion-block {
     padding-inline: 1%;
     margin-top: 1.2rem;
     padding-block: 0.5rem;
-    border: 2.2px solid #000;
     border-radius: 20px;
-    background-color: black;
 }
 .suggestion-block > * {
     width: 100%;
@@ -60,4 +51,20 @@
     outline: none;
     border: none;
     background-color: transparent;
+}
+.suggestion-img {
+    width: 28px;
+    height: 28px;
+}
+.suggestion-block.reject {
+    border: 2.2px solid #E04F5F;
+    background-color:#E04F5F;
+}
+.suggestion-block.loading {
+    border: 2.2px solid #11C0FD;
+    background-color: #11C0FD;
+}
+.suggestion-block.accept {
+    border: 2.2px solid #32BEA6;
+    background-color: #32BEA6;
 }

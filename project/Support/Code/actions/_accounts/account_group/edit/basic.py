@@ -8,3 +8,4 @@ def save_user_basic_and_update_user_save(request):
     user.save()
     request.session['user_save']['name'] = name.title()
     request.session['user_save']['photo_path'] = user.photo.url
+    request.session.save()

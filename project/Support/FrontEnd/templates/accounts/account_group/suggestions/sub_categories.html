@@ -7,6 +7,12 @@
 {% block mainContent %}
 <h1 class="ag-title">Minhas sugestões</h1>
 <div class="suggestions flex-pass">
-    <div class="no-suggestions"><span class="no-suggestions-msg">Você não fez nenhuma sugestão</span></div>
+    <div class="add-suggestion">
+        <span><i class="fa-solid fa-plus"></i> Adicionar</span>
+    </div>
 </div>
+{% endblock %}
+
+{% block  javascript %}
+<script src="/static/scripts/features/apps/accounts/account_group/suggestion/addSugestion.js"></script>
 {% endblock %}
