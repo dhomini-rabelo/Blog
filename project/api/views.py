@@ -7,10 +7,16 @@ from rest_framework import  status
 from suggestions.models import CategorySuggestion, SubCategorySuggestion
 from .serializers import CategorySuggestionSerializer, SubCategorySuggestionSerializer
 from django.core.mail import send_mail
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from rest_framework.permissions import IsAuthenticated
+
 
 
 class CategorySuggestionView(APIView):
+    # permission_classes = IsAuthenticated,
     
+    @method_decorator(cache_page(3600))
     def get(self, request, user_id):
         suggestions = CategorySuggestion.objects.filter(user__id=user_id)
         serializer = CategorySuggestionSerializer(suggestions, many=True)
@@ -24,8 +30,11 @@ class CategorySuggestionView(APIView):
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
+
 class SubCategorySuggestionView(APIView):
+    # permission_classes = IsAuthenticated,
     
+    @method_decorator(cache_page(3600))
     def get(self, request, user_id):
         suggestions = SubCategorySuggestion.objects.filter(user__id=user_id)
         serializer = SubCategorySuggestionSerializer(suggestions, many=True)
