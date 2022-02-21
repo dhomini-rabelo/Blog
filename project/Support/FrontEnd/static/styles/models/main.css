@@ -40,3 +40,11 @@
     margin: 0.2rem auto;
     font-size: 1rem;    
 }
+.box-description{
+    font-size: 0.75rem;
+}
+.box-info{
+    width: 100%;
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+}
