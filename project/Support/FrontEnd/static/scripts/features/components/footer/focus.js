@@ -24,19 +24,23 @@ export function focusInFooter(){
             break
     }
 
-    loseFocusInFooter()
-    let img = document.querySelector(`img[src="${baseSource}/${sourceImg}.svg"]`)
-    setTimeout(() => {img.setAttribute('style', 'background-color: #ffc746;')}, 100)
+    let ci = '/media/assets/posts/mobile-footer' // current image source
+    changeSourceImg(`${ci}/${sourceImg}.png`, `${ci}/${sourceImg}-yellow.png`)
 }
 
 
 export function loseFocusInFooter() {
     let mobileFooterImgs = document.querySelectorAll('.navigation-img')
 
-    setTimeout(() =>{
-        mobileFooterImgs.forEach((img) => {
-        img.setAttribute('style', 'background-color: #fff;')
-        })
-    }, 80)
+    mobileFooterImgs.forEach((img) => {
+
+        if (img.src.slice(-11) === '-yellow.png') {
+            let src = img.getAttribute('src')
+            let oldSource = src.slice(0)
+            let newSource = src.replace('-yellow.png', '.png')
+            changeSourceImg(oldSource, newSource)
+        }
+
+    })
 
 }

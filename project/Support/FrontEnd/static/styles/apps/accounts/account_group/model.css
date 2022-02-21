@@ -31,6 +31,7 @@ main{
     width: 100%;
     min-height: 100vh;
     padding-top: 65px;
+    padding-bottom: 55px;
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     color: white;
@@ -46,15 +47,20 @@ main{
 .menu-mobile {
     flex-grow: 1;
     align-items: center;
+    display: flex;
 }
 .menu-mobile-list {
-    margin-top: 2rem;
     text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    height: 100%;
+    justify-content: space-evenly;
 }
 .menu-mobile-item {
     border: 1px solid white;
     width: 80%;
-    margin: 3rem auto;
+    margin: 1rem auto;
     padding-block: 1.2rem;
 }
 .menu-mobile-item:hover {

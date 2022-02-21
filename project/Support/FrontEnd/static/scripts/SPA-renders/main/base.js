@@ -38,6 +38,8 @@ export function renderSPA(destiny) {
 
     render('.main', renderObj)
 
+    loseFocusInFooter()
+    
     focusInFooter()
     
     endAnimation()
