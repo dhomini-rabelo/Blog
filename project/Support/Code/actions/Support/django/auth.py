@@ -3,7 +3,7 @@ from ..forms.for_fields import set_slug
 from django.contrib import auth
 from ..utils.main import gets
 from Support.Code.actions._accounts.login_group.login import get_aleatory_profile_photo
-
+from Support.Code.actions.Support.utils.functions_dict import get_name
 
 def validate_login(request, process: dict):
     user_type, password = gets(request.POST, process['type'], 'password')
@@ -29,7 +29,7 @@ def login(request, user):
     
 def create_user_with_email(fields: dict):
     new_user = User(
-        username=fields['email'], name=fields['name'].title(),
+        username=fields['email'], name=get_name(fields['name']),
         email=fields['email'], slug=set_slug(fields['name']),
         photo=get_aleatory_profile_photo(),        
     )

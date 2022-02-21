@@ -1,7 +1,7 @@
 # django
 from django.core.validators import validate_slug, validate_unicode_slug 
 from django.core.exceptions import ValidationError
-
+from Support.Code.actions.Support.utils.functions_dict import get_name
 
 
 def adapt_slug(slug: str):
@@ -23,7 +23,9 @@ def adapt_slug(slug: str):
 
 
 
-def set_slug(slug: str):
+def set_slug(_slug: str):
+    slug = _slug[:]
+    slug = get_name(slug)
     invalid_letters = list()
     slug = adapt_slug(slug)
     slug_list = list(slug)
