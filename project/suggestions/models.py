@@ -14,12 +14,21 @@ SUGGESTION_STATES = [
 
 
 class CategorySuggestion(Model):
-    name = CharField(max_length=50, verbose_name='Nome')
-    state = CharField(max_length=256, choices=SUGGESTION_STATES, verbose_name='Estado:')
-    user = ForeignKey(User, on_delete=RESTRICT, verbose_name='Usuário')
+    name = CharField(max_length=50, unique=True, verbose_name='Nome')
+    state = CharField(max_length=256, choices=SUGGESTION_STATES, verbose_name='Estado')
+    user = ForeignKey(User,on_delete=RESTRICT, verbose_name='Usuário')
 
+    class Meta:
+        verbose_name = 'Sugestão de categoria'
+        verbose_name_plural = 'Sugestões de categoria'
+        
+        
 
 class SubCategorySuggestion(Model):
-    name = CharField(max_length=50, verbose_name='Nome')
-    state = CharField(max_length=256, choices=SUGGESTION_STATES, verbose_name='Estado:')
-    user = ForeignKey(User, on_delete=RESTRICT, verbose_name='Usuário')
+    name = CharField(max_length=50, unique=True, verbose_name='Nome')
+    state = CharField(max_length=256, choices=SUGGESTION_STATES, verbose_name='Estado')
+    user = ForeignKey(User,on_delete=RESTRICT, verbose_name='Usuário')
+
+    class Meta:
+        verbose_name = 'Sugestão de subcategoria'
+        verbose_name_plural = 'Sugestões de subcategoria'
