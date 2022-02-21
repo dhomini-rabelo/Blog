@@ -1,5 +1,6 @@
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message
 from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save
+from Support.Code.actions._accounts.login_group.login import get_token_for_user
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete_used_form
@@ -50,7 +51,12 @@ class LoginView(BaseView):
             login(request, login_proccess['user'])
             delete_used_form(request, 'login')
             create_login_save(request, user_save)
-            return redirect('latest_posts')
+            response = redirect('latest_posts')
+            token = get_token_for_user(request)
+            response.set_cookie('access_token', token['access'], max_age=60*60*24*3)
+            response.set_cookie('refresh_token', token['refresh'], max_age=60*60*24*365)
+            response.set_cookie('email', request.session['user_save']['email'], max_age=60*60*24*365)
+            return response
         
 
         save_form(request, 'login', login_validation['fields'], {**login_proccess['errors'], **login_validation['errors']})

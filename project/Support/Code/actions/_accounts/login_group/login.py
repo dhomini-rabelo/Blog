@@ -1,5 +1,6 @@
 from pathlib import Path
 from random import randint
+from rest_framework_simplejwt.tokens import RefreshToken
 
 def get_aleatory_profile_photo():
     path = 'C:/Users/G-fire/OneDrive/Documentos/GITHUB/DJANGO/Blog-Django-with-CBV/project/Support/FrontEnd/media/users/default'
@@ -12,3 +13,12 @@ def get_aleatory_profile_photo():
     chosen_file = archives[drawn_position]
     return f'users/default/{chosen_file}'
     
+
+
+def get_token_for_user(request):
+    refresh = RefreshToken.for_user(request.user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }

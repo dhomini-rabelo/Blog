@@ -70,3 +70,4 @@ def create_login_save(request, obj: dict):
             case "<class 'function'>":
                 get_atribute_function: function = obj[key]
                 request.session['user_save'][key] = get_atribute_function(request.user)
+    request.session.save()

@@ -6,13 +6,12 @@ from suggestions.models import CategorySuggestion, SubCategorySuggestion
 class CategorySuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = CategorySuggestion
-        fields = '__all__'
-
+        fields = 'name', 'state', 'user'
 
 
 
 class SubCategorySuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategorySuggestion
-        fields = '__all__'
+        fields = 'name', 'state', 'user'
         

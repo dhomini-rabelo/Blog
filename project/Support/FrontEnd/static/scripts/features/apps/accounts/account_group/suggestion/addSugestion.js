@@ -1,3 +1,6 @@
+import { fetchPost } from './../../../../core/api.js'
+import { getCookie, setCookie } from './../../../../core/utils.js'
+
 document.querySelector('.add-suggestion').addEventListener('click', addSuggestionForm)
 document.addEventListener('keydown', enterForChangeFocus)
 
@@ -40,7 +43,7 @@ function addSuggestionForm() {
 }
 
 
-function validateSuggestionForm(e) {
+async function validateSuggestionForm(e) {
 
     let inputValue = e.currentTarget.value
     let container = document.querySelector('.suggestions')
@@ -58,6 +61,50 @@ function validateSuggestionForm(e) {
             </div>
         `
         currentForm.classList.remove('current-form-class')
+        if ((getCookie('email')==='')||(getCookie('access_token')==='')||(getCookie('refresh_token')==='')) {
+            window.location.pathname = `/api/token/get-cookie?latest_url=${document.URL}`
+        }
+        let path = document.location.pathname
+        let index = path.indexOf('sugestao/')
+        let url
+        switch(path.slice(index+8)){
+            case '/categorias':
+                url = `${window.location.origin}/api/category-suggestion/view-or-create`
+                break
+            case '/sub-categorias':
+                url = `${window.location.origin}/api/subcategory-suggestion/view-or-create`
+                break
+        }
+        let body = {
+            name: inputValue,
+            email: getCookie('email').slice(1, -1),
+        }
+        let response = await fetchPost(url, {
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': "application/json",
+                Authorization: `Bearer ${getCookie('access_token')}`,
+            }
+        })
+        if (response.status == 401){
+            let newAccessToken = await fetchPost(`${window.location.origin}/api/token/refresh-token`, {
+                body: JSON.stringify({refresh: getCookie('refresh_token')}),
+                headers: {
+                    'Content-Type': "application/json",
+                }
+            }).then(data => data.access)
+            setCookie('access_token', newAccessToken, 3)
+            let newResponse = await fetchPost(url, {
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': "application/json",
+                    Authorization: `Bearer ${newAccessToken}`,
+                }
+            })
+            if (newResponse.status == 401){
+                window.location.pathname = `/api/token/get-cookie?latest_url=${document.URL}`
+            }
+        }
     } else if (inputValue.trim().length > 50){
         currentForm.remove()
         let error = document.createElement('div')
