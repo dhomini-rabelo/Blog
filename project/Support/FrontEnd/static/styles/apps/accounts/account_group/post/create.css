@@ -4,3 +4,6 @@
 .ag-create {
     font-weight: bold;
 }
+#id_img {
+    display: none;
+}

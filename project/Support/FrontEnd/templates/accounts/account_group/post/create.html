@@ -3,6 +3,7 @@
 {% block moreLinks %}
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/post/create.css">
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/form.css">
+<link rel="stylesheet" href="/static/styles/components/error.css">
 {% endblock %}
 
 
@@ -12,15 +13,59 @@
     <div class="ag-form-group">
         <label for="title" class="ag-label">Título:</label>
         <input type="text" name="title" id="id_title" class="input" placeholder="Adicionar título">
+        <div class="error"></div>
     </div>
     <div class="ag-form-group">
-        <label for="body" class="ag-label">Descrição:</label>
-        <textarea type="text" name="body" id="id_description" class="input" placeholder="Adicionar descrição"></textarea>
+        <label for="img" class="ag-label">Imagem:</label>
+        <span class="ag-help-title">clique para alterar</span>
+        <div class="img-container">
+            <img src="/media/assets/posts/post/athena.jpg" alt="post-img" id="post-img">
+            <input type="file" name="img" id="id_img">
+        </div>
+        <div class="error"></div>
     </div>
     <div class="ag-form-group">
-        <label for="body" class="ag-label">Conteúdo:</label>
-        <textarea type="text" name="body" id="id_body" class="input" placeholder="Adicionar conteúdo"></textarea>
+        <div class="ag-check-box"><span><input type="checkbox" name="img_active" id="id_img_active" value="checked">Usar no post</span></div>
+        <div class="error"></div>
     </div>
-    <button class="bl-wh">CRIAR</button>
+    <div class="ag-form-group">
+        <label for="id_description" class="ag-label">Descrição:</label>
+        <textarea type="text" name="description" id="id_description" class="input" placeholder="Adicionar descrição"></textarea>
+        <div class="error"></div>
+    </div>
+    <div class="ag-form-group">
+        <label for="text" class="ag-label">Texto:</label>
+        {{summer_field}}
+    </div>
+    <div class="ag-form-group">
+        <label for="id_category" class="ag-label">Categoria:</label>
+        <select name="category" id="id_category" class="ag-select">
+            <option value="Esporte">Esporte</option>
+            <option value="Tecnologia">Tecnologia</option>
+        </select>
+        <div class="error"></div>
+    </div>
+    <div class="ag-form-group">
+        <label for="id_subcategory" class="ag-label">Subcategorias:</label>
+
+        <div class="ag-check-box cb-category" for="Esporte"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Futebol</span></span></div>
+        
+        <div class="ag-check-box cb-category" for="Esporte"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Basquete</span></span></div>
+        
+
+        <div class="ag-check-box cb-category invisible" for="Tecnologia"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Python</span></span></div>
+
+        <div class="ag-check-box cb-category invisible" for="Tecnologia"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Javascript</span></span></div>
+        <div class="error"></div>
+
+    </div>
+    <button class="bl-wh">CRIAR RASCUNHO</button>
+    <button class="bl-wh">CRIAR POST</button>
 </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="module" src="/static/scripts/features/apps/accounts/account_group/edit/post/changeMainImg.js"></script>
+<script src="/static/scripts/features/apps/accounts/account_group/edit/post/changeSubcategories.js"></script>
+<script  src="/static/scripts/features/components/forms/checkBoxContainer.js"></script>
 {% endblock %}

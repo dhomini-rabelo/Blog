@@ -36,3 +36,33 @@ textarea {
     align-self: flex-end;
     margin-bottom: 1.2rem;
 }
+.img-container img {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+}
+.ag-select {
+    width: 100%;
+}
+.ag-select, option {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+input[type="checkbox"] {
+    margin-right: 0.3rem;
+}
+.checkbox-label:hover{
+    cursor: pointer;
+}
+.ag-check-box {
+    margin-block: 0.5rem;
+}
+label[for="id_text"] {
+    display: none !important;
+}
+.ag-help-title {
+    display: block;
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+    text-align: center;
+}
