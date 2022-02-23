@@ -6,6 +6,7 @@
     position: absolute;
     right: 0px;
     overflow-y: hidden;
+    z-index: 1;
 }
 #container > *{
     width: 100%;
@@ -14,6 +15,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 main{
     background-color: #343746;
@@ -30,4 +32,5 @@ footer{
     position: fixed;  
     bottom: 0;
     left: 0;
+    z-index: 2;
 }

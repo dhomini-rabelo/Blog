@@ -1,5 +1,5 @@
 .page-container {
-    margin-inline: 5vw;
+    padding-inline: 5vw;
 }
 #authors-link{
     border-right: 0.5px solid #ffc746;
@@ -112,6 +112,15 @@ main{
     padding-top: 1.6rem;
     text-align: center;
     font-size: 1.5rem;
+}
+body, #container{
+    min-height: calc(var(--vh, 1vh) * 100)  !important;
+}
+body {
+    margin-bottom: 5vh; 
+}
+.bl-wh {
+    transition: .35s ease-in-out;
 }
 @media(max-width: 625px) {
     .init-pc-container, .pc-ag-navigation {
