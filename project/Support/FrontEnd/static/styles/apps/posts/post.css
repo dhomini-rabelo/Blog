@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 #posts-link .mobile-navigation-text {
     color: #ffc746;
 }
@@ -8,11 +10,12 @@
 }
 
 #post{
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
     color: white;
     text-align: justify;
+    width: 80vw;
+    max-width: 840px;
+    margin: 0 auto;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 .post-title{
@@ -21,21 +24,20 @@
 }
 
 
-@media(min-width: 1000px){
-    #post{
-        width: 768px;
-    }
-}
-
-
-@media(max-width: 500px){
+@media(max-width: 768px){
     #post{
         width: 85vw;
     }
 }
 
-@media(max-width: 300px){
+@media(max-width: 625px){
     #post{
         width: 90vw;
+    }
+}
+
+@media(max-width: 300px){
+    #post{
+        width: 96vw;
     }
 }

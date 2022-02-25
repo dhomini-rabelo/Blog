@@ -10,3 +10,11 @@ class CategoriesList(View):
 
 
 
+
+
+class SubCategoriesList(View):
+    def get(self, request, category):
+        return render(request, 'categories/list_subcategories.html')
+
+
+
