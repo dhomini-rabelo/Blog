@@ -1,7 +1,7 @@
-import { validateStringLength, validateEmail, validateEqualTheAField, validateCPF, onlyLetters } from './support/string.js'
+import { StringValidationObj, StringErrorsObj } from './support/string.js'
 import { clearField } from '../../../forms/clearInput.js'
 import { showError } from '../createError.js'
-
+import { In } from './../../core/utils.js'
 
 
 export function validateStringField(fieldModel){
@@ -23,59 +23,31 @@ export function validateStringField(fieldModel){
         for (let validation of validations){
             let validationProcess
             let validationType = validation[0]
+            let validateFunction = StringValidationObj[validationType]
     
-            switch (validationType){
-                case 'maxLength':
-                    validationProcess = validateStringLength('max', field.value, validation[1])
-                    if (!validationProcess){
-                        errorMessage = `Este campo deve ter no máximo ${validation[1]} dígitos`
-                    }
-                    break
-                case 'equalLength':
-                    validationProcess = validateStringLength('equal', field.value, validation[1])
-                    if (!validationProcess){
-                        errorMessage = `Este campo deve ter ${validation[1]} dígitos`
-                    }
-                    break
-                case 'minLength':
-                    validationProcess = validateStringLength('min', field.value, validation[1])
-                    if (!validationProcess){
-                        errorMessage = `Este campo deve ter no mínimo ${validation[1]} dígitos`
-                    }
-                    break
-                case 'email':
-                    validationProcess = validateEmail(field.value)
-                    if (!validationProcess){
-                        errorMessage = `Email inválido`
-                    }
-                    break
-                case 'equalTheAField':
-                    validationProcess = validateEqualTheAField(field.value, `#id_${validation[1]}`)
-                    if (!validationProcess){
-                        errorMessage = `${validation[2]} são diferentes`
-                    }
-                    break
-                case 'cpf':
-                    validationProcess = validateCPF(field.value)
-                    if (!validationProcess){
-                        errorMessage = 'CPF inválido'
-                    }
-                    break
-                case 'onlyStr':
-                    validationProcess = onlyLetters(field.value)
-                    if (!validationProcess){
-                        errorMessage = 'Este campo aceita apenas letras'
-                    }
-                    break
+
+            // 1 arg for validation
+            if (In(validationType, ['maxLength', 'equalLength', 'minLength', 'equalTheAField'])){
+                validationProcess = validateFunction(field.value, validation[1])
+            } else {
+                validationProcess = validateFunction(field.value)
             }
     
             if (!validationProcess){
+
+                errorMessage = StringErrorsObj[validationType]
+
+                if (In(validationType, ['maxLength', 'equalLength', 'minLength'])){
+                    errorMessage = errorMessage(validation[1])
+                } else if (In(validationType, ['equalTheAField'])) {
+                    errorMessage = errorMessage(validation[2])
+                }
+                
                 valid = false
                 break
             }
 
         }
-
     }
 
     if (!valid){

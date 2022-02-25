@@ -13,3 +13,7 @@
 .bl-wh:active{
     opacity: 0.5;
 }
+
+.bl-wh:hover{
+    opacity: 0.77;
+}

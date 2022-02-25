@@ -9,7 +9,7 @@
 
 {% block mainContent %}
 <h1 class="ag-title">Novo Post</h1>
-<div class="ag-form center-c">
+<div class="ag-form center-c"   enctype="multipart/form-data">
     <div class="ag-form-group">
         <label for="title" class="ag-label">Título:</label>
         <input type="text" name="title" id="id_title" class="input" placeholder="Adicionar título">
@@ -20,7 +20,7 @@
         <span class="ag-help-title">clique para alterar</span>
         <div class="img-container">
             <img src="/media/assets/posts/post/athena.jpg" alt="post-img" id="post-img">
-            <input type="file" name="img" id="id_img">
+            <input type="file" name="img" id="id_img" accept="image/*">
         </div>
         <div class="error"></div>
     </div>

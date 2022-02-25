@@ -57,10 +57,20 @@ main{
     height: 100%;
     justify-content: space-evenly;
 }
+.main-list .menu-mobile-item{
+    padding-block: 1.2rem;
+}
+.menu-mobile-item[open="close"] {
+    padding-block: 0;
+}
 .menu-mobile-item {
     border: 1px solid white;
     width: 80%;
-    margin: 1rem auto;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+}
+.menu-mobile-item a{
+    display: block;
     padding-block: 1.2rem;
 }
 .menu-mobile-item:hover {
