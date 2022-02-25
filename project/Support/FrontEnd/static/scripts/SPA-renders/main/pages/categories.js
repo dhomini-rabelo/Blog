@@ -1,7 +1,12 @@
-import { baseHeader } from "./support/constants.js"
+import { baseHead } from "./support/constants.js"
 
 export let categoriesSPA = {
-    newHead: `${baseHeader.replace('{% block links %}', '<link rel="stylesheet" href="/static/styles/apps/categories/list_categories.css">')}`,
+    newHead: {
+        ...baseHead,
+        individualStyles: [
+            'href="/static/styles/apps/categories/list_categories.css',
+        ]
+    },
     newContent: `
     <div class="page-container flex-pass">
     <h1 class="page-title">Categorias</h1>

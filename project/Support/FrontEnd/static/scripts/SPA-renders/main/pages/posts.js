@@ -1,7 +1,12 @@
-import { baseHeader } from "./support/constants.js"
+import { baseHead } from "./support/constants.js"
 
 export let postsSPA = {
-    newHead: `${baseHeader.replace('{% block links %}', '<link rel="stylesheet" href="/static/styles/apps/posts/index.css">')}`,
+    newHead: {
+        ...baseHead,
+        individualStyles: [
+            '/static/styles/apps/posts/index.css',
+        ]
+    },
     newContent: `
     <div class="page-container flex-pass">
     <h1 class="page-title">Últimos posts</h1>
