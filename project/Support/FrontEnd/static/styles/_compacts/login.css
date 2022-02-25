@@ -1,0 +1,180 @@
+/** components/buttons.css */
+
+.bl-wh{
+    background-color: black;
+    color: white;
+    display: block;
+    width: 100%;
+    padding-block: 0.4rem;
+    font-size: 1.15rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    height: 6vh;
+    min-height: 57.5px !important;
+}
+
+.bl-wh:active{
+    opacity: 0.5;
+}
+
+.bl-wh:hover{
+    opacity: 0.77;
+}
+
+/** components/messages.css */
+
+.django-message{
+    padding: 0.8rem 0.4rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    min-width: 50%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.django-message p{
+    font-size: 0.8rem;
+    word-spacing: -0.2rem;
+}
+.django-message img{
+    width: 0.7rem;
+    position: relative;
+    top: 0.05rem;
+    margin-right: 0.1rem;
+}
+.django-message.success{
+    background-color: rgb(150, 253, 146);
+    border: 2px solid green;
+}
+.django-message.success p{
+    color: black;
+}
+.django-message.error{
+    background-color: rgb(240, 137, 137);
+    border: 2px solid rgb(131, 19, 19);
+}
+.django-message.error p{
+    color: rgb(131, 19, 19);
+}
+
+/** components/error.css */
+
+.error{
+    margin-top: 0.15rem;
+    display: flex;
+    min-height: 18.5px;
+}
+.error img{
+    width: 0.7rem;
+    position: relative;
+    top: 0.075rem;
+    margin-right: 0.15rem;
+
+}
+.error-message{
+    color: rgb(210, 53, 53); 
+    font-size: 0.75rem;
+}
+
+/** login_group/model.css */
+
+body{
+    background-color: #343746;
+}
+main{
+    min-height: 100vh;
+    color: white;
+    background-color: #343746;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    margin-bottom: 4vh;
+    width: 64%;
+    max-width: 375px;
+}
+.block-logo{
+    background-color: black;
+    font-family: 'Fira Code', Arial, Helvetica, sans-serif;
+    height: 8vh;
+    min-height: 70px;
+}
+.block-logo a{
+    color: white;
+}
+#dracula-logo{
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+.logo h1{
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.02;
+}
+.logo-title{
+    word-spacing: -0.5rem;
+}
+.form-group{
+    margin: 1.5rem 1rem; 
+}
+input[type="text"], input[type="password"]{
+    width: 100%;
+    border: 1.5px solid black;
+    text-indent: 0.4rem;
+    height: 6vh;
+    min-height: 50px !important;
+}
+.field-group{
+    margin-bottom: 0.2rem;
+}
+label{
+    display: block;
+    margin-bottom: 0.35rem;
+}
+.shortcut{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.shortcut a{
+    word-spacing: -0.2rem;
+    color: black;
+}
+#id_javascript{
+    margin-right: 0.2rem;
+    width: 0.6rem;
+    position: relative;
+    top: 0.18rem;
+}
+.js-check{
+    padding-left: 0.15rem;
+}
+.js-check span{
+    font-size: 0.7rem;
+}
+@media(min-width: 540px) {
+    form {
+        min-width: auto;
+    }
+}
+@media(max-width: 450px){
+    .block-logo {
+        height: 10vh;
+    }
+}
+@media(max-width: 350px){
+    #dracula-logo{
+        width: 1.5rem;
+    }
+
+    .logo-title h1{
+        font-size: 1.4rem;
+    }
+}
