@@ -17,8 +17,10 @@
     <div class="styles-group">
         <link rel="stylesheet" href="/static/styles/_compacts/min/login.min.css">
     </div>
-    {% block links %}
-    {% endblock %}
+    <div class="styles-individual">
+        {% block links %}
+        {% endblock %}
+    </div>
 </head>
 <body>
     {% include 'base/includes/_load_animation.html' %}
@@ -38,6 +40,8 @@
             {% endblock %}
         </form>
     </main>
-    {% block javascript %}{% endblock %}
+    <div class="scripts-individual">
+        {% block javascript %}{% endblock %}
+    </div>
 </body>
 </html>

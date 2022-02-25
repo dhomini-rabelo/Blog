@@ -44,6 +44,50 @@ export function controlGroupStyles (group) {
     })
     addStyles('head .styles-group', currentStyles)
 }
+
+export function controlGroupScripts(group){
+    let scriptGroups = document.querySelectorAll('.scripts')
+    
+    let currentScripts
+
+    let mainScripts = {
+        locals: [
+            'scripts-main-group'
+        ],
+        scripts: [
+            '/static/styles/_compacts/min/main.min.css',
+        ]
+    }
+
+    let accountScripts = {
+        locals: [
+            'scripts-account-group', 'scripts-main-group'
+        ],
+        scripts: [
+            '/static/styles/_compacts/min/main.min.css',
+        ]
+    }
+
+
+    switch (group){
+        case 'main':
+            currentScripts = { ...mainScripts }
+            break
+        case 'account':
+            currentScripts = { ...accountScripts }
+            break
+        case _:
+            throw new Error('Invalid Group')
+    }
+
+    scriptGroups.forEach((script) => {
+        let scriptSrc = script.getAttribute('src')
+        if (!(In(scriptSrc, currentScripts.locals))){
+            removeScripts(currentScript)
+        }
+    })
+
+}
  
 
 
@@ -87,6 +131,7 @@ export function render(local, changes) {
     addStyles('head .styles-individual', changes.newHead.individualStyles)
 
     localForChanges.innerHTML = changes.newContent
+
     addScripts(changes.newScripts)
 }
 
