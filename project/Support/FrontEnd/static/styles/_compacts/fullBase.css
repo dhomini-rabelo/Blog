@@ -88,3 +88,50 @@ button:hover{
 .flex-pass > *{
     width: 100%;
 }
+
+/** loadAnimation.css */
+
+.load-animation {
+  background-color: #343746;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.border-animation {
+  position: relative;
+}
+
+.animated-border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 0px -4px 4px -4px #fafafa;
+  animation: rotate360 0.54s infinite;
+  animation-timing-function: linear;
+  border: 1.6px solid #343746;
+  border-top-color: white;
+}
+
+.white-logo-animation {
+  background-color: white;
+}
+
+.logo-animation {
+  position: relative;
+  bottom: -1.5px;  
+  width: 32px;
+  margin: 12px;
+}
+
+.black-logo-animation {
+  display: none;
+}
+
+@keyframes rotate360{
+to {
+  transform: rotate(360deg);
+}
+}

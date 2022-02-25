@@ -1,8 +1,6 @@
 import { addStyles, changeUrl, removeStyles, render } from '../core.js'
 import { startAnimation, endAnimation } from '../../features/components/main/loadAnimation.js'
 import { focusInFooter, loseFocusInFooter } from '../../features/components/footer/focus.js'
-
-
 import { postsSPA } from './pages/posts.js'
 import { categoriesSPA } from './pages/categories.js'
 import { authorsSPA } from './pages/authors.js'
@@ -34,6 +32,11 @@ export function renderSPA(destiny) {
 
     changeUrl(title, newUrl)
 
+    removeStyles([
+        '/static/styles/features/colors/la1-1.css',
+        '/static/styles/features/colors/la1-2.css',
+    ])
+    
     startAnimation()
 
     render('.main', renderObj)

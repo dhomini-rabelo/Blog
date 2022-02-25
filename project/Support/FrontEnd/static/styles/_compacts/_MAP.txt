@@ -1,4 +1,4 @@
-fullBase -> core/base + models/flex
+fullBase -> core/base + models/flex + loadAnimation
 
 main -> includes/header + includes/body + includes/footer + models/main
 

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    {% include 'base/includes/_head.html' %}
-    <link rel="stylesheet" href="/static/styles/core/base.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
-    <!-- links for edition -->
-    <link rel="stylesheet" href="/static/styles/models/flex.css">
-    <link rel="stylesheet" href="/static/styles/components/buttons.css">
-    <link rel="stylesheet" href="/static/styles/components/messages.css">
-    <link rel="stylesheet" href="/static/styles/components/error.css">
-    <link rel="stylesheet" href="/static/styles/apps/accounts/login_group/model.css">
-    <link rel="stylesheet" href="/static/styles/features/loadAnimation.css">
-    <link rel="stylesheet" href="/static/styles/features/colors/la1-1.css">
+    <link rel="stylesheet" href="/static/styles/_compacts/min/fullBase.min.css">
+    <title>{% block title %}{% endblock %}</title>
+    <div class="style-animation">
+        <link rel="stylesheet" href="/static/styles/features/colors/la1-1.css">
+    </div>
+    <div class="styles-group">
+        <link rel="stylesheet" href="/static/styles/_compacts/min/login.min.css">
+    </div>
     {% block links %}
     {% endblock %}
-    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     {% include 'base/includes/_load_animation.html' %}
