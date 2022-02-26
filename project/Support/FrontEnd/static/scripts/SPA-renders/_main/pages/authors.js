@@ -1,13 +1,9 @@
-import { baseHead } from "./support/constants.js"
-
 export let authorsSPA = {
-    newHead: {
-        ...baseHead,
-        individualStyles: [
-            '/static/styles/apps/authors/list_authors.css',
-        ]
-    },
-    newContent: `
+    group: 'main',
+    individualStyles: [
+        '/static/styles/apps/authors/list_authors.css',
+    ],
+    content: `
     <div class="page-container flex-pass">
     <h1 class="page-title">Autores</h1>
     <div class="main-container-f w-sb-x">
@@ -21,5 +17,5 @@ export let authorsSPA = {
     </div>
 </div>
     `,
-    newScripts: []
+    individualScripts: []
 }

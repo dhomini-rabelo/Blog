@@ -115,10 +115,6 @@ button:hover{
   border-top-color: white;
 }
 
-.white-logo-animation {
-  background-color: white;
-}
-
 .logo-animation {
   position: relative;
   bottom: -1.5px;  

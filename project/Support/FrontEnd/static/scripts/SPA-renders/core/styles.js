@@ -3,7 +3,7 @@ export function addStyles(local, hrefAddresses) {
     if(!weLocal) return
 
     for (let hrefLink of hrefAddresses){
-        if (document.querySelector(`link[href="${hrefLink}"]`) !== null) continue
+        if (document.querySelector(`link[href="${hrefLink}"]`))  continue
         let newLink = document.createElement('link')
         newLink.setAttribute('rel', 'stylesheet')
         newLink.setAttribute('href', hrefLink)

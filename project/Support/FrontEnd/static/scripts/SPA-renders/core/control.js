@@ -1,8 +1,9 @@
-import { In } from './../../'
-
+import { In } from './../../features/core/utils.js'
+import { addStyles } from './styles.js'
+import { addScriptsGroup } from './scripts.js'
 
 export function controlGroupStyles (styles) {
-    let groupStyles = document.querySelectorAll('head .styles-group link[rel="stylesheet"]')
+    let groupStyles = document.querySelectorAll('.styles-group link[rel="stylesheet"]')
 
     groupStyles.forEach((style) => {
         if (!(In(style.getAttribute('href'), styles))){
@@ -21,7 +22,7 @@ export function controlGroupScripts(scriptTypes){
     scriptGroups.forEach((scriptGroup) => {
         let groupType = scriptGroup.getAttribute('type')
         if (!(In(groupType, scriptTypes))){
-            removeScriptsGroup(scriptSrc)
+            scriptGroup.remove()
         }else{
             currentScriptsGroup.push(groupType)
         }

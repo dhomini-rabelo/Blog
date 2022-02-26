@@ -1,6 +1,3 @@
-import { baseHead } from "./support/constants.js"
-
-
 export let postsSPA = {
     group: 'main',
     individualStyles: [

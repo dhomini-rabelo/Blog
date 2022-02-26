@@ -1,13 +1,9 @@
-import { baseHead } from "./support/constants.js"
-
 export let categoriesSPA = {
-    newHead: {
-        ...baseHead,
-        individualStyles: [
-            'href="/static/styles/apps/categories/list_categories.css',
-        ]
-    },
-    newContent: `
+    group: 'main',
+    individualStyles: [
+        '/static/styles/apps/categories/list_categories.css',
+    ],
+    content: `
     <div class="page-container flex-pass">
     <h1 class="page-title">Categorias</h1>
     <div class="main-container-f w-sb-x">
@@ -21,5 +17,5 @@ export let categoriesSPA = {
     </div>
 </div>
     `,
-    newScripts: []
+    individualScripts: []
 }

@@ -1,4 +1,5 @@
-import { addStyles, changeUrl, removeStyles, render } from '../core.js'
+import { changeUrl, render } from './../core/main.js'
+import { removeStyles } from './../core/styles.js'
 import { startAnimation, endAnimation } from '../../features/components/main/loadAnimation.js'
 import { focusInFooter, loseFocusInFooter } from '../../features/components/footer/focus.js'
 import { postsSPA } from './pages/posts.js'
