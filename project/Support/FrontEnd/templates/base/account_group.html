@@ -30,9 +30,69 @@
 <body>
     
     <div id="container">
-        {% include 'base/includes/_header.html' %}
+        {% cache 7200 headerTop %}
+        <header class="center-c">
+            <div class="header-pc sb-x">
+                <a href="/" class="sb-p1">
+                    <div class="logo sb-x">
+                        <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
+                        <div class="logo-title center-c">
+                            <h1 class="word-1">CODE</h1>
+                            <h1 class="word-2">PORTAL</h1>
+                        </div>
+                    </div>
+                </a>
+                <nav class="sb-p2">
+                    <ul class="sb-x nav-x">
+                        <li class="search">
+                            <form method="GET" class="sb-x">
+                                <input type="text" name="search" id="search_box" placeholder="Posts, categorias e autores">
+                                <button type="submit">
+                                    <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <div class="menu">
+                                <div class="hamburguer">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <nav class="sub-menu invisible">
+                                    <a href="/" destiny="posts" class="pc-link-navigation">POSTS</a>
+                                    <a href="{% url 'categories' %}" destiny="categories" class="pc-link-navigation">CATEGORIAS</a>
+                                    <a href="{% url 'authors' %}" destiny="authors" class="pc-link-navigation">AUTORES</a>
+                                    {% endcache %}
+                                    {% if  request.user.is_authenticated %}
+                                    <a href="{% url 'account_page' %}" destiny="pass" class="pc-link-navigation">CONTA</a>
+                                    <a href="{% url 'logout' %}" destiny="pass" class="pc-link-navigation">SAIR</a>
+                                    {% else %}
+                                    <a href="{% url 'login' %}" destiny="pass" class="pc-link-navigation">LOGIN</a>
+                                    <a href="{% url 'register' %}" destiny="pass" class="pc-link-navigation">CADASTRO</a>
+                                    {% endif %}
+                                    {% cache 7200 headerBottom %}
+                                </nav>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </header>
+        {% endcache %}
         
-        {% include 'base/includes/_load_animation.html' %}
+        
+        {% cache 7200 loadAnimation %}
+        <div class="load-animation center-c">
+            <div class="border-animation">
+                <div class="animated-border"></div>
+                <img src="/media/assets/global/logo.png" alt="logo" class="logo-animation white-logo-animation">
+                <img src="/media/assets/global/black-logo.png" alt="logo" class="logo-animation black-logo-animation">
+            </div>
+        </div>
+        {% endcache %}
+
         <main class="invisible">
             <div class="main">
                 <div class="page-container flex-pass">
@@ -47,6 +107,7 @@
                             </div>
                         </div>
                     </div>
+                    {% cache 7200 menuPc %}
                     <div class="init-pc-container">
                         <nav class="menu-pc">
                             <ul class="menu-pc-list">
@@ -57,11 +118,13 @@
                             </ul>
                         </nav>
                     </div>
+                    {% endcache %}
                     <div class="main-content center-c">
                         {% block content %}
                         {% endblock %}
                     </div>
                 </div>
+                {% cache 7200 menuMobile %}
                 <div class="account-group-menu invisible">
                     <div class="close-account-menu end-r">
                         <i class="fa-solid fa-angle-left invisible"></i>
@@ -95,12 +158,37 @@
                             <li class="menu-mobile-item"><a href="{% url 'account_group_edit_password' %}">SENHA</a></li>
                         </ul>
                     </nav>
-                    </div>
+                </div>
+                {% endcache %}
             </div>
         </main>
 
         
-        {% include 'base/includes/_footer.html' %}
+        {% cache 7200 mobileFooter %}
+        <footer>
+        <div class="mobile-footer sb-x">
+            <a href="/" class="navigation" id="posts-link">
+                <img src="/media/assets/posts/mobile-footer/post.png" alt="nav-img" class="navigation-img">
+                <h3 class="mobile-navigation-text">POSTS</h3>
+            </a>
+
+            <a href="{% url 'categories' %}" class="navigation" id="categories-link">
+                <img src="/media/assets/posts/mobile-footer/category.png" alt="nav-img" class="navigation-img">
+                <h3 class="mobile-navigation-text">CATEGORIAS</h3>
+            </a>
+
+            <a href="{% url 'authors' %}" class="navigation" id="authors-link">
+                <img src="/media/assets/posts/mobile-footer/author.png" alt="nav-img" class="navigation-img">
+                <h3 class="mobile-navigation-text">AUTORES</h3>
+            </a>
+
+            <a href="{% url 'account_page' %}" class="navigation" id="account-link">
+                <img src="/media/assets/posts/mobile-footer/user.png" alt="nav-img" class="navigation-img">
+                <h3 class="mobile-navigation-text">CONTA</h3>
+            </a>
+        </div>
+        </footer>
+        {% endcache %}
     </div>
     <div class="scripts" type="main">
         <script src="/static/scripts/_min/features/components/header/hamburguerAnimation.min.js"></script>

@@ -37,7 +37,6 @@ class EditBasicAccountView(BaseView):
 class EditEmailAccountView(BaseView):
 
     def get(self, request):
-        request.session.flush()
         return render(request, 'accounts/account_group/edit/email.html', self.tc)
     
 

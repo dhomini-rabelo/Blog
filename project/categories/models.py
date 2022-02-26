@@ -7,6 +7,9 @@ class Category(Model):
     slug = SlugField(max_length=256, verbose_name='Url')
     img = ImageField(upload_to='categories/%Y/%m/%d', blank=True, null=True, verbose_name='Imagem')
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'    
@@ -17,6 +20,9 @@ class SubCategory(Model):
     slug = SlugField(max_length=256, verbose_name='Url')
     img = ImageField(upload_to='sub_categories/%Y/%m/%d', blank=True, null=True, verbose_name='Imagem')
     category = ForeignKey(Category, on_delete=CASCADE, related_name='sub_categories', verbose_name='Categoria')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Subcategoria'
