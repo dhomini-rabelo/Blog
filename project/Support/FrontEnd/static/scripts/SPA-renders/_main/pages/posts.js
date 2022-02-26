@@ -1,13 +1,12 @@
 import { baseHead } from "./support/constants.js"
 
+
 export let postsSPA = {
-    newHead: {
-        ...baseHead,
-        individualStyles: [
+    group: 'main',
+    individualStyles: [
             '/static/styles/apps/posts/index.css',
-        ]
-    },
-    newContent: `
+    ],
+    content: `
     <div class="page-container flex-pass">
     <h1 class="page-title">Últimos posts</h1>
     <div class="main-container">
@@ -28,5 +27,5 @@ export let postsSPA = {
     </div>
 </div>
     `,
-    newScripts: []
+    individualScripts: []
 }
