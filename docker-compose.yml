@@ -1,0 +1,70 @@
+version: "3.8"
+   
+services:
+    django:
+        build: .
+        container_name: django
+        command: python project/manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+        environment:
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+        depends_on:
+            - pgdb
+            - redis            
+    celery:
+        build: .
+        command: celery --workdir=project -A BLOG worker --loglevel=INFO
+        volumes:
+            - .:/code
+        environment:
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+        depends_on:
+            - django
+            - redis
+    celery-beat:
+        build: .
+        command: celery --workdir=project -A BLOG beat -l info
+        environment:
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0        
+        volumes:
+        - .:/code
+        depends_on:
+        - redis      
+    flower:
+        container_name: flower
+        build: .
+        command: celery --workdir=project -A BLOG flower --port=5555
+        ports:
+        - 5556:5555
+        environment:
+        - CELERY_BROKER=redis://redis:6379/0
+        - CELERY_BACKEND=redis://redis:6379/0
+        depends_on:
+        - redis
+        - celery
+    pgdb:
+        image: postgres
+        container_name: pgdb
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - pgdata:/var/lib/postgresql/data/
+    redis:
+        image: "redis:alpine"
+        
+volumes:
+    pgdata:

@@ -2,6 +2,8 @@ import { In } from './../../features/core/utils.js'
 import { addStyles } from './styles.js'
 import { addScriptsGroup } from './scripts.js'
 
+
+
 export function controlGroupStyles (styles) {
     let groupStyles = document.querySelectorAll('.styles-group link[rel="stylesheet"]')
 
@@ -10,7 +12,7 @@ export function controlGroupStyles (styles) {
             style.remove()
         }
     })
-    addStyles('head .styles-group', styles)
+    addStyles('.styles-group', styles)
 }
 
 
