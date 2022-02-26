@@ -1,3 +1,5 @@
+{% load cache %}
+{% cache 7200 loadAnimation %}
 <div class="load-animation center-c">
     <div class="border-animation">
         <div class="animated-border"></div>
@@ -5,3 +7,4 @@
         <img src="/media/assets/global/black-logo.png" alt="logo" class="logo-animation black-logo-animation">
     </div>
 </div>
+{% endcache %}

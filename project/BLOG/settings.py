@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
+import socket
 import os
 
 
@@ -218,18 +219,28 @@ EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 DEFAULT_FROM_EMAIL = config('DEFAULT_EMAIL')
 
-if DEBUG:
+if not DEBUG:
     INSTALLED_APPS += [
         "debug_toolbar",
     ]
 
     INTERNAL_IPS = [
         "127.0.0.1",
+        'localhost'
     ]
 
     MIDDLEWARE += [
-       "debug_toolbar.middleware.DebugToolbarMiddleware",
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }
     
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[:-1] + '1' for ip in ips] + ['127.0.0.1', '10.0.2.2', 'localhost']
+
     
     

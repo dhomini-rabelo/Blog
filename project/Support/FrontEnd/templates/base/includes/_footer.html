@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 7200 mobileFooter %}
 <footer>
 <div class="mobile-footer sb-x">
     <a href="/" class="navigation" id="posts-link">
@@ -21,3 +24,4 @@
     </a>
 </div>
 </footer>
+{% endcache %}

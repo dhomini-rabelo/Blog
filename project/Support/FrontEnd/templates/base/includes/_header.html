@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 7200 header %}
 <header class="center-c">
     <div class="header-pc sb-x">
         <a href="/" class="sb-p1">
@@ -45,3 +48,4 @@
         </nav>
     </div>  
 </header>
+{% endcache %}
