@@ -6,6 +6,7 @@
 
 
 {% block content %}
+<div id="form">
 <div class="form-group">
     {{form}}
     {% csrf_token %}
@@ -14,7 +15,8 @@
         <span><input type="checkbox" name="javascript" id="id_javascript" value="on" {{js_use}}>Usar javascript para validação</span>           
     </div>
 </div>
-<div class="shortcut center-r"><a href="{% url 'login' %}">Fazer login</a>
+<div class="shortcut center-r"><a href="{% url 'login' %}" class="link-login-group" destiny="register">Fazer login</a>
+</div>
 </div>
 {% endblock %}
 

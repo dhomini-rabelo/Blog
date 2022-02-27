@@ -28,7 +28,7 @@ export function renderSPA(destiny) {
             renderObj = authorsSPA
             break
         case _:
-            return
+                throw new Error('Destiny not found')
     }
 
     changeUrl(title, newUrl)

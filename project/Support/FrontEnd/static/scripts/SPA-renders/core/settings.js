@@ -10,6 +10,18 @@ export let microsSPA = {
             'main',
         ]
 
+    },
+
+    login_group: {
+
+        styles: [
+            '/static/styles/_compacts/min/login.min.css',
+        ],
+
+        scriptsTypes : [
+            'login_group',
+        ]
+
     }
 
 

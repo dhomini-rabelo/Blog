@@ -1,7 +1,7 @@
 import { microsSPA } from './settings.js'
-import { controlGroupStyles, controlGroupScripts } from './control.js'
+import { controlGroupStyles } from './control.js'
 import { removeAllStyles, addStyles } from './styles.js'
-import { removeAllScripts, addScripts } from './scripts.js'
+
 
 
 
@@ -21,9 +21,5 @@ export function render(local, changes) {
     addStyles('.styles-individual', changes.individualStyles)
 
     localForChanges.innerHTML = changes.content
-
-    controlGroupScripts(spa.scriptsTypes)
-    removeAllScripts('.scripts-individual')
-    addScripts('.scripts-individual', changes.individualScripts)
 }
 
