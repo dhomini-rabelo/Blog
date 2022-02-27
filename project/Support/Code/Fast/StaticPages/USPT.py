@@ -6,10 +6,10 @@ import json
 
 
 
-class UserStaticPage(BaseView):
+class UserStaticPageByTask(BaseView):
 
     def get(self, request):
         # USP recebe o user.mystaticpages
-        user_static_pages_data = request.session['user_save']['USP']
+        user_static_pages_data = request.session['user_save']['USPT']
         self.tc['static_data'] = format_html(json.loads(user_static_pages_data[self.spa_page]))
         return self.sp_get(request)

@@ -1,4 +1,4 @@
-from .main import get_main_spa
+from main import get_main_spa
 from django.core.cache import cache
 
 
