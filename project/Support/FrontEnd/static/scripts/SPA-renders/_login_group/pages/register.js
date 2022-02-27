@@ -38,5 +38,7 @@ export let registerSPA = {
 <div class="shortcut center-r"><a href="{% url 'login' %}" class="link-login-group" destiny="register">Fazer login</a>
 </div>
     `,
-    individualScripts: ['/static/scripts/managers/apps/accounts/login_group/register.js']
+    individualScripts: [
+        ['/static/scripts/managers/apps/accounts/login_group/register.js', true],
+    ]
 }

@@ -2,7 +2,7 @@ import { endAnimation } from '../../../../features/components/main/loadAnimation
 document.addEventListener('DOMContentLoaded', () => {endAnimation()})
 import { FormWithUseJavascript } from './formModel.js'
 
-document.addEventListener('DOMContentLoaded', makeValidation)
+makeValidation()
 
 
 function makeValidation() {

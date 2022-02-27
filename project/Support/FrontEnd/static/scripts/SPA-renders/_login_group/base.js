@@ -13,20 +13,23 @@ document.querySelector('.link-login-group').addEventListener('click', renderSPA)
 
 function renderSPA(e) {
 
-    let title = 'CODE PORTAL'
+    let destiny = e.currentTarget.getAttribute('destiny')
+    
+    let title
     let renderObj
     let newUrl
 
-    let destiny = e.currentTarget.getAttribute('destiny')
-
+    
     switch (destiny){
         case 'login':
             newUrl = '/login/'
             renderObj = loginSPA
+            title = 'LOGIN'
             break
         case 'cadastro':
             newUrl = '/cadastro/'
             renderObj = registerSPA
+            title = 'CADASTRO'
             break
         case _:
             throw new Error('Destiny not found')

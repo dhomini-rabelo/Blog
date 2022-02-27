@@ -28,5 +28,7 @@ export let loginSPA = {
 <div class="shortcut center-r"><a href="{% url 'register' %}" class="link-login-group" destiny="login">Fazer cadastro</a>
 </div>
     `,
-    individualScripts: ['/static/scripts/managers/apps/accounts/login_group/login.js']
+    individualScripts: [
+        ['/static/scripts/managers/apps/accounts/login_group/login.js', true],
+    ]
 }

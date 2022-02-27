@@ -5,6 +5,7 @@ import { FormWithUseJavascript } from './formModel.js'
 
 document.addEventListener('DOMContentLoaded', makeValidation)
 
+makeValidation()
 
 function makeValidation() {
 
