@@ -10,7 +10,7 @@ class StaticPageGeneratorByTask(BaseView):
     
     def get(self, request):
         static_pages_generated = cache.get('SPGT')
-        self.tc['SPG'] = static_pages_generated.copy()
+        self.tc['SPGT'] = json.dumps(static_pages_generated.copy())
         self.tc['current_static_page'] = format_html(static_pages_generated[self.spa_group][self.spa_page])
         return self.sp_get(request)
 

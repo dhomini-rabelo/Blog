@@ -67,10 +67,53 @@ def construct_authors_page():
 
 def get_main_spa():
     main_spa = {
-        'posts': construct_posts_page(),
-        'categories': construct_categories_page(),
-        'authors': construct_authors_page(),
+        
+        'posts': {
+            'html': construct_posts_page(),
+            'update': False,
+        },
+        
+        'categories': {
+            'html': construct_categories_page(),
+            'update': False,
+        },
+        
+        'authors': {
+            'html': construct_authors_page(),
+            'update': False,
+        },
+
     }
-    
     return main_spa
+
+
+def construct_page(local):
+    match local:
+        case 'posts':
+            return construct_posts_page()
+        case 'categories':
+            return construct_categories_page()
+        case 'authors':
+            return construct_authors_page()
+
+
+
+def update_main_spa(current_main: dict):
+    main_spa = dict()
+    updated_obj = {}
+    updated = False
+
     
+    for page, page_data in current_main.items():
+        if page_data['update']:
+            main_spa[page] = {
+                'html': construct_page(page),
+                'update': False,
+            }
+            updated_obj[page] = True
+            updated = True
+        else:
+            main_spa[page] = page_data.copy()
+            updated_obj[page] = False
+
+    return {'spa': main_spa, 'report': updated_obj, 'updated': updated}
