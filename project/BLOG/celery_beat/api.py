@@ -16,11 +16,9 @@ def create_search_api_data():
             'categories': categories,
             'authors': authors,
             'subcategories': subcategories,
-            'searches': {}
             
     })
     
-    return {'status': 'success'}
 
 
 

@@ -18,10 +18,12 @@ class SearchApiView(APIView):
         
         search = request.data['search']
         
-        search_api_data: dict = cache.get('search_api')
+        check_cache = cache.get(f'search_{search}')
         
-        if search in search_api_data['searches'].keys():
-            return Response(search_api_data['searches'][search])
+        if check_cache is not None:
+            return Response(check_cache)
+        
+        search_api_data: dict = cache.get('search_api')
         
         posts, categories, authors, subcategories = gets(search_api_data, 'posts', 'categories', 'authors', 'subcategories')
         
@@ -41,15 +43,6 @@ class SearchApiView(APIView):
             
         }
         
-        cache.set('search_api', {
-            
-            **search_api_data, 
-            
-            'searches': {
-                **search_api_data['searches'], 
-                request.data['search']: response,
-            }
-            
-        })
+        cache.set(f'search_{search}', response)
         
         return Response(response)

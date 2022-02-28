@@ -10,7 +10,6 @@ def create_static_pages():
     
     cache.set('SPGT', spa_data)
     
-    return {'SPGT': ['main']}
 
 
 

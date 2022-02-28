@@ -5,7 +5,8 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 
-@shared_task(name='Enviando email')
+
+@shared_task(name='test email')
 def send_email_with_celery(to: str):
     from_mail = 'codeportalproject@gmail.com'
     subject = 'Código de confirmação de email'

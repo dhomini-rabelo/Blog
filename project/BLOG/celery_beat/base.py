@@ -1,12 +1,23 @@
 from django.core.cache import cache
 
 
-def create_base():
+def create_cache_initial_data():
     cache.set('updated', {
+        
         'posts': False,
         'categories': False,
         'subcategories': False,
         'authors': False,
+        
     })
+    # cache.set_many({
+        
+    #     'updated': {
+    #         'posts': False,
+    #         'categories': False,
+    #         'subcategories': False,
+    #         'authors': False,
+    #     },        
+
+    # })
     
-    return {'status': 'success'}
