@@ -1,14 +1,8 @@
+import json
 from accounts.models import User
 
 
-def update_users_static_pages():
-    users = User.objects.all()
-
-    for user in users:
-        pass
-
-
-def construct_my_static(user):
+def construct_user_may_static_page(user):
     user_static_page = {
         
         'data': {
@@ -20,6 +14,14 @@ def construct_my_static(user):
         'post': {
             'posts_list': '',
             'drafts_list': '',
-        }
+        },
+        
+        'suggestions': {
+            'categories': '',
+            'subcategories': '',
+        },
 
     }
+    
+    return json.loads(user_static_page)
+
