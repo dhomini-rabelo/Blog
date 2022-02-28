@@ -68,27 +68,17 @@ def construct_authors_page():
 def get_main_spa():
     main_spa = {
         
-        'posts': {
-            'html': construct_posts_page(),
-            'update': False,
-        },
-        
-        'categories': {
-            'html': construct_categories_page(),
-            'update': False,
-        },
-        
-        'authors': {
-            'html': construct_authors_page(),
-            'update': False,
-        },
+        'posts': construct_posts_page(),
+        'categories': construct_categories_page(),
+        'authors': construct_authors_page(),
 
     }
+    
     return main_spa
 
 
-def construct_page(local):
-    match local:
+def construct_page(key):
+    match key:
         case 'posts':
             return construct_posts_page()
         case 'categories':
@@ -98,22 +88,19 @@ def construct_page(local):
 
 
 
-def update_main_spa(current_main: dict):
-    main_spa = dict()
-    updated_obj = {}
+def update_main_spa(current_main_spa: dict, updated_obj: dict):
+    new_main_spa = dict()
     updated = False
-
+    report = {}
     
-    for page, page_data in current_main.items():
-        if page_data['update']:
-            main_spa[page] = {
-                'html': construct_page(page),
-                'update': False,
-            }
-            updated_obj[page] = True
+    for key in current_main_spa.keys():
+        if updated_obj[key]:
+            new_main_spa[key] = construct_page(key)
             updated = True
+            report[key] = True
         else:
-            main_spa[page] = page_data.copy()
-            updated_obj[page] = False
+            report[key] = False
 
-    return {'spa': main_spa, 'report': updated_obj, 'updated': updated}
+
+
+    return {'spa': {**current_main_spa, **new_main_spa}, 'report': report, 'updated': updated}

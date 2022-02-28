@@ -23,17 +23,21 @@ class SearchApiView(APIView):
         if search in search_api_data['searches'].keys():
             return Response(search_api_data['searches'][search])
         
-        posts, categories, authors = gets(search_api_data, 'posts', 'categories', 'authors')
+        posts, categories, authors, subcategories = gets(search_api_data, 'posts', 'categories', 'authors', 'subcategories')
         
-        filter(lambda item: search in item.title, posts)
-        filter(lambda item: search in item.name, categories)
-        filter(lambda item: search in item.name, authors)
+        do_search = lambda item: search in item
+        
+        filter(do_search, posts)
+        filter(do_search, categories)
+        filter(do_search, subcategories)
+        filter(do_search, authors)
         
         response = { 
                 
             'posts': posts, 
             'categories': categories,
             'authors': authors,
+            'subcategories': subcategories,
             
         }
         
@@ -43,7 +47,7 @@ class SearchApiView(APIView):
             
             'searches': {
                 **search_api_data['searches'], 
-                request.data['search']: response
+                request.data['search']: response,
             }
             
         })
