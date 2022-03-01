@@ -12,10 +12,10 @@ def create_search_api_data():
     
     cache.set('search_api', { 
                 
-            'posts': posts, 
-            'categories': categories,
-            'authors': authors,
-            'subcategories': subcategories,
+        'posts': posts, 
+        'categories': categories,
+        'authors': authors,
+        'subcategories': subcategories,
             
     }, None)
     
@@ -25,20 +25,30 @@ def create_search_api_data():
 def updated_search_api_data():
     updated_obj = cache.get('updated')
     search_api_data: dict = cache.get('search_api')
+    updated = False
     
-    if updated_obj['posts']:
-        search_api_data['posts'] = Post.objects.values_list('title', flat=True)
-
-    if updated_obj['categories']:
-        search_api_data['categories'] = Category.objects.values_list('name', flat=True)
-
-    if updated_obj['subcategories']:
-        search_api_data['subcategories'] = SubCategory.objects.values_list('name', flat=True)
-
-    if updated_obj['authors']:
-        search_api_data['authors'] = User.objects.values_list('name', flat=True)
+    for key in search_api_data.keys():
+        if updated_obj[key]:
+            updated = True
+            search_api_data[key] = update_api_values(key)
     
     
-    cache.set('search_api', search_api_data, None)
+    if updated:
+        cache.set('searches', {}, None)
     
     return {'report': updated_obj, 'search_api_data': search_api_data}
+
+
+def update_api_values(key):
+    match key:
+        case 'posts':
+            return list(Post.objects.values_list('title', flat=True))
+        case 'categories':
+            return list(Category.objects.values_list('name', flat=True))
+        case 'subcategories':
+            return list(SubCategory.objects.values_list('name', flat=True))
+        case 'authors':
+            return list(User.objects.values_list('name', flat=True))
+        case _:
+            raise ValueError('Invalid key')
+        

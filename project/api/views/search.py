@@ -16,12 +16,12 @@ class SearchApiView(APIView):
         if 'search' not in request.data.keys(): 
             return Response({'error': 'invalid body'}, status=status.HTTP_400_BAD_REQUEST)
         
-        search = request.data['search']
+        search: str = request.data['search']
         
-        check_cache = cache.get(f'search_{search}')
+        searches: dict = cache.get('searches')
         
-        if check_cache is not None:
-            return Response(check_cache)
+        if search.lower() in searches.keys():
+            return Response(searches[search])
         
         search_api_data: dict = cache.get('search_api')
         
@@ -39,6 +39,6 @@ class SearchApiView(APIView):
             
         }
         
-        cache.set(f'search_{search}', response, 60*10)
+        cache.set('searches', {**searches, search.lower(): response}, None)
         
         return Response(response)

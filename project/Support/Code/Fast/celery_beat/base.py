@@ -2,22 +2,19 @@ from django.core.cache import cache
 
 
 def create_cache_initial_data():
-    cache.set('updated', {
+    cache.set_many({
         
-        'posts': False,
-        'categories': False,
-        'subcategories': False,
-        'authors': False,
+        'updated': {
+            'posts': False,
+            'categories': False,
+            'subcategories': False,
+            'authors': False,
+        },
         
-    }, None)
-    # cache.set_many({
-        
-    #     'updated': {
-    #         'posts': False,
-    #         'categories': False,
-    #         'subcategories': False,
-    #         'authors': False,
-    #     },        
+        'searches': {}    
 
-    # })
+    })
+    
+    cache.touch('updated', None)
+    cache.touch('searches', None)
     
