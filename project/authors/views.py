@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import View
+from Support.Code.Fast.StaticPages.SPGT import StaticPageGeneratorByTask
 
 
 
+class AuthorsList(StaticPageGeneratorByTask):
+    spa_group = 'main'
+    spa_page = 'authors'
 
-class AuthorsList(View):
-    def get(self, request):
-        return render(request, 'authors/list_authors.html')
+    def sp_get(self, request):
+        return render(request, 'authors/list_authors.html', self.tc)

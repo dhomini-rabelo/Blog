@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.core.cache import cache
+from Support.Code.Fast.StaticPages.SPGT import StaticPageGeneratorByTask
 
 
 
-
-class LatestPosts(View):
-    def get(self, request):
-        return render(request, 'posts/index.html')
+class LatestPosts(StaticPageGeneratorByTask):
+    spa_group = 'main'
+    spa_page = 'posts'
+    
+    def sp_get(self, request):
+        return render(request, 'posts/index.html', self.tc)
 
 
 class PostView(View):
@@ -16,3 +19,4 @@ class PostView(View):
 
 
 
+ 

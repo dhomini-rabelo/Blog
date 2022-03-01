@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import View
+from Support.Code.Fast.StaticPages.SPGT import StaticPageGeneratorByTask
 
 
 
-
-class CategoriesList(View):
-    def get(self, request):
-        return render(request, 'categories/list_categories.html')
+class CategoriesList(StaticPageGeneratorByTask):
+    spa_group = 'main'
+    spa_page = 'categories'
+    
+    def sp_get(self, request):
+        return render(request, 'categories/list_categories.html', self.tc)
 
 
 
