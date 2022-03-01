@@ -17,7 +17,7 @@ def create_search_api_data():
             'authors': authors,
             'subcategories': subcategories,
             
-    })
+    }, None)
     
 
 
@@ -37,7 +37,8 @@ def updated_search_api_data():
 
     if updated_obj['authors']:
         search_api_data['authors'] = User.objects.values_list('name', flat=True)
-        
-    cache.set('search_api', search_api_data)
     
-    return {'report': updated_obj}
+    
+    cache.set('search_api', search_api_data, None)
+    
+    return {'report': updated_obj, 'search_api_data': search_api_data}

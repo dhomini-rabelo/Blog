@@ -19,6 +19,7 @@ services:
             - redis            
     celery:
         build: .
+        container_name: celery
         command: celery --workdir=project -A BLOG worker --loglevel=INFO
         volumes:
             - .:/code
@@ -32,6 +33,7 @@ services:
             - redis
     celery-beat:
         build: .
+        container_name: celeryBeat
         command: celery --workdir=project -A BLOG beat --loglevel=INFO
         environment:
             - DEBUG=1

@@ -27,22 +27,18 @@ class SearchApiView(APIView):
         
         posts, categories, authors, subcategories = gets(search_api_data, 'posts', 'categories', 'authors', 'subcategories')
         
-        do_search = lambda item: search in item
+        do_search = lambda item: search.lower() in item.lower()
         
-        filter(do_search, posts)
-        filter(do_search, categories)
-        filter(do_search, subcategories)
-        filter(do_search, authors)
         
         response = { 
                 
-            'posts': posts, 
-            'categories': categories,
-            'authors': authors,
-            'subcategories': subcategories,
+            'posts': list(filter(do_search, posts[:])), 
+            'categories': list(filter(do_search, categories[:])),
+            'subcategories': list(filter(do_search, subcategories[:])),
+            'authors': list(filter(do_search, authors[:])),
             
         }
         
-        cache.set(f'search_{search}', response)
+        cache.set(f'search_{search}', response, 60*10)
         
         return Response(response)

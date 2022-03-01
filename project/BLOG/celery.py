@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
-from celery.schedules import crontab
+# from celery.schedules import crontab
 from django.conf import settings
 
 
@@ -26,7 +26,7 @@ app.conf.beat_schedule = {
 
     'update_project_data': {
         'task': 'Update data for project',  
-        'schedule': 50.0,
+        'schedule': 900.0,
         'args': []
     },
 

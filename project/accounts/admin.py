@@ -10,7 +10,7 @@ class UserAdmin(auth_admin.UserAdmin):
     add_form = UserCreationForm
     model = User
     fieldsets = auth_admin.UserAdmin.fieldsets + (
-        ("Campos adicionais", {"fields": ('name', 'slug', "photo")}),
+        ("Campos adicionais", {"fields": ('name', 'slug', "photo", "my_static_pages")}),
     )
     list_display = 'username', 'name', 'email', 'slug'
     list_display_links = 'username',

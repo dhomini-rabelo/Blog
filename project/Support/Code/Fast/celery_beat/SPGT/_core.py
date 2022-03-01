@@ -8,7 +8,7 @@ def create_static_pages():
         'main': get_main_spa(),
     }
     
-    cache.set('SPGT', spa_data)
+    cache.set('SPGT', spa_data, None)
     
 
 
@@ -42,7 +42,9 @@ def update_static_pages():
                 **new_updated_obj,
             }
 
-        }) 
+        })
+        cache.touch('SPGT', None)
+        cache.touch('updated', None)
         
     return {'updated': updated_spa, 'not_updated': not_updated_spa}
 

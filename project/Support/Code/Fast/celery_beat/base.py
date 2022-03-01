@@ -9,7 +9,7 @@ def create_cache_initial_data():
         'subcategories': False,
         'authors': False,
         
-    })
+    }, None)
     # cache.set_many({
         
     #     'updated': {

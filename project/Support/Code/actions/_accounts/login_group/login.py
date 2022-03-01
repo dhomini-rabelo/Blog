@@ -75,4 +75,4 @@ def construct_user_my_static_page(user):
 
     }
     
-    return json.loads(user_static_page)
+    return user_static_page
