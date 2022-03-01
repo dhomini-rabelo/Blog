@@ -9,7 +9,7 @@ def get_posts_list_html(posts):
         <div class="box-body center-c">
             <img src="{post.img.url}" alt="post-img" class="box-img">
             <h2 class="post-title">{post.title}</h2>
-            <p class="box-description">{post.text}</p>
+            <p class="box-description">{post.description}</p>
             <div class="box-info sb-x">
                 <span class="post-category">{post.category.name}</span>
                 <span class="post-date">{show_date(post.date)}</span>
