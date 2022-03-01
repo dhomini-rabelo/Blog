@@ -1,27 +1,14 @@
 from posts.models import Post
 from categories.models import Category
 from accounts.models import User
-
+from ...models.cards import get_posts_list_html, get_authors_list_html, get_categories_list_html
 
 
 def construct_posts_page():
     html = '<div class="page-container flex-pass"><h1 class="page-title">Últimos posts</h1><div class="main-container">'
     posts = Post.objects.all().select_related('category')
 
-    for post in posts:
-        html += f"""
-<a href="/" class="box">
-    <div class="box-body center-c">
-        <img src="{post.img.url}" alt="post-img" class="box-img">
-        <h2 class="post-title">{post.title}</h2>
-        <p class="box-description">{post.text}</p>
-        <div class="box-info sb-x">
-            <span class="post-category">{post.category.name}</span>
-            <span class="post-date">{post.date}</span>
-        </div>
-    </div>
-</a>
-        """
+    html += get_posts_list_html(posts)
     
     html += '</div></div>'
         
@@ -32,15 +19,7 @@ def construct_categories_page():
     html = '<div class="page-container flex-pass"><h1 class="page-title">Categorias</h1><div class="main-container-f w-sb-x">'
     categories = Category.objects.all()
 
-    for category in categories:
-        html += f"""
-        <a href="/" class="box">
-            <div class="box-body center-c">
-                <img src="{category.img.url}" alt="post-img" class="box-img">
-                <h2 class="box-title">{category.name}</h2>
-            </div>
-        </a>
-        """
+    html += get_categories_list_html(categories)
         
     html += '</div></div>'
         
@@ -51,15 +30,7 @@ def construct_authors_page():
     html = '<div class="page-container flex-pass"><h1 class="page-title">Autores</h1><div class="main-container-f w-sb-x">'
     authors = User.objects.all()
 
-    for author in authors:
-        html += f"""
-        <a href="/" class="box">
-            <div class="box-body center-c">
-                <img src="{author.photo.url}" alt="post-img" class="box-img">
-                <h2 class="box-title">{author.name}</h2>
-            </div>
-        </a>
-        """
+    html += get_authors_list_html(authors)
     
     html += '</div></div>'
         

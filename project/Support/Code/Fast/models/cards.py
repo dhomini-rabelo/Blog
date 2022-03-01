@@ -1,3 +1,6 @@
+from .main import show_date
+
+
 def get_posts_list_html(posts):
     html = ''
     for post in posts:
@@ -9,11 +12,44 @@ def get_posts_list_html(posts):
             <p class="box-description">{post.text}</p>
             <div class="box-info sb-x">
                 <span class="post-category">{post.category.name}</span>
-                <span class="post-date">{post.date}</span>
+                <span class="post-date">{show_date(post.date)}</span>
             </div>
         </div>
     </a>
     """
+    
+    return html
+
+
+
+def get_categories_list_html(categories):
+    html = ''
+    for category in categories:
+        html += f"""
+        <a href="/" class="box">
+            <div class="box-body center-c">
+                <img src="{category.img.url}" alt="post-img" class="box-img">
+                <h2 class="box-title">{category.name}</h2>
+            </div>
+        </a>
+    """
+    
+    return html
+
+
+
+def get_authors_list_html(authors):
+    html = ''
+    
+    for author in authors:
+        html += f"""
+        <a href="/" class="box">
+            <div class="box-body center-c">
+                <img src="{author.photo.url}" alt="post-img" class="box-img">
+                <h2 class="box-title">{author.name}</h2>
+            </div>
+        </a>
+        """
     
     return html
 
