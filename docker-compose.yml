@@ -32,7 +32,7 @@ services:
             - redis
     celery-beat:
         build: .
-        command: celery --workdir=project -A BLOG beat -l info
+        command: celery --workdir=project -A BLOG beat --loglevel=INFO
         environment:
             - DEBUG=1
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
@@ -63,6 +63,8 @@ services:
             - POSTGRES_PASSWORD=postgres
         volumes:
             - pgdata:/var/lib/postgresql/data/
+        ports:
+        - 5432:5432
     redis:
         image: "redis:alpine"
         

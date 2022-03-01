@@ -3,6 +3,7 @@ from categories.models import Category
 from accounts.models import User
 
 
+
 def construct_posts_page():
     html = '<div class="page-container flex-pass"><h1 class="page-title">Últimos posts</h1><div class="main-container">'
     posts = Post.objects.all().select_related('category')

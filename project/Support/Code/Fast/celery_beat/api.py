@@ -5,10 +5,10 @@ from accounts.models import User
 
 
 def create_search_api_data():
-    posts = Post.objects.values_list('title', flat=True)
-    categories = Category.objects.values_list('name', flat=True)
-    subcategories = SubCategory.objects.values_list('name', flat=True)
-    authors = User.objects.values_list('name', flat=True)
+    posts = list(Post.objects.values_list('title', flat=True))
+    categories = list(Category.objects.values_list('name', flat=True))
+    subcategories = list(SubCategory.objects.values_list('name', flat=True))
+    authors = list(User.objects.values_list('name', flat=True))
     
     cache.set('search_api', { 
                 

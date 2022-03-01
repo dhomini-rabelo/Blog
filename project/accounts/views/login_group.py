@@ -8,7 +8,6 @@ from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save, validate_login
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
 from django.shortcuts import render, redirect
-from ..tasks import send_email_with_celery
 
 
 

@@ -1,4 +1,4 @@
-from pathlib import Path
+import json
 from random import randint
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -44,6 +44,7 @@ def get_aleatory_profile_photo():
     
 get_aleatory_profile_photo()
 
+
 def get_token_for_user(request):
     refresh = RefreshToken.for_user(request.user)
 
@@ -51,3 +52,27 @@ def get_token_for_user(request):
         'refresh': str(refresh),
         'access': str(refresh.access_token),
     }
+    
+
+def construct_user_my_static_page(user):
+    user_static_page = {
+        
+        'data': {
+            'photo_url': user.photo.url,
+            'name': user.name,
+            'email': user.email,
+        },
+
+        'post': {
+            'posts_list': '',
+            'drafts_list': '',
+        },
+        
+        'suggestions': {
+            'categories': '',
+            'subcategories': '',
+        },
+
+    }
+    
+    return json.loads(user_static_page)
