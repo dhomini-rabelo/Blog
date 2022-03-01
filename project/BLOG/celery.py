@@ -30,14 +30,24 @@ def create_base():
     create_cache_initial_data()
     create_search_api_data()
     create_static_pages()
-    return {'status': 'success'}
+    return {
+        'actions': [
+            'create initial cache',
+            'create data for search api',
+            'create data for static pages',
+        ]
+    }
 
 
 @app.task(name='Update data for project')
 def celery_update_project_data():
-    updated_search_api_data()
-    update_static_pages()
-    return {'status': 'success'}
+    api_process = updated_search_api_data()
+    static_pages_process = update_static_pages()
+    
+    return {
+        'api': api_process,
+        'static_pages': static_pages_process,
+    }
 
 
 if __name__ == '__main__':

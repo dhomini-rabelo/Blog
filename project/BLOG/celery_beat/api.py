@@ -40,4 +40,4 @@ def updated_search_api_data():
         
     cache.set('search_api', search_api_data)
     
-    return {'resport': updated_obj}
+    return {'report': updated_obj}
