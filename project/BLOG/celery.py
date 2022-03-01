@@ -13,8 +13,9 @@ app = Celery("BLOG.celery")
 
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
-CELERY_TASKS = settings.INSTALLED_APPS + [
+CELERY_TASKS = [
     'accounts.tasks.email',
+    'accounts.tasks.USPGT',
     'Support.Code.Fast.celery_beat._tasks',
 ]
 
