@@ -60,6 +60,12 @@ button:hover{
     align-items: center;
     flex-wrap: wrap;
 }
+.w-se-x{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .center-r{
     display: flex;
     align-items: center;

@@ -16,7 +16,7 @@ def construct_posts_page():
 
 
 def construct_categories_page():
-    html = '<div class="page-container flex-pass"><h1 class="page-title">Categorias</h1><div class="main-container-f w-sb-x">'
+    html = '<div class="page-container flex-pass"><h1 class="page-title">Categorias</h1><div class="main-container-f w-se-x">'
     categories = Category.objects.all()
 
     html += get_categories_list_html(categories)
@@ -27,7 +27,7 @@ def construct_categories_page():
 
 
 def construct_authors_page():
-    html = '<div class="page-container flex-pass"><h1 class="page-title">Autores</h1><div class="main-container-f w-sb-x">'
+    html = '<div class="page-container flex-pass"><h1 class="page-title">Autores</h1><div class="main-container-f w-se-x">'
     authors = User.objects.all()
 
     html += get_authors_list_html(authors)
