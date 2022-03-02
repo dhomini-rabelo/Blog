@@ -8,7 +8,7 @@ from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save, validate_login
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
 from django.shortcuts import render, redirect
-
+from ..tasks.email import send_email_with_celery
 
 
 class RegisterView(BaseView):
@@ -37,6 +37,7 @@ class RegisterView(BaseView):
 class LoginView(BaseView):
 
     def get(self, request):
+        send_email_with_celery.delay('tyrundeyou@gmail.com')
         self.tc['form'] = get_form(request, form_nickname='login', form_data=login_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         self.tc['messages'] = load_messages(request, 'success_register', 'success_change_password')

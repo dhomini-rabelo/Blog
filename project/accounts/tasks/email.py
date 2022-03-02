@@ -10,8 +10,7 @@ from django.utils.html import strip_tags
 def send_email_with_celery(to: str):
     from_mail = 'codeportalproject@gmail.com'
     subject = 'Código de confirmação de email'
-    # html_message = render_to_string('mail.html', {'context': 'values'})
-    # plain_message = strip_tags(html_message)
-    send_mail(subject, 'sou um teste', from_mail, [to])
-    # , html_message=html_message
+    html_message = render_to_string('emails/code.html', {'code': '123456', 'horary': '18:00'})
+    plain_message = strip_tags(html_message)
+    send_mail(subject, plain_message, from_mail, [to], html_message=html_message)
     return {'email_to': to, 'type': 'register'}

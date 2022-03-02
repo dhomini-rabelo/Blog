@@ -68,7 +68,6 @@ services:
         ports:
         - 5432:5432
     redis:
-        container_name: redis
         image: "redis:alpine"
         
 volumes:
