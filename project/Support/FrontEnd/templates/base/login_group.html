@@ -28,7 +28,7 @@
 <body>
     {% include 'base/includes/_load_animation.html' %}
     <main class="center-r invisible">
-        <form method="POST" spellcheck="false">
+        <form method="POST" spellcheck="false" for="{{request.path}}">
             <div class="block-logo center-c">
                 <a href="{% url 'latest_posts' %}">
                     <div class="logo center-r">
@@ -43,6 +43,9 @@
             {% endblock %}
         </form>
     </main>
+    <div class="scripts-group">
+        <script type="module" src="/static/scripts/SPA-renders/_login_group/base.js"></script>
+    </div>
     <div class="scripts-individual">
         {% block javascript %}{% endblock %}
     </div>

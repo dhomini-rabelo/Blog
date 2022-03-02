@@ -27,7 +27,7 @@ export function renderSPA(destiny) {
             newUrl = '/autores/'
             renderObj = authorsSPA
             break
-        case _:
+        default:
             throw new Error('Destiny not found')
     }
 

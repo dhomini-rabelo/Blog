@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {endAnimation()})
 
 import { FormWithUseJavascript } from './formModel.js'
 
-document.addEventListener('DOMContentLoaded', makeValidation)
 
 makeValidation()
 
@@ -18,7 +17,7 @@ function makeValidation() {
         ]
     }
 
-
-    let form = new FormWithUseJavascript('form', fieldsObj)
+    let form = new FormWithUseJavascript('form[for="/cadastro/"]', fieldsObj)
+    form.removeEvents()
     form.addEvents()
 }

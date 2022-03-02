@@ -22,7 +22,6 @@ export function validateEmail(email){
 }
 
 export function validateEqualTheAField(inputValue, inputForCopyAddress){
-    console.log(inputForCopyAddress)
     let inputForCopy = document.querySelector(`#id_${inputForCopyAddress}`).value
 
     return inputForCopy === inputValue ? true : false

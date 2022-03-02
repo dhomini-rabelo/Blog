@@ -1,3 +1,5 @@
+import { getCookie } from './../../../features/core/utils.js'
+
 export let registerSPA = {
     group: 'login_group',
     individualStyles: [
@@ -29,16 +31,16 @@ export let registerSPA = {
     <div class="error"></div>
 </div>
 
-<input type="hidden" name="csrfmiddlewaretoken" value="UPnZdhJKBYfG5RLOpyEIdrdQ4tZq5DbQqq0q7IirtwJ9XjxFm4Bhtg0siJp16yDO">
+<input type="hidden" name="csrfmiddlewaretoken" value="${getCookie('csrftoken')}">
 <button class="bl-wh" type="submit">CADASTRE-SE</button>
 <div class="js-check">
 <span><input type="checkbox" name="javascript" id="id_javascript" value="on" checked="">Usar javascript para validação</span>           
 </div>
 </div>
-<div class="shortcut center-r"><a href="{% url 'login' %}" class="link-login-group" destiny="register">Fazer login</a>
+<div class="shortcut center-r"><a href="{% url 'login' %}" class="link-login-group" destiny="login">Fazer login</a>
 </div>
     `,
     individualScripts: [
         ['/static/scripts/managers/apps/accounts/login_group/register.js', true],
-    ]
+    ],
 }

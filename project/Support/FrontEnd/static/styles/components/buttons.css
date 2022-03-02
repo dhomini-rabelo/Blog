@@ -9,11 +9,24 @@
     height: 6vh;
     min-height: 57.5px !important;
 }
-
 .bl-wh:active{
     opacity: 0.5;
 }
-
 .bl-wh:hover{
     opacity: 0.77;
+}
+.btn-load-animation{
+    animation: rotate360 0.33s infinite ease-in-out;
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 0.2rem solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+@keyframes rotate360{
+    to{
+        transform: rotate(1turn);
+    }
 }

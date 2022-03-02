@@ -13,7 +13,7 @@ function makeValidation() {
         ]
     }
 
-
-    let form = new FormWithUseJavascript('form', fieldsObj)
+    let form = new FormWithUseJavascript('form[for="/login/"]', fieldsObj)
+    form.removeEvents()
     form.addEvents()
 }

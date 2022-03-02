@@ -4,6 +4,8 @@ import { Form } from './../../../forms/form.js'
 
 export class FormWithUseJavascript extends Form {
     validateForm = (event) => {
+        if (!(event.currentTarget === document.querySelector(this.formAddress))) return
+        
         let useJavascript = document.querySelector('#id_javascript')
         if (!useJavascript.checked){return}
         
@@ -11,6 +13,8 @@ export class FormWithUseJavascript extends Form {
         
         if (!isValid){
             event.preventDefault()
+        }else {
+            this.startAnimation()
         }
     }
 }

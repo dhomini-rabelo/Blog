@@ -14,7 +14,7 @@ export function changeUrl(title, newUrl) {
 }
 
 
-export function render(local, changes) {
+export function render(local, changes, SPGT=true) {
     let localForChanges = document.querySelector(local)
     let spa = microsSPA[changes.group]
     
@@ -22,8 +22,11 @@ export function render(local, changes) {
     removeAllStyles('.styles-individual')
     addStyles('.styles-individual', changes.individualStyles)
 
-    localForChanges.innerHTML = addContent(changes.content)
+    if (SPGT){
+        localForChanges.innerHTML = addContent(changes.group, changes.content)
+    } else {
+        localForChanges.innerHTML = changes.content
+    }
     
-    removeAllScripts('.scripts-individual')
     addScripts('.scripts-individual', changes.individualScripts)
 }

@@ -12,6 +12,7 @@ document.querySelector('.link-login-group').addEventListener('click', renderSPA)
 
 
 function renderSPA(e) {
+    e.preventDefault()
 
     let destiny = e.currentTarget.getAttribute('destiny')
     
@@ -26,12 +27,12 @@ function renderSPA(e) {
             renderObj = loginSPA
             title = 'LOGIN'
             break
-        case 'cadastro':
+        case 'register':
             newUrl = '/cadastro/'
             renderObj = registerSPA
             title = 'CADASTRO'
             break
-        case _:
+        default:
             throw new Error('Destiny not found')
     }
 
@@ -41,15 +42,15 @@ function renderSPA(e) {
         '/static/styles/features/colors/la1-2.css',
     ])
 
-    addStyles([
+    addStyles('.style-animation', [
         '/static/styles/features/colors/la1-1.css',
     ])
     
     startAnimation()
 
-    render('#form', renderObj)
+    document.querySelector('form').setAttribute('for', newUrl)
 
-    controlEvents(destiny, renderObj)
+    render('#form', renderObj, false)
 
     endAnimation()
 

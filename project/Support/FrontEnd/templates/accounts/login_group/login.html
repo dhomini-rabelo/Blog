@@ -16,12 +16,12 @@
     {% endfor %}
     {{ form }}
     {% csrf_token %}
-    <button class="bl-wh" type="submit">LOGIN</button>
+    <button class="bl-wh" type="submit"><span id="submit-span">LOGIN</span></button>
     <div class="js-check">
         <span><input type="checkbox" name="javascript" id="id_javascript" value="on" {{js_use}}>Usar javascript para validação</span>
     </div>            
 </div>
-<div class="shortcut center-r"><a href="{% url 'register' %}" class="link-login-group" destiny="login">Fazer cadastro</a>
+<div class="shortcut center-r"><a href="{% url 'register' %}" class="link-login-group" destiny="register">Fazer cadastro</a>
 </div>
 </div>
 

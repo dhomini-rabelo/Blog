@@ -36,6 +36,6 @@ export function addScriptsGroup(type) {
 export function removeAllScripts(local) {
     let weLocal = document.querySelector(local)
     if(!weLocal) return
-    let scripts = weLocal.querySelectorAll('.scripts')
+    let scripts = weLocal.querySelectorAll('script')
     scripts.forEach(script => script.remove())
 }

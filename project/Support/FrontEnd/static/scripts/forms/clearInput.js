@@ -1,10 +1,16 @@
 export function clearError(event){
     let input = event.currentTarget
-    input.parentElement.querySelector('.error').innerHTML = ''
+    if(!input) return
+    let error = input.parentElement.querySelector('.error')
+    if(!error) return
+    error.innerHTML = ''
 }
 
 export function clearField(fieldElement){
-    fieldElement.parentElement.querySelector('.error').innerHTML = ''
+    if(!fieldElement) return
+    let error = fieldElement.parentElement.querySelector('.error')
+    if(!error) return
+    error.innerHTML = ''
 }
 
 export function clearSpaces(event){
