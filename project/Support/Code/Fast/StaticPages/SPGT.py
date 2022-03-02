@@ -2,11 +2,17 @@ from Support.Code.actions.Support.django.views import BaseView
 from django.core.cache import cache
 import json
 from django.utils.html import format_html
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+
+
+
 
 
 
 class StaticPageGeneratorByTask(BaseView):
     
+    @method_decorator(cache_page(60 * 10)) 
     def get(self, request):
         static_pages_generated = cache.get('SPGT')
         self.tc['SPGT'] = json.dumps(static_pages_generated)

@@ -11,7 +11,7 @@ export function enableTagsA() {
 
 
 export function addContent(page) {
-    let spaGroup = document.querySelector('#SPGT').json()
+    let spaGroup = JSON.parse(document.querySelector('#SPGT').value)
 
-    return spaGroup[page]
+    return spaGroup['main'][page]
 }
