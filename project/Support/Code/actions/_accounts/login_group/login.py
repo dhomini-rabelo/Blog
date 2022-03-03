@@ -1,5 +1,6 @@
 import json
 from random import randint
+from accounts.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 def get_aleatory_profile_photo():
@@ -45,8 +46,9 @@ def get_aleatory_profile_photo():
 get_aleatory_profile_photo()
 
 
-def get_token_for_user(request):
-    refresh = RefreshToken.for_user(request.user)
+def get_token_for_user(email):
+    user = User.objects.get(email=email)
+    refresh = RefreshToken.for_user(user)
 
     return {
         'refresh': str(refresh),

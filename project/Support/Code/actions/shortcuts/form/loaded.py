@@ -16,7 +16,7 @@ loaded_forms = {
                 '        <label for="id_password">Senha:</label>\n'
                 '        <input type="password" name="password" id="id_password" '
                 'placeholder="Digite sua senha">\n'
-                '        <div class="block-forgot-password"><a href="">Esqueceu a '
+                '        <div class="block-forgot-password"><a href="/nova-senha/informar-email">Esqueceu a '
                 'senha?</a></div>\n'
                 '        <div class="error"></div>\n'
                 '    </div>\n'
@@ -35,7 +35,7 @@ loaded_forms = {
         <div class="field-group">
             <label for="id_password">Senha:</label>
             <input type="password" name="password" id="id_password" placeholder="Digite sua senha">
-            <div class="block-forgot-password"><a href="">Esqueceu a senha?</a></div>
+            <div class="block-forgot-password"><a href="/nova-senha/informar-email">Esqueceu a senha?</a></div>
             <div class="error"></div>
         </div>
     """,

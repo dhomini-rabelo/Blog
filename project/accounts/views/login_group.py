@@ -1,6 +1,6 @@
 from random import randint
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message, register_email_confirmation_form
-from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save
+from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save, forgot_password_email_form, forgot_password_form, forgot_password_email_form_validation 
 from Support.Code.actions._accounts.login_group.login import get_token_for_user
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
 from Support.Code.actions.Support.django.views import BaseView
@@ -86,7 +86,6 @@ def send_new_email_for_register(request):
 class LoginView(BaseView):
 
     def get(self, request):
-        # send_email_with_celery.delay('tyrundeyou@gmail.com')
         self.tc['form'] = get_form(request, form_nickname='login', form_data=login_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         self.tc['messages'] = load_messages(request, 'success_register', 'success_change_password')
@@ -101,7 +100,7 @@ class LoginView(BaseView):
             delete_used_form(request, 'login')
             create_login_save(request, user_save)
             response = redirect('latest_posts')
-            token = get_token_for_user(request)
+            token = get_token_for_user(request.user.email)
             response.set_cookie('access_token', token['access'], max_age=60*60*24*3)
             response.set_cookie('refresh_token', token['refresh'], max_age=60*60*24*365)
             response.set_cookie('email', request.session['user_save']['email'], max_age=60*60*24*365)
@@ -113,6 +112,42 @@ class LoginView(BaseView):
         return redirect('login') 
     
     
+
+class ForgotPasswordEmailView(BaseView):
+    
+    def get(self, request):
+        self.tc['form'] = get_form(request, form_nickname='forgot_password_email_form', form_data=forgot_password_email_form)
+        return render(request, 'accounts/login_group/forgot_password_email.html', self.tc)
+    
+    def post(self, request):
+        validation = validate_form(request.POST, forgot_password_email_form_validation)
+        
+        if validation['status'] == 'valid':
+            token = get_token_for_user(validation['fields']['email'])['access']
+            send_email_for_create_new_password(validation['fields']['email'], token)
+            #! create token time
+            #! message
+            #! redirecione a tela que mostra messgem
+        
+        save_form(request, 'forgot_password_email_form', validation['fields'], validation['errors'])
+        return redirect('forgot_password_email')
+    
+
+
+class ForgotPasswordView(BaseView):
+    
+    def get(self, request):
+        self.tc['form'] = get_form(request, form_nickname='forgot_password_form', form_data=forgot_password_form)
+        return render(request, 'accounts/login_group/forgot_password.html', self.tc)
+    
+    
+    def post(self, request):
+        #! ver token time
+        #! Validar as senhas
+        pass
+
+
+
 def logout_view(request):
     logout(request)
     return redirect('login')

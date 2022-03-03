@@ -18,7 +18,7 @@ convert_functions = {
 #* for .utils.py
 
 messages_form_errors = {
-    'unique': 'Este campo já está em uso', 'exists': 'Este campo já foi cadastrado',
+    'unique': 'Este campo já está em uso', 'exists': 'Este campo não foi cadastrado',
     'only_str': 'Este campo aceita apenas letras', 'only_numeric': 'Este campo aceita apenas números',
     'username': 'Este campo aceita apenas números, letras e underline',
     'min_length': lambda length: f'Este campo deve ter no mínimo {length} dígitos',
