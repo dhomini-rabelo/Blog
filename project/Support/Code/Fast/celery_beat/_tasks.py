@@ -1,15 +1,16 @@
 from Support.Code.Fast.celery_beat.SPGT._core import create_static_pages, update_static_pages
 from Support.Code.Fast.celery_beat.api import create_search_api_data, updated_search_api_data
-from Support.Code.Fast.celery_beat.base import create_cache_initial_data
+from Support.Code.Fast.celery_beat.base import create_cache_initial_data, create_process_context
 from celery.signals import celeryd_init
 from celery import shared_task
 
 
 @celeryd_init.connect
 def create_base(sender, conf, **kwargs):
+    context = create_process_context()
     create_cache_initial_data()
-    create_search_api_data()
-    create_static_pages()
+    create_search_api_data(context)
+    create_static_pages(context)
     return {
         'actions': [
             'create initial cache',

@@ -46,6 +46,6 @@ export function renderSPA(destiny) {
     
     focusInFooter()
     
-    endAnimation()
+    setTimeout(endAnimation, 200)
 
 }

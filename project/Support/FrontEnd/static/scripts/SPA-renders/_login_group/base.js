@@ -52,7 +52,7 @@ function renderSPA(e) {
 
     render('#form', renderObj, false)
 
-    endAnimation()
+    setTimeout(endAnimation, 200)
 
     document.querySelector('.link-login-group').removeEventListener('click', renderSPA)
 

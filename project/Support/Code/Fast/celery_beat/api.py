@@ -4,11 +4,11 @@ from categories.models import Category, SubCategory
 from accounts.models import User
 
 
-def create_search_api_data():
-    posts = list(Post.objects.values_list('title', flat=True))
-    categories = list(Category.objects.values_list('name', flat=True))
-    subcategories = list(SubCategory.objects.values_list('name', flat=True))
-    authors = list(User.objects.values_list('name', flat=True))
+def create_search_api_data(context):
+    posts = list(context['posts'].values_list('title', flat=True))
+    categories = list(context['categories'].values_list('name', flat=True))
+    subcategories = list(context['subcategories'].values_list('name', flat=True))
+    authors = list(context['authors'].values_list('name', flat=True))
     
     cache.set('search_api', { 
                 

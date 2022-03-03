@@ -3,9 +3,9 @@ from django.core.cache import cache
 
 
 
-def create_static_pages():
+def create_static_pages(context):
     spa_data = {
-        'main': get_main_spa(),
+        'main': get_main_spa(context),
     }
     
     cache.set('SPGT', spa_data, None)
