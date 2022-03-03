@@ -3,11 +3,13 @@ from rest_framework.views import APIView
 from rest_framework import  status
 from django.core.cache import cache
 from Support.Code.actions.Support.utils.main import gets
-
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 
 class SearchApiView(APIView):
     
+    @method_decorator(cache_page(60 * 10)) 
     def get(self, request):
         search_api_data: dict = cache.get('search_api')
         return Response(search_api_data)

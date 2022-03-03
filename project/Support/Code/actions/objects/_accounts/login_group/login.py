@@ -53,7 +53,7 @@ forgot_password_form = {
     'html_structure': """
     <div class="field-group">
         <label for="id_[name]">[label]:</label>
-        <input type="text" name="[name]" id="id_[name]" placeholder="[placeholder]">
+        <input type="password" name="[name]" id="id_[name]" placeholder="[placeholder]">
         <div class="error"></div>
     </div>
     """,

@@ -32,7 +32,7 @@ class RegisterView(BaseView):
             first_code = f'{randint(100000, 999999)}'
             request.session['register_email_codes'] = [first_code]
             delete_used_form(request, 'register')
-            send_email_with_code.delay(validation['fields']['email'], first_code, 'register')
+            send_email_with_code.delay(validation['fields']['email'], first_code, 'register', request.get_host())
             return redirect('register_email_confirmation')
         else:
             save_form(request, 'register', validation['fields'], validation['errors'])
@@ -79,7 +79,7 @@ def send_new_email_for_register(request):
     request.session['register_email_codes'].append(new_code)
     request.session['register_email_codes_resend'] = 'EMAIL FOI REENVIADO !!!'
     request.session.save()
-    send_email_with_code.delay(request.session['register_data']['email'], new_code, 'register_resend')
+    send_email_with_code.delay(request.session['register_data']['email'], new_code, 'register_resend', request.get_host())
     return redirect('register_email_confirmation')
     
     
@@ -126,7 +126,7 @@ def logout_view(request):
 class ForgotPasswordEmailView(BaseView):
     
     def get(self, request):
-        self.tc['form'] = get_form(request, form_nickname='forgot_password_email_form', form_data=forgot_password_email_form)
+        self.tc['form'] = get_form(request, form_nickname='forgot_password_email', form_data=forgot_password_email_form)
         return render(request, 'accounts/login_group/forgot_password_email.html', self.tc)
     
     def post(self, request):
@@ -134,10 +134,10 @@ class ForgotPasswordEmailView(BaseView):
         
         if validation['status'] == 'valid':
             token = get_token_for_user(validation['fields']['email'])['access']
-            send_email_for_create_new_password.delay(validation['fields']['email'], token)
+            send_email_for_create_new_password.delay(validation['fields']['email'], token, request.get_host())
             return redirect('forgot_valid_email')
         
-        save_form(request, 'forgot_password_email_form', validation['fields'], validation['errors'])
+        save_form(request, 'forgot_password_email', validation['fields'], validation['errors'])
         return redirect('forgot_password_email')
 
 
@@ -155,7 +155,7 @@ class ForgotPasswordView(BaseView):
             return render(request, 'accounts/login_group/simple.html', self.tc)
             
         request.session['back'] = request.get_full_path()
-        self.tc['form'] = get_form(request, form_nickname='forgot_password_form', form_data=forgot_password_form)
+        self.tc['form'] = get_form(request, form_nickname='forgot_password', form_data=forgot_password_form)
         return render(request, 'accounts/login_group/forgot_password.html', self.tc)
     
     
@@ -168,9 +168,7 @@ class ForgotPasswordView(BaseView):
             save_message(request, password_message)
             return redirect('login')
         
-        print(validation)
-
-        save_form(request, 'forgot_password_form', validation['fields'], validation['errors'])
+        save_form(request, 'forgot_password', validation['fields'], validation['errors'])
         return redirect(request.session['back'])
 
     def validate_get_data(self, request):
@@ -183,8 +181,6 @@ class ForgotPasswordView(BaseView):
         elif check is None:
            response['error'] = 'O token expirou'
         elif check['token'] != token:
-            print(token)
-            print(check['token'])
             response['error'] = 'token inválido'
 
         if response.get('error') is not None:
