@@ -35,6 +35,7 @@ def updated_search_api_data():
     
     if updated:
         cache.set('searches', {}, None)
+        cache.set('search_api', search_api_data, None)
     
     return {'report': updated_obj, 'search_api_data': search_api_data}
 
