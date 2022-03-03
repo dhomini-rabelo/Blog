@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from Support.Code.Fast.StaticPages.SPGT import StaticPageGeneratorByTask
-
+from django.core.cache import cache
 
 
 

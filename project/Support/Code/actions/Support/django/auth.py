@@ -54,6 +54,11 @@ def change_password(request, new_password: str):
     user.set_password(new_password_value)
     user.save()
 
+def anonymous_change_password(email, new_password_value: str):
+    user = User.objects.get(email=email)
+    user.set_password(new_password_value)
+    user.save()
+
 
 def logout(request):
     auth.logout(request)

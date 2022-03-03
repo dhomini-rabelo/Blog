@@ -12,7 +12,7 @@ from Support.Code.actions.Support.django.messages.main import save_message, load
 from Support.Code.actions.Support.utils.main import gets, if_none
 from django.shortcuts import render, redirect
 from ..tasks.email import send_email_with_code, send_email_for_create_new_password
-from Support.Code.actions.Support.django.auth import change_password
+from Support.Code.actions.Support.django.auth import anonymous_change_password
 from Support.Code.actions.objects._accounts.account_group.edit.password import password_message
 
 
@@ -115,7 +115,13 @@ class LoginView(BaseView):
         save_javascript_use(request)
         return redirect('login') 
     
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')    
     
+
 
 class ForgotPasswordEmailView(BaseView):
     
@@ -158,9 +164,11 @@ class ForgotPasswordView(BaseView):
 
 
         if validation['status'] == 'valid':
-            change_password(request, 'new_password')
+            anonymous_change_password(request.GET.get('email'), request.POST.get('new_password'))
             save_message(request, password_message)
             return redirect('login')
+        
+        print(validation)
 
         save_form(request, 'forgot_password_form', validation['fields'], validation['errors'])
         return redirect(request.session['back'])
@@ -168,13 +176,15 @@ class ForgotPasswordView(BaseView):
     def validate_get_data(self, request):
         response = {'status': 'valid'}
         token, email = gets(request.GET, 'token', 'email')
+        check = cache.get(f'create_new_password_to_{email}')
+        
         if (token is None) or (email is None):
             response['error'] = 'Informações inválidas'
-
-        check = cache.get(f'create_new_password_to_{email}')
-        if check is None:
-           response['error'] = 'O cache expirou'
+        elif check is None:
+           response['error'] = 'O token expirou'
         elif check['token'] != token:
+            print(token)
+            print(check['token'])
             response['error'] = 'token inválido'
 
         if response.get('error') is not None:
@@ -182,8 +192,3 @@ class ForgotPasswordView(BaseView):
 
         return response
         
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('login')

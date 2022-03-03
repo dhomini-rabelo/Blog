@@ -8,13 +8,11 @@ from django.utils.decorators import method_decorator
 
 
 
-# @method_decorator(cache_page(60 * 5)) 
 class CategoriesList(StaticPageGeneratorByTask):
     spa_group = 'main'
     spa_page = 'categories'
     
     def sp_get(self, request):
-        print(cache.get('latest_posts'))
         return render(request, 'categories/list_categories.html', self.tc)
 
 

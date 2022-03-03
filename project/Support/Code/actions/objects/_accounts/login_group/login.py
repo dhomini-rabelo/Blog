@@ -97,7 +97,7 @@ forgot_password_form_validation = {
     },
 
     'equal_fields': [
-        ['new_password', 'new_confirm_password', 'As senhas são diferentes']
+        ['new_password', 'confirm_new_password', 'As senhas são diferentes']
     ],
 
     'keys_order': [
