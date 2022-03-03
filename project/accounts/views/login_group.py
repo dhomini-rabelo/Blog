@@ -1,4 +1,5 @@
-from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message
+from random import randint
+from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message, register_email_confirmation_form
 from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save
 from Support.Code.actions._accounts.login_group.login import get_token_for_user
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
@@ -7,8 +8,9 @@ from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete
 from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save, validate_login
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
+from Support.Code.actions.Support.utils.main import if_none
 from django.shortcuts import render, redirect
-from ..tasks.email import send_email_with_celery
+from ..tasks.email import send_email_with_code
 
 
 class RegisterView(BaseView):
@@ -22,10 +24,12 @@ class RegisterView(BaseView):
         validation = validate_form(request.POST, register_form_validation)
 
         if validation['status'] == 'valid':
-            create_user_with_email(validation['fields'])
+            request.session['register_data'] = validation['fields']
+            first_code = f'{randint(100000, 999999)}'
+            request.session['register_email_codes'] = [first_code]
             delete_used_form(request, 'register')
-            save_message(request, register_save_message)
-            return redirect('login')
+            send_email_with_code.delay(validation['fields']['email'], first_code, 'register')
+            return redirect('register_email_confirmation')
         else:
             save_form(request, 'register', validation['fields'], validation['errors'])
             save_javascript_use(request)
@@ -33,11 +37,56 @@ class RegisterView(BaseView):
 
 
 
+class RegisterEmailConfirmationView(BaseView):
+
+    def get(self, request):
+        if self.is_not_verified(request): return redirect('register')
+        
+        self.tc['form'] = get_form(request, form_nickname='register_email_confirmation', form_data=register_email_confirmation_form)
+        self.tc['email'] = request.session['register_data']['email']
+        self.tc['resend'] = if_none(request.session.get('register_email_codes_resend'), '')
+        request.session['register_email_codes_resend'] = None
+        return render(request, 'accounts/login_group/register_email_confirmation.html', self.tc)
+
+    def post(self, request):
+        if self.is_not_verified(request): return redirect('register')
+        
+        if request.POST.get('code') in request.session['register_email_codes']:
+            create_user_with_email(request.session['register_data'])
+            save_message(request, register_save_message)
+            request.session['register_email_codes'] = None
+            request.session['register_data'] = None
+            return redirect('login')
+        
+        save_form(request, 'register_email_confirmation', {'code': ''}, {'code': 'Código inválido'})
+        return redirect('register_email_confirmation')
+    
+    def is_not_verified(self, request):
+        if (request.session.get('register_email_codes') is None) or (request.session.get('register_data') is None):
+            return True
+        return False
+    
+    
+    
+def send_new_email_for_register(request):
+    if (request.session.get('register_email_codes') is None) or (request.session.get('register_data') is None):
+        return redirect('register')
+    new_code = f'{randint(100000, 999999)}'
+    request.session['register_email_codes'].append(new_code)
+    request.session['register_email_codes_resend'] = 'EMAIL FOI REENVIADO !!!'
+    request.session.save()
+    send_email_with_code.delay(request.session['register_data']['email'], new_code, 'register_resend')
+    return redirect('register_email_confirmation')
+    
+    
+    
+    
+    
 
 class LoginView(BaseView):
 
     def get(self, request):
-        send_email_with_celery.delay('tyrundeyou@gmail.com')
+        # send_email_with_celery.delay('tyrundeyou@gmail.com')
         self.tc['form'] = get_form(request, form_nickname='login', form_data=login_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         self.tc['messages'] = load_messages(request, 'success_register', 'success_change_password')

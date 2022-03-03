@@ -11,6 +11,8 @@ from .views.account_group.suggestions import *
 # contas/
 urlpatterns = [
     path('cadastro/', no_login_required(RegisterView.as_view()), name='register'),
+    path('cadastro/confirmacao-de-email', no_login_required(RegisterEmailConfirmationView.as_view()), name='register_email_confirmation'),
+    path('cadastro/confirmacao-de-email/reenviar', no_login_required(send_new_email_for_register), name='send_new_email_for_register'),
     path('login/', no_login_required(LoginView.as_view()), name='login'),
     path('logout/', login_required(logout_view), name='logout'),
     path('minha-conta/', AccountView.as_view(), name='account_page'),

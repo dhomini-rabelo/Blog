@@ -26,6 +26,25 @@ register_form = {
 }
 
 
+register_email_confirmation_form = {
+    
+    'fields': [
+        {'name': 'code', 'label': 'Código de verificação'} 
+    ],
+    
+    'html_structure': """
+    <div class="field-group">
+        <label for="id_[name]">[label]:</label>
+        <input type="text" name="[name]" id="id_[name]" placeholder="Digite o código" inputmode="numeric">
+        <div class="error"></div>
+    </div>
+    """,
+    
+    'changes': [('[name]', 'name'), ('[label]', 'label')]
+    
+}
+
+
 register_form_validation = {
 
     'form_base': {

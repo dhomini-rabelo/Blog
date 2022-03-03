@@ -16,6 +16,9 @@ form{
 .shortcut{
     margin: 1.2rem auto 1.6rem auto;
 }
+.form-message {
+    margin-block: 1.6rem;
+}
 @media(max-width: 625px) and (min-width: 450px){
     form {
         margin-bottom: 16vh;
