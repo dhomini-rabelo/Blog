@@ -16,6 +16,7 @@ urlpatterns = [
     path('login/', no_login_required(LoginView.as_view()), name='login'),
     path('nova-senha/informar-email', no_login_required(ForgotPasswordEmailView.as_view()), name='forgot_password_email'),
     path('nova-senha/alterar-senha', no_login_required(ForgotPasswordView.as_view()), name='forgot_password'),
+    path('nova-senha/email-confirmado', no_login_required(forgot_valid_email), name='forgot_valid_email'),
     path('logout/', login_required(logout_view), name='logout'),
     path('minha-conta/', AccountView.as_view(), name='account_page'),
     path('minha-conta/post/criar', login_required(CreatePostsAccountView.as_view()), name='account_group_post_create'),

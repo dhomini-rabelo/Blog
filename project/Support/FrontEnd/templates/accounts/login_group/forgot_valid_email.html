@@ -1,0 +1,26 @@
+{% extends 'base/login_group.html' %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/apps/accounts/login_group/login.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div id="form">
+<div class="form-group">
+    <p class="form-message">Email verificado com sucesso, você receberá um link no seu email para trocar a senha.</p>        
+</div>
+<div class="shortcut center-r"><a href="{% url 'register' %}" class="link-login-group" destiny="register">Fazer Login</a>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script type="module" src="/static/scripts/managers/apps/accounts/login_group/simple.js"></script>
+{% endblock %}

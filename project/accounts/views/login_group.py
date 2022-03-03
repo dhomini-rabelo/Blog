@@ -1,6 +1,7 @@
+from django.core.cache import cache
 from random import randint
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message, register_email_confirmation_form
-from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save, forgot_password_email_form, forgot_password_form, forgot_password_email_form_validation 
+from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save, forgot_password_email_form, forgot_password_form, forgot_password_email_form_validation, forgot_password_form_validation
 from Support.Code.actions._accounts.login_group.login import get_token_for_user
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
 from Support.Code.actions.Support.django.views import BaseView
@@ -8,9 +9,12 @@ from Support.Code.actions.shortcuts.form.main import get_form, save_form, delete
 from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.django.auth import login, create_user_with_email, logout, create_login_save, validate_login
 from Support.Code.actions.Support.django.messages.main import save_message, load_messages
-from Support.Code.actions.Support.utils.main import if_none
+from Support.Code.actions.Support.utils.main import gets, if_none
 from django.shortcuts import render, redirect
-from ..tasks.email import send_email_with_code
+from ..tasks.email import send_email_with_code, send_email_for_create_new_password
+from Support.Code.actions.Support.django.auth import change_password
+from Support.Code.actions.objects._accounts.account_group.edit.password import password_message
+
 
 
 class RegisterView(BaseView):
@@ -124,28 +128,60 @@ class ForgotPasswordEmailView(BaseView):
         
         if validation['status'] == 'valid':
             token = get_token_for_user(validation['fields']['email'])['access']
-            send_email_for_create_new_password(validation['fields']['email'], token)
-            #! create token time
-            #! message
-            #! redirecione a tela que mostra messgem
+            send_email_for_create_new_password.delay(validation['fields']['email'], token)
+            return redirect('forgot_valid_email')
         
         save_form(request, 'forgot_password_email_form', validation['fields'], validation['errors'])
         return redirect('forgot_password_email')
-    
+
+
+def forgot_valid_email(request):
+    return render(request, 'accounts/login_group/forgot_valid_email.html')
 
 
 class ForgotPasswordView(BaseView):
     
     def get(self, request):
+        validation = self.validate_get_data(request)
+
+        if validation['status'] == 'invalid':
+            self.tc['message'] = validation['error']
+            return render(request, 'accounts/login_group/simple.html', self.tc)
+            
+        request.session['back'] = request.get_full_path()
         self.tc['form'] = get_form(request, form_nickname='forgot_password_form', form_data=forgot_password_form)
         return render(request, 'accounts/login_group/forgot_password.html', self.tc)
     
     
     def post(self, request):
-        #! ver token time
-        #! Validar as senhas
-        pass
+        validation = validate_form(request.POST, forgot_password_form_validation)
 
+
+        if validation['status'] == 'valid':
+            change_password(request, 'new_password')
+            save_message(request, password_message)
+            return redirect('login')
+
+        save_form(request, 'forgot_password_form', validation['fields'], validation['errors'])
+        return redirect(request.session['back'])
+
+    def validate_get_data(self, request):
+        response = {'status': 'valid'}
+        token, email = gets(request.GET, 'token', 'email')
+        if (token is None) or (email is None):
+            response['error'] = 'Informações inválidas'
+
+        check = cache.get(f'create_new_password_to_{email}')
+        if check is None:
+           response['error'] = 'O cache expirou'
+        elif check['token'] != token:
+            response['error'] = 'token inválido'
+
+        if response.get('error') is not None:
+            response['status'] = 'invalid'
+
+        return response
+        
 
 
 def logout_view(request):

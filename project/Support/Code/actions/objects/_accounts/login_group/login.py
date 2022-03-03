@@ -38,16 +38,16 @@ forgot_password_email_form = {
     </div>
     """,
     
-    'changes': [('[name]', 'name'), ('[label]', 'label')]
-    
+    'changes': [('[name]', 'name'), ('[label]', 'label')],
+
 }
 
 
 forgot_password_form = {
     
     'fields': [
-        {'name': 'new_password', 'label': 'Nova senha:', 'placeholder': 'Digite sua nova senha'},
-        {'name': 'confirm_new_password', 'label': 'Confirmar senha:', 'placeholder': 'Corfirme sua nova senha'},
+        {'name': 'new_password', 'label': 'Nova senha', 'placeholder': 'Digite sua nova senha'},
+        {'name': 'confirm_new_password', 'label': 'Confirmar senha', 'placeholder': 'Corfirme sua nova senha'},
     ],
     
     'html_structure': """
@@ -78,6 +78,31 @@ forgot_password_email_form_validation = {
             ['email', [('exists', User, 'email')]],
         ]
     },
+
+    'adapt_message_errors': {
+        'email': [
+            ['Este campo não foi cadastrado', 'Email não cadastrado']
+        ]
+    },
+
+}
+
+forgot_password_form_validation = {
+
+    'form_base': {
+        'fields': [
+            ['new_password', [('min_length', 8), ('max_length', 256)]], 
+            ['confirm_new_password'],
+        ]
+    },
+
+    'equal_fields': [
+        ['new_password', 'new_confirm_password', 'As senhas são diferentes']
+    ],
+
+    'keys_order': [
+        'equal_fields',    
+    ],  
 
 }
 
