@@ -1,5 +1,4 @@
 from django.core.cache import cache
-
 from posts.models import Post
 
 
@@ -11,7 +10,7 @@ def create_post_api_data(context):
             'text': post.text,
         }
         
-    cache.set('posts_for_spa', posts_data, None)
+    cache.set('posts_api', posts_data, None)
     
     
     
