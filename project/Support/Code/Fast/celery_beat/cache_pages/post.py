@@ -6,7 +6,8 @@ def create_cache_page_for_posts(context):
     for post in context['posts']:
         data[str(post.code)] = {
             'title': post.title,
+            'img': post.img.url,
             'text': post.text,
         }
         
-    cache.set('cache_page__post', data, None)
+    cache.set('cache_page__posts', data, None)

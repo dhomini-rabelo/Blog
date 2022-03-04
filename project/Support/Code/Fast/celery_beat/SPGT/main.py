@@ -49,7 +49,7 @@ def construct_subcategories_data(context):
     
     for category in context_categories:
         subcategories = context_subcategories.filter(category=category)
-        subcategories_data[category.name] = [{'name': subcategory.name, 'img': subcategory.name} for subcategory in subcategories]
+        subcategories_data[category.name] = [{'name': subcategory.name, 'img': subcategory.img.url} for subcategory in subcategories]
         
     return subcategories_data
         

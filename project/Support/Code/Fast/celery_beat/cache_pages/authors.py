@@ -10,8 +10,9 @@ def create_cache_page_for_authors(context):
         posts = context['posts'].filter(author=author)
         data[str(author.slug)] = [{
             'title': post.title,
+            'img': post.img.url,
             'description': post.description,
-            'category': post.category,
+            'category': post.category.name,
             'date': show_date(post.date),
         } for post in posts]
         

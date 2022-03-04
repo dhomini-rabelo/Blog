@@ -37,7 +37,7 @@ class PostsListByAuthorApi(APIView):
     
     @method_decorator(cache_page(60 * 10))
     def get(self, request, author_slug):
-        data = cache.get('cache_page__subcategories')
+        data = cache.get('cache_page__authors')
         posts = data.get(str(author_slug))
         if posts is None: return Response({'error': 'invalid body'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(posts, status=status.HTTP_200_OK)

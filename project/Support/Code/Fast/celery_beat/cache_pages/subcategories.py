@@ -7,11 +7,12 @@ def create_cache_page_for_subcategories(context):
     data = {}
     
     for subcategory in context['subcategories']:
-        posts = context['posts'].filter(sub_categories__contains=subcategory)
+        posts = context['posts'].filter(sub_categories__id=subcategory.id)
         data[str(subcategory.slug)] = [{
             'title': post.title,
+            'img': post.img.url,
             'description': post.description,
-            'category': post.category,
+            'category': post.category.name,
             'date': show_date(post.date),
         } for post in posts]
         
