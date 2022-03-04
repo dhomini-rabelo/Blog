@@ -9,7 +9,8 @@ import { addContent } from './utils.js'
 
 
 export function changeUrl(title, newUrl) {
-    window.history.pushState({}, "", `${newUrl}`)
+    localStorage.setItem('back', window.location.pathname)
+    window.history.pushState(null, "", `${newUrl}`)
     document.title = title
 }
 

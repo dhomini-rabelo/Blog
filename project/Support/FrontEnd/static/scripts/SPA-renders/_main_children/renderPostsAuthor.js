@@ -3,9 +3,22 @@ import { changeUrl } from '../core/main.js'
 import { addStyles, removeStyles } from './../core/styles.js'
 import { fetchGet } from '../../features/core/api.js'
 import { renderPosts } from './support/render.js'
+import { active as activeRenderPostPage } from './renderPostPage.js'
 
 
-document.querySelector('#box-author').addEventListener('click', renderPostsAuthor)
+active()
+
+document.querySelector('.mobile-footer .navigation#authors-link').addEventListener('click', active)
+document.querySelector('.pc-link-navigation[destiny="authors"]').addEventListener('click', active)
+
+function active() {
+    let authorsBox = document.querySelectorAll('#box-author')
+    authorsBox.forEach((box) => {
+        box.removeEventListener('click', renderPostsAuthor)
+        box.addEventListener('click', renderPostsAuthor)
+    })
+}
+
 
 
 export async function renderPostsAuthor(e){
@@ -28,5 +41,7 @@ export async function renderPostsAuthor(e){
     removeStyles(['/static/styles/apps/authors/list_authors.css'])
     addStyles('.styles-individual', ['/static/styles/apps/posts/index.css'])
 
-    setTimeout(endAnimation, 200)
+    activeRenderPostPage()
+
+    setTimeout(endAnimation, 350)
 }

@@ -1,7 +1,23 @@
 import { startAnimation, endAnimation } from '../../features/components/main/loadAnimation.js'
 import { changeUrl } from './../core/main.js'
-import { renderPostsSubcategory } from './renderPostsSubcategory.js'
-document.querySelector('#box-category').addEventListener('click', loadSubcategoriesList)
+import { active as activeRenderPostsSubcategory } from './renderPostsSubcategory.js'
+
+
+active()
+
+document.querySelector('.mobile-footer .navigation#categories-link').addEventListener('click', active)
+document.querySelector('.pc-link-navigation[destiny="categories"]').addEventListener('click', active)
+
+function active() {
+    let CategoriesBox = document.querySelectorAll('#box-category')
+    CategoriesBox.forEach((box) => {
+        box.removeEventListener('click', loadSubcategoriesList)
+        box.addEventListener('click', loadSubcategoriesList)
+    })
+}
+
+
+
 
 
 function loadSubcategoriesList(e) {
@@ -31,7 +47,6 @@ function loadSubcategoriesList(e) {
         })
     container.innerHTML = html
     title.innerHTML = box.querySelector('.box-title').innerHTML
-    document.querySelector('#box-subcategory').removeEventListener('click', renderPostsSubcategory)
-    document.querySelector('#box-subcategory').addEventListener('click', renderPostsSubcategory)
-    setTimeout(endAnimation, 200)
+    activeRenderPostsSubcategory()
+    setTimeout(endAnimation, 350)
 }

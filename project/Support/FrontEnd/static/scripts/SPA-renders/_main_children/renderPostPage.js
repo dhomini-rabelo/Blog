@@ -3,7 +3,22 @@ import { changeUrl } from '../core/main.js'
 import { addStyles, removeStyles } from './../core/styles.js'
 import { fetchGet } from '../../features/core/api.js'
 
-document.querySelector('#box-post').addEventListener('click', renderPostPage)
+
+
+active()
+
+document.querySelector('.mobile-footer .navigation#posts-link').addEventListener('click', active)
+document.querySelector('.pc-link-navigation[destiny="posts"]').addEventListener('click', active)
+
+
+export function active() {
+    let postsBox = document.querySelectorAll('#box-post')
+    postsBox.forEach((post) => {
+        post.removeEventListener('click', renderPostPage)
+        post.addEventListener('click', renderPostPage)
+    })
+}
+
 
 
 export async function renderPostPage(e){
@@ -33,5 +48,5 @@ export async function renderPostPage(e){
     removeStyles(['/static/styles/apps/posts/index.css'])
     addStyles('.styles-individual', ['/static/styles/apps/posts/post.css'])
 
-    setTimeout(endAnimation, 200)
+    setTimeout(endAnimation, 350)
 }
