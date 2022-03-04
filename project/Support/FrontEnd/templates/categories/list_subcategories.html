@@ -8,22 +8,7 @@
 
 
 {% block content %}
-
-
-<div class="page-container flex-pass">
-    <h1 class="page-title">Programação</h1>
-    <div class="main-container-f w-se-x">
-        {% for subcategory in subcategories %}
-        <a href="/" class="box">
-            <div class="box-body center-c">
-                <img src="{{subcategory.img}}" alt="post-img" class="box-img">
-                <h2 class="box-title">{{subcategory.name}}</h2>
-            </div>
-        </a>
-        {% endfor %}
-        
-    </div>
-</div>
+{{current_cache_page}}
 {% endblock %}
 
 

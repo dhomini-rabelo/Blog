@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
-from Support.Code.Fast.StaticPages.SPGT import StaticPageGeneratorByTask
+from Support.Code.Fast.StaticPages.SPGT import GroupSpa, GroupChildrenSpa
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.views.generic import View
@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from Support.Code.actions.Support.django.views import BaseView
 
 
-class AuthorsList(StaticPageGeneratorByTask):
+class AuthorsList(GroupSpa):
     spa_group = 'main'
     spa_page = 'authors'
 
@@ -18,12 +18,11 @@ class AuthorsList(StaticPageGeneratorByTask):
 
 
 
-class AuthorView(BaseView):
-    def get(self, request, author_slug):
+class AuthorView(GroupChildrenSpa):
+    def sp_get(self, request, author_slug):
         authors_posts = cache.get('cache_page__authors')
-        posts = authors_posts.get(str(author_slug))
-        if posts is None: raise Http404
-        print(posts)
-        self.tc['posts'] = posts
+        page = authors_posts.get(str(author_slug))
+        if page is None: raise Http404
+        self.tc['current_cache_page'] = page
         return render(request, 'authors/author_posts.html', self.tc)
     

@@ -10,7 +10,7 @@ def create_post_api_data(context):
             'text': post.text,
         }
         
-    cache.set('posts_api', posts_data, None)
+    cache.set('post_api', posts_data, None)
     
     
     

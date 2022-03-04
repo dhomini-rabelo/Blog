@@ -19,7 +19,7 @@ from Support.Code.actions.objects._accounts.account_group.edit.password import p
 
 class RegisterView(BaseView):
     
-    def get(self, request):
+    def get(self, request): 
         self.tc['form'] = get_form(request, form_nickname='register', form_data=register_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         return render(request, 'accounts/login_group/register.html', self.tc)

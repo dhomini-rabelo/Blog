@@ -13,7 +13,7 @@ class PostApi(APIView):
     
     @method_decorator(cache_page(60 * 10))
     def get(self, request, code):
-        data = cache.get('posts_api')
+        data = cache.get('post_api')
         post = data.get(str(code))
         if post is None: return Response({'error': 'invalid body'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(post, status=status.HTTP_200_OK)
@@ -25,7 +25,7 @@ class PostsListBySubcategoryApi(APIView):
     
     @method_decorator(cache_page(60 * 10))
     def get(self, request, subcategory_slug):
-        data = cache.get('cache_page__subcategories')
+        data = cache.get('subcategory_api')
         posts = data.get(str(subcategory_slug))
         if posts is None: return Response({'error': 'invalid body'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(posts, status=status.HTTP_200_OK)
@@ -37,7 +37,7 @@ class PostsListByAuthorApi(APIView):
     
     @method_decorator(cache_page(60 * 10))
     def get(self, request, author_slug):
-        data = cache.get('cache_page__authors')
+        data = cache.get('author_api') 
         posts = data.get(str(author_slug))
         if posts is None: return Response({'error': 'invalid body'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(posts, status=status.HTTP_200_OK)
