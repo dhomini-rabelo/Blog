@@ -7,7 +7,7 @@ from django.db.models import (Model, CharField, DateTimeField, TextField, EmailF
 
 class User(AbstractUser):
     name = CharField(max_length=256, blank=True, null=True, verbose_name='Nome')
-    slug = SlugField(max_length=256, blank=True, null=True, verbose_name='Slug')
+    slug = SlugField(max_length=256, unique=True, blank=True, null=True, verbose_name='Slug')
     photo = ImageField(upload_to='users/%Y/%m/%d', blank=True, null=True, verbose_name='Foto')
     my_static_pages = JSONField(blank=True, null=True)
 

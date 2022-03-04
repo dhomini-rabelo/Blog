@@ -4,7 +4,7 @@ from django.db.models.fields import SlugField
 
 class Category(Model):
     name = CharField(max_length=256, unique=True,verbose_name='Nome')
-    slug = SlugField(max_length=256, verbose_name='Url')
+    slug = SlugField(max_length=256, unique=True, verbose_name='Url')
     img = ImageField(upload_to='categories/%Y/%m/%d', blank=True, null=True, verbose_name='Imagem')
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Category(Model):
 
 class SubCategory(Model):
     name = CharField(max_length=256, unique=True, verbose_name='Nome')
-    slug = SlugField(max_length=256, verbose_name='Url')
+    slug = SlugField(max_length=256, unique=True, verbose_name='Url')
     img = ImageField(upload_to='sub_categories/%Y/%m/%d', blank=True, null=True, verbose_name='Imagem')
     category = ForeignKey(Category, on_delete=CASCADE, related_name='sub_categories', verbose_name='Categoria')
 
