@@ -3,5 +3,5 @@ from .views import *
 
 urlpatterns = [
     path('', LatestPosts.as_view(), name='latest_posts'),
-    path('posts/post/123456', PostView.as_view(), name='post'),
+    path('posts/post/<int:code>', PostView.as_view(), name='post'),
 ]

@@ -22,8 +22,14 @@
     text-align: center;
     margin: 2rem 0;
 }
-
-
+.post-img {    
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+.post-img img {
+    max-width: 90vw;
+    object-fit: cover;
+}
 @media(max-width: 768px){
     #post{
         width: 85vw;

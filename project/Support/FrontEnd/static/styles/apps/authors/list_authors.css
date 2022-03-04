@@ -8,13 +8,15 @@
 #categories-link {
     border-right: 0.5px solid #ffc746;
 }
-.box-body{
-    width: 14rem;
+.box{
+    width: 14rem !important;
+    max-width: 80vw;
 }
 .box-img{
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
+    max-width: 60vw;
 }
 @media(max-width: 450px){
     .box-body{

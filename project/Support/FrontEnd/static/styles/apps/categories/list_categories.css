@@ -8,3 +8,12 @@
 #posts-link {
     border-right: 0.5px solid #ffc746;
 }
+.box-img{
+    width: 10rem;
+    height: 10rem;
+    max-width: 70vw;
+}
+.box {
+    width: 16rem !important;
+    max-width: 90vw;
+}
