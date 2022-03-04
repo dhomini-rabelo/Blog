@@ -5,7 +5,7 @@ def get_posts_list_html(posts):
     html = ''
     for post in posts:
         html += f"""
-    <a href="/" class="box">
+    <a href="/posts/post/{post.code}" class="box" slug="{post.code}" id="box-post">
         <div class="box-body center-c">
             <img src="{post.img.url}" alt="post-img" class="box-img">
             <h2 class="post-title">{post.title}</h2>
@@ -22,11 +22,12 @@ def get_posts_list_html(posts):
 
 
 
-def get_categories_list_html(categories):
+def get_categories_list_html(categories, is_subcategory=False):
+    box_id = 'box-subcategory' if is_subcategory else 'box-category'
     html = ''
     for category in categories:
         html += f"""
-        <a href="/" class="box">
+        <a href="{category.get_path()}" class="box" slug="{category.slug}" id="{box_id}">
             <div class="box-body center-c">
                 <img src="{category.img.url}" alt="post-img" class="box-img">
                 <h2 class="box-title">{category.name}</h2>
@@ -43,7 +44,7 @@ def get_authors_list_html(authors):
     
     for author in authors:
         html += f"""
-        <a href="/" class="box">
+        <a href="/autores/{author.slug}" class="box" slug="{author.slug}" id="box-author">
             <div class="box-body center-c">
                 <img src="{author.photo.url}" alt="post-img" class="box-img">
                 <h2 class="box-title">{author.name}</h2>

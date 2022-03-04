@@ -14,6 +14,7 @@ def create_subcategory_api_data(context):
             'description': post.description,
             'category': post.category.name,
             'date': show_date(post.date),
+            'code': post.code,
         } for post in posts]
         
     cache.set('subcategory_api', data, None)

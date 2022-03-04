@@ -4,5 +4,7 @@ export let postsSPA = {
             '/static/styles/apps/posts/index.css',
     ],
     content: 'posts',
-    individualScripts: []
+    individualScripts: [
+        ['/static/scripts/SPA-renders/_main_children/renderPostPage.js', true]
+    ]
 }

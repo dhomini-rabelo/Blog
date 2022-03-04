@@ -11,7 +11,7 @@ def create_cache_page_for_list_subcategories(context):
     
     for category in context_categories:
         subcategories = context_subcategories.filter(category=category)
-        subcategories_html = get_categories_list_html(subcategories)
+        subcategories_html = get_categories_list_html(subcategories, True)
         page_html = html.replace('{{category.name}}', category.name).replace('{{subcategories}}', subcategories_html)
         data[str(category.slug)] = format_html(page_html)
         

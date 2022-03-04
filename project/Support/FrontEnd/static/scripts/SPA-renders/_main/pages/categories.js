@@ -4,5 +4,7 @@ export let categoriesSPA = {
         '/static/styles/apps/categories/list_categories.css',
     ],
     content: 'categories',
-    individualScripts: []
+    individualScripts: [
+        ['/static/scripts/SPA-renders/_main_children/renderSubcategories.js', true]
+    ]
 }

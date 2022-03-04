@@ -14,6 +14,7 @@ def create_author_api_data(context):
             'description': post.description,
             'category': post.category.name,
             'date': show_date(post.date),
+            'code': post.code,
         } for post in posts]
         
     cache.set('author_api', data, None)

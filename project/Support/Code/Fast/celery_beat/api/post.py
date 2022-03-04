@@ -8,6 +8,7 @@ def create_post_api_data(context):
     for post in context['posts']:
         posts_data[str(post.code)] = {
             'text': post.text,
+            'img': post.img,
         }
         
     cache.set('post_api', posts_data, None)

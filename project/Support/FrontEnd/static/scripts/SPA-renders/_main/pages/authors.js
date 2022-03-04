@@ -4,5 +4,7 @@ export let authorsSPA = {
         '/static/styles/apps/authors/list_authors.css',
     ],
     content: 'authors',
-    individualScripts: []
+    individualScripts: [
+        ['/static/scripts/SPA-renders/_main_children/renderPostsAuthor.js', true],
+    ]
 }
