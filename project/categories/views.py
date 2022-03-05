@@ -9,7 +9,7 @@ from Support.Code.actions.Support.django.views import BaseView
 
 
 
-class CategoriesList(GroupSpa):
+class CategoriesListView(GroupSpa):
     spa_group = 'main'
     spa_page = 'categories'
     
@@ -20,7 +20,7 @@ class CategoriesList(GroupSpa):
 
 
 
-class SubCategoriesList(GroupChildrenSpa):
+class SubCategoriesListView(GroupChildrenSpa):
     def sp_get(self, request, category_slug): 
         list_subcategories = cache.get('cache_page__list_subcategories')
         page = list_subcategories.get(str(category_slug))

@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 
 
-class LatestPosts(GroupSpa):
+class LatestPostsView(GroupSpa):
     spa_group = 'main'
     spa_page = 'posts'
     

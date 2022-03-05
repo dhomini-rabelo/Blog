@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from Support.Code.actions.Support.django.views import BaseView
 
 
-class AuthorsList(GroupSpa):
+class AuthorsListView(GroupSpa):
     spa_group = 'main'
     spa_page = 'authors'
 
@@ -18,7 +18,7 @@ class AuthorsList(GroupSpa):
 
 
 
-class AuthorView(GroupChildrenSpa):
+class AuthorPostsView(GroupChildrenSpa):
     def sp_get(self, request, author_slug):
         authors_posts = cache.get('cache_page__authors')
         page = authors_posts.get(str(author_slug))
