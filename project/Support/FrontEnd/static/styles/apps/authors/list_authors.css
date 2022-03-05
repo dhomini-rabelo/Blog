@@ -1,13 +1,3 @@
-#authors-link .mobile-navigation-text {
-    color: #ffc746;
-}
-#authors-link {
-    border-top: 0.2px solid #ffc746;
-    border-right: 0.5px solid #ffc746;
-}
-#categories-link {
-    border-right: 0.5px solid #ffc746;
-}
 .box{
     width: 14rem !important;
     max-width: 80vw;

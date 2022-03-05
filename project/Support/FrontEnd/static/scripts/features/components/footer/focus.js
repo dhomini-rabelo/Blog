@@ -82,15 +82,14 @@ function styleInFooter(focusLocal) {
         },
     }
     let action = actions[focusLocal]
+    let currentWeFooter = document.querySelector(address[focusLocal])
     if (typeof action === 'string'){
-        let weFooter = document.querySelector(address[focusLocal])
-        weFooter.setAttribute('style', action)
+        currentWeFooter.setAttribute('style', action)
     }else{
         for (let key of Object.keys(action)){
             let weFooter = document.querySelector(address[key])
             weFooter.setAttribute('style', action[key])
         }
-    }
-    let currentWeFooter = document.querySelector(address[focusLocal])
+    }    
     currentWeFooter.querySelector('.mobile-navigation-text').style.color = '#ffc746'
 }

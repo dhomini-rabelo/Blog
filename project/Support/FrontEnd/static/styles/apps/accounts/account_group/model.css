@@ -1,15 +1,6 @@
 .page-container {
     padding-inline: 5vw;
 }
-#authors-link{
-    border-right: 0.5px solid #ffc746;
-}
-#account-link {
-    border-top: 0.2px solid #ffc746;
-}
-#account-link .mobile-navigation-text {
-    color: #ffc746;
-}
 .init-mobile-container {
     display: none;
 }
