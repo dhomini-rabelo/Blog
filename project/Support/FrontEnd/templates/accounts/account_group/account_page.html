@@ -18,16 +18,16 @@
     {% endfor %}
     <div class="profile">
         <div class="profile-photo center-c">
-            <img src="{{ user.photo_path }}" alt="profile-photo-img" class="account-img">
+            <img src="{{ img }}" alt="profile-photo-img" class="account-img">
         </div>
         <div class="profile-data">
             <div class="basic-data">
                 <span class="basic-data-description">NOME</span>
-                <span class="basic-data-information">{{ user.name }}</span>
+                <span class="basic-data-information">{{ name }}</span>
             </div>
             <div class="basic-data">
                 <span class="basic-data-description">EMAIL</span>
-                <span class="basic-data-information">{{ user.email }}</span>
+                <span class="basic-data-information">{{ email }}</span>
             </div>
         </div>
     </div>

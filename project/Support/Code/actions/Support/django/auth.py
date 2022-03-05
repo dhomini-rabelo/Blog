@@ -1,6 +1,7 @@
 from accounts.models import User
 from ..forms.for_fields import set_slug
 from django.contrib import auth
+from django.utils.text import slugify
 from ..utils.main import gets
 from Support.Code.actions._accounts.login_group.login import get_aleatory_profile_photo, construct_user_my_static_page
 from Support.Code.actions.Support.utils.functions_dict import get_name
@@ -30,7 +31,7 @@ def login(request, user):
 def create_user_with_email(fields: dict):
     new_user = User(
         username=fields['email'], name=get_name(fields['name']),
-        email=fields['email'], slug=set_slug(fields['name']),
+        email=fields['email'], slug=slugify(fields['name']),
         photo=get_aleatory_profile_photo(), 
     )
     new_user.my_static_pages = construct_user_my_static_page(new_user)
@@ -64,16 +65,5 @@ def logout(request):
     auth.logout(request)
     
 
-def create_login_save(request, obj: dict):
-    request.session['user_save'] = {}
-    for key in obj.keys():
-        match str(type(obj[key])):
-
-            case "<class 'str'>":
-                attribute_name = obj[key]
-                request.session['user_save'][key] = getattr(request.user, attribute_name)
-                
-            case "<class 'function'>":
-                get_atribute_function: function = obj[key]
-                request.session['user_save'][key] = get_atribute_function(request.user)
-    request.session.save()
+def create_login_save(request, user):
+    request.session['user_save'] = user.my_static_pages

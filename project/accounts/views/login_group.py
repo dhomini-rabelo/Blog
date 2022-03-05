@@ -1,7 +1,7 @@
 from django.core.cache import cache
 from random import randint
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message, register_email_confirmation_form
-from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, user_save, forgot_password_email_form, forgot_password_form, forgot_password_email_form_validation, forgot_password_form_validation
+from Support.Code.actions.objects._accounts.login_group.login import login_form, login_form_validation, login_obj, forgot_password_email_form, forgot_password_form, forgot_password_email_form_validation, forgot_password_form_validation
 from Support.Code.actions._accounts.login_group.login import get_token_for_user
 from Support.Code.actions._accounts.login_group.js_use import save_javascript_use
 from Support.Code.actions.Support.django.views import BaseView
@@ -102,12 +102,12 @@ class LoginView(BaseView):
         if login_validation['status'] == 'valid' and login_proccess['status'] == 'valid':
             login(request, login_proccess['user'])
             delete_used_form(request, 'login')
-            create_login_save(request, user_save)
+            create_login_save(request, login_proccess['user'])
             response = redirect('latest_posts')
             token = get_token_for_user(request.user.email)
             response.set_cookie('access_token', token['access'], max_age=60*60*24*3)
             response.set_cookie('refresh_token', token['refresh'], max_age=60*60*24*365)
-            response.set_cookie('email', request.session['user_save']['email'], max_age=60*60*24*365)
+            response.set_cookie('email', request.session['user_save']['data']['email'], max_age=60*60*24*365)
             return response
         
 

@@ -17,9 +17,9 @@ class EditBasicAccountView(BaseView):
 
     def get(self, request):
         self.tc['user'] = request.session['user_save'].copy()
-        adapt_form_with_history(basic_form, [{'src': self.tc['user']['photo_path']}, {'value': self.tc['user']['name']}])
+        adapt_form_with_history(basic_form, [{'src': self.tc['user']['data']['photo_url']}, {'value': self.tc['user']['data']['name']}])
         self.tc['form'] = get_block_form(request, 'ag_edit_basic', basic_form, True)
-        return render(request, 'accounts/account_group/edit/basic.html', self.tc)
+        return render(request, 'accounts/account_group/edit/basic.html', self.tc) 
     
     def post(self, request):
         validation = validate_form(request.POST, basic_form_validation)

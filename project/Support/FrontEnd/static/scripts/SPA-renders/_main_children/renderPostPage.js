@@ -2,7 +2,7 @@ import { startAnimation, endAnimation } from '../../features/components/main/loa
 import { changeUrl } from '../core/main.js'
 import { addStyles, removeStyles } from './../core/styles.js'
 import { fetchGet } from '../../features/core/api.js'
-
+import { focusInFooter, loseFocusInFooter } from '../../features/components/footer/focus.js'
 
 
 active()
@@ -47,6 +47,8 @@ export async function renderPostPage(e){
 
     removeStyles(['/static/styles/apps/posts/index.css'])
     addStyles('.styles-individual', ['/static/styles/apps/posts/post.css'])
+    loseFocusInFooter()
+    focusInFooter()
 
     setTimeout(endAnimation, 350)
 }

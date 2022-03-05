@@ -60,9 +60,11 @@ def construct_user_my_static_page(user):
     user_static_page = {
         
         'data': {
-            'photo_url': user.photo.url,
             'name': user.name,
+            'slug': user.slug,
             'email': user.email,
+            'photo_url': user.photo.url,
+            'author': False,
         },
 
         'post': {
