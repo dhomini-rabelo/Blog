@@ -3,6 +3,7 @@ from posts.models import Post
 from categories.models import Category, SubCategory
 from accounts.models import User
 from ...models.cards import get_posts_list_html, get_authors_list_html, get_categories_list_html
+from django.utils.html import format_html
 
 
 def construct_posts_page(context):
@@ -14,7 +15,7 @@ def construct_posts_page(context):
     
     html += '</div></div>'
         
-    return html
+    return format_html(html)
 
 
 def construct_categories_page(context):
@@ -26,7 +27,7 @@ def construct_categories_page(context):
         
     html += '</div></div>'
         
-    return html
+    return format_html(html)
 
 
 def construct_authors_page(context):
@@ -38,7 +39,7 @@ def construct_authors_page(context):
     
     html += '</div></div>'
         
-    return html
+    return format_html(html)
 
 
 def construct_subcategories_data(context):

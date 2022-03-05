@@ -2,7 +2,6 @@ import {changeSourceImg} from './../../core/utils.js'
 
 export function focusInFooter(){
     let urlRest = window.location.pathname
-    let baseSource = '/media/assets/posts/mobile-footer'
     let sourceImg
     let endPosition = urlRest.indexOf('/', 1) === -1 ? 1 : urlRest.indexOf('/', 1) + 1
 
@@ -26,6 +25,7 @@ export function focusInFooter(){
 
     let ci = '/media/assets/posts/mobile-footer' // current image source
     changeSourceImg(`${ci}/${sourceImg}.png`, `${ci}/${sourceImg}-yellow.png`)
+    styleInFooter(urlRest.slice(0, endPosition))
 }
 
 
@@ -43,4 +43,54 @@ export function loseFocusInFooter() {
 
     })
 
+    noStyleInFooter()
+}
+
+function noStyleInFooter() {
+    let mobileNavigations = document.querySelectorAll('.navigation')
+    mobileNavigations.forEach((nav) => {
+        nav.setAttribute('style', '')
+        nav.querySelector('.mobile-navigation-text').setAttribute('style', '')
+    })
+}
+
+
+function styleInFooter(focusLocal) {
+    let st = 'border-top: 0.2px solid #ffc746;'
+    let sr = 'border-right: 0.5px solid #ffc746;'
+    let address = {
+        '/': '#posts-link',
+        '/posts/': '#posts-link',
+        '/categorias/': '#categories-link',
+        '/autores/': '#authors-link',
+        '/minha-conta/': '#account-link',
+    }
+    let actions = {
+        '/': `${st} ${sr}`,
+        '/posts/': `${st} ${sr}`,
+        '/categorias/': {
+            '/posts/': sr,
+            '/categorias/': `${st} ${sr}`,
+        },
+        '/autores/': {
+            '/categorias/': sr,
+            '/autores/': `${st} ${sr}`,
+        },
+        '/minha-conta/': {
+            '/minha-conta/': st,
+            '/autores/': sr,
+        },
+    }
+    let action = actions[focusLocal]
+    if (typeof action === 'string'){
+        let weFooter = document.querySelector(address[focusLocal])
+        weFooter.setAttribute('style', action)
+    }else{
+        for (let key of Object.keys(action)){
+            let weFooter = document.querySelector(address[key])
+            weFooter.setAttribute('style', action[key])
+        }
+    }
+    let currentWeFooter = document.querySelector(address[focusLocal])
+    currentWeFooter.querySelector('.mobile-navigation-text').style.color = '#ffc746'
 }

@@ -1,6 +1,6 @@
 from .main import get_main_spa, update_main_spa
 from django.core.cache import cache
-
+from json import dumps
 
 
 def create_static_pages(context):
@@ -9,6 +9,7 @@ def create_static_pages(context):
     }
     
     cache.set('SPGT', spa_data, None)
+    cache.set('SPGT_json', dumps(spa_data), None)
     
 
 
@@ -37,6 +38,7 @@ def update_static_pages():
         cache.set_many({
             
             'SPGT': new_spa_data,
+            'SPGT_json': dumps(new_spa_data),
             'updated': {
                 **updated_obj,
                 **new_updated_obj,
@@ -44,6 +46,7 @@ def update_static_pages():
 
         })
         cache.touch('SPGT', None)
+        cache.touch('SPGT_json', None)
         cache.touch('updated', None)
         
     return {'updated': updated_spa, 'not_updated': not_updated_spa}
