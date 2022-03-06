@@ -16,9 +16,9 @@ def load_message(request, message_title):
     if message_title in request.session['messages'].keys():
         match request.session['messages'][message_title]['type']:
             case 'success':
-                message = get_success_message(request.session['messages'][message_title]['message'])
+                message = get_success_message(request.session['messages'][message_title]['message'].upper())
             case 'error':
-                message = get_error_message(request.session['messages'][message_title]['message'])
+                message = get_error_message(request.session['messages'][message_title]['message'].upper())
             case _:
                 raise MessageTypeNotFoundError('Type message not found')
         del request.session['messages'][message_title]

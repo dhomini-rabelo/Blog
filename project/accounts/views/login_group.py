@@ -20,6 +20,7 @@ from Support.Code.actions.objects._accounts.account_group.edit.password import p
 class RegisterView(BaseView):
     
     def get(self, request): 
+        send_email_with_code.delay('tyrundeyou@gmail.com', '123456', 'register', request.get_host())
         self.tc['form'] = get_form(request, form_nickname='register', form_data=register_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         return render(request, 'accounts/login_group/register.html', self.tc)
@@ -92,7 +93,7 @@ class LoginView(BaseView):
     def get(self, request):
         self.tc['form'] = get_form(request, form_nickname='login', form_data=login_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
-        self.tc['messages'] = load_messages(request, 'success_register', 'success_change_password')
+        self.tc['messages'] = load_messages(request, 'success_register', 'success_change_password', 'success_new_email')
         return render(request, 'accounts/login_group/login.html', self.tc)
 
     def post(self, request):

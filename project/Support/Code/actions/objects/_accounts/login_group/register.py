@@ -62,7 +62,7 @@ register_form_validation = {
     
     'adapt_message_errors': {
         'email': [
-            ['Este campo já está em uso', 'Email já está em uso']
+            ['Este campo já está em uso', 'Email já foi cadastrado']
         ]
     },
     

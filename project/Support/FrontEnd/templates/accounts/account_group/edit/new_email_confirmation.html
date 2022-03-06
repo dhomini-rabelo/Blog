@@ -1,0 +1,29 @@
+{% extends 'base/login_group.html' %}
+
+
+{% block links %}
+<link rel="stylesheet" href="/static/styles/apps/accounts/login_group/login.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div id="form">
+<div class="form-group">
+    <p class="form-message">Confirme seu email (<strong>{{email}}</strong>) para finalizar o processo. <a href="{% url 'send_new_email_for_new_email' %}" style="text-decoration: revert;">reenviar.</a>
+    {{resend}}
+    </p>
+    {{ form }}
+    {% csrf_token %}
+    <button class="bl-wh" type="submit"><span id="submit-span">CONFIRMAR</span></button>          
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script type="module" src="/static/scripts/managers/apps/accounts/login_group/registerEmailResend.js"></script>
+{% endblock %}

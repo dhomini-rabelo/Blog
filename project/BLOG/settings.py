@@ -219,7 +219,7 @@ EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 DEFAULT_FROM_EMAIL = config('DEFAULT_EMAIL')
 
-if not DEBUG:
+if False:
     INSTALLED_APPS += [
         "debug_toolbar",
     ]

@@ -2,4 +2,17 @@
 
 {% block moreLinks %}
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/edit/email.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/form.css">
+<link rel="stylesheet" href="/static/styles/components/error.css">
+{% endblock %}
+
+{% block mainContent %}
+<h1 class="ag-title">Email</h1>
+<form method="POST" class="ag-form center-c flex-pass" id="new_email_form">
+    {{ form }}
+    {% csrf_token %}
+    <div class="btn-save">
+        <button class="bl-wh" type="submit"><span id="submit-span">SOLICITAR</span></button>
+    </div>
+</form>
 {% endblock %}

@@ -28,5 +28,7 @@ urlpatterns = [
     path('minha-conta/sugestao/sub-categorias', login_required(SuggestionSubCategoriesAccountView.as_view()), name='account_group_suggestions_sub_categories'),
     path('minha-conta/editar/informacoes-basicas', login_required(EditBasicAccountView.as_view()), name='account_group_edit_basic'),
     path('minha-conta/editar/email', login_required(EditEmailAccountView.as_view()), name='account_group_edit_email'),
-    path('minha-conta/editar/senha', login_required(EditPasswordAccountView.as_view()), name='account_group_edit_password'),
+    path('minha-conta/editar/email/novo-email', login_required(NewEmailConfirmationView.as_view()), name='new_email_confirmation'),
+    path('minha-conta/editar/email/novo-email/reenviar', login_required(send_new_email_for_new_email), name='send_new_email_for_new_email'),
+    path('minha-conta/editar/senha', login_required(EditPasswordAccountView.as_view()), name='account_group_edit_password'), 
 ]
