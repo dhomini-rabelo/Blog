@@ -3,14 +3,18 @@
 {% block moreLinks %}
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/suggestions/categories.css">
 <link rel="stylesheet" href="/static/styles/components/error.css">
+<link rel="stylesheet" href="/static/styles/components/messages.css">
 {% endblock %}
 
 {% block mainContent %}
+{{ message }}
 <h1 class="ag-title">Minhas sugestões</h1>
 <div class="suggestions flex-pass">
     <div class="add-suggestion">
         <span><i class="fa-solid fa-plus"></i> Adicionar</span>
     </div>
+    {% csrf_token %}
+    {{suggestions}}
 
     <!-- <div class="suggestion-block center-c reject">
         <div class="suggestion-block-top sb-x">

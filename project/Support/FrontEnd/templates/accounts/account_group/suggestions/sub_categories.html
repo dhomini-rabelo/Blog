@@ -2,14 +2,17 @@
 
 {% block moreLinks %}
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/suggestions/sub_categories.css">
+<link rel="stylesheet" href="/static/styles/components/messages.css">
 {% endblock %}
 
 {% block mainContent %}
+{{ message }}
 <h1 class="ag-title">Minhas sugestões</h1>
 <div class="suggestions flex-pass">
     <div class="add-suggestion">
         <span><i class="fa-solid fa-plus"></i> Adicionar</span>
     </div>
+    {{suggestions}}
 </div>
 {% endblock %}
 

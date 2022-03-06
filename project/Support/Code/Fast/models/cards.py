@@ -59,28 +59,40 @@ def get_suggestions_list_html(suggestions):
     html = ''
     
     for suggestion in suggestions:
-        
-        match suggestion.state:
-            case 'invalid' | 'reject':
-                status_text = 'Recusado'
-            case 'loading':
-                status_text = 'Em andamento'
-            case 'accept':
-                status_text = 'Aceito'
+        html+= get_suggestion_html(suggestion.name, suggestion.state)
+    
+    return html
+
+
+
+def get_suggestion_html(suggestion, state):
+    match state:
+        case 'invalid':
+            status_text = 'Inválido'
+            img = 'close'
+        case 'reject':
+            status_text = 'Recusado'
+            img = 'close'
+        case 'loading':
+            status_text = 'Em andamento'
+            img = 'time'
+        case 'accept':
+            status_text = 'Aceito'
+            img = 'check'
                 
-        suggestion_state = suggestion.state if suggestion.state != 'invalid' else 'reject'
-                
-        html += f"""
-    <div class="suggestion-block center-c {suggestion_state}">
-        <div class="suggestion-block-top sb-x">
-            <span class="suggestion-name">{suggestion.name}</span>
-            <div class="suggestion-status-color"><img src="/media/assets/account_group/suggestions/close.png" alt="" class="suggestion-img"></div>
-        </div>
-        <div class="suggestion-block-bottom sb-x">
-            <span>Status</span>
-            <span>{status_text}</span>
-        </div>
+    suggestion_state = state if state != 'invalid' else 'reject'
+            
+    html = f"""
+<div class="suggestion-block center-c {suggestion_state}">
+    <div class="suggestion-block-top sb-x">
+        <span class="suggestion-name">{suggestion}</span>
+        <div class="suggestion-status-color"><img src="/media/assets/account_group/suggestions/{img}.png" alt="" class="suggestion-img"></div>
     </div>
-        """
+    <div class="suggestion-block-bottom sb-x">
+        <span>Status</span>
+        <span>{status_text}</span>
+    </div>
+</div>
+    """
     
     return html
