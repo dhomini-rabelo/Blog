@@ -1,8 +1,9 @@
-from Support.Code.actions.Support.django.messages.main import save_message
+from Support.Code.actions.Support.django.messages.main import load_messages, save_message
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.Support.forms.checks import check_is_logged
 from django.shortcuts import render, redirect
 from Support.Code.actions.Support.forms.main import validate_form
+from Support.Code.actions._accounts.account_group.posts.create import create_draft_post
 from Support.Code.actions.shortcuts.form.main import get_block_form, save_block_form
 from Support.Code.django.forms.summer_form import SummerFieldForm
 
@@ -53,7 +54,7 @@ class ListDraftsAccountView(BaseView):
 class EditPostsAccountView(BaseView):
 
     def get(self, request, code):
-        self.tc['user'] = request.user
+        self.tc['message'] = load_messages(request, 'success_new_draft_post_created')
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
 

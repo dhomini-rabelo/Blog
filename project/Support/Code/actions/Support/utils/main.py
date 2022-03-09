@@ -52,3 +52,10 @@ def get_age(date: str):
     difference = today_date - input_date
     return int(difference.days/365.25)
 
+
+
+def jsObj(keys: set[str], original_data: dict[str, str]):
+    new_data = {}
+    for key in keys:
+        new_data[key] = original_data[key]
+    return new_data
