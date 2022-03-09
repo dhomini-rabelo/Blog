@@ -28,6 +28,7 @@ function changeMenu(event) {
 
 
 function backMenu() {
+    if (currentOpen === 'close'){ return }
     let currentOptions = document.querySelector(`.${currentOpen}`)
     let mainList = document.querySelector('.main-list')
 

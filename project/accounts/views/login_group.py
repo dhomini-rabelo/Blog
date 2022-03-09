@@ -104,6 +104,7 @@ class LoginView(BaseView):
             login(request, login_proccess['user'])
             delete_used_form(request, 'login')
             create_login_save(request, login_proccess['user'])
+            save_message(request, {'title': 'success_login', 'message': 'Logado com sucesso', 'type': 'success'})
             response = redirect('latest_posts')
             token = get_token_for_user(request.user.email)
             response.set_cookie('access_token', token['access'], max_age=60*60*24*3)
