@@ -67,7 +67,7 @@ def construct_user_my_static_page(user):
             'author': False,
         },
 
-        'post': {
+        'posts': {
             'posts_list': '',
             'drafts_list': '',
         },
