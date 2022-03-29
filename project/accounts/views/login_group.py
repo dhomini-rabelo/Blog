@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.cache import cache
 from random import randint
 from Support.Code.actions.objects._accounts.login_group.register import register_form, register_form_validation, register_save_message, register_email_confirmation_form
@@ -20,7 +21,6 @@ from Support.Code.actions.objects._accounts.account_group.edit.password import p
 class RegisterView(BaseView):
     
     def get(self, request): 
-        send_email_with_code.delay('tyrundeyou@gmail.com', '123456', 'register', request.get_host())
         self.tc['form'] = get_form(request, form_nickname='register', form_data=register_form)
         self.tc['js_use'] = request.session.get('js_use') if request.session.get('js_use') is not None else 'checked'
         return render(request, 'accounts/login_group/register.html', self.tc)
