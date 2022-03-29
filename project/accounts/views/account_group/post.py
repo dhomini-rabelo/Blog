@@ -4,8 +4,10 @@ from Support.Code.actions.Support.forms.checks import check_is_logged
 from django.shortcuts import render, redirect
 from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions._accounts.account_group.posts.create import create_draft_post
-from Support.Code.actions.shortcuts.form.main import get_block_form, save_block_form
+from Support.Code.actions.objects._accounts.account_group.posts.create import create_post_form
+from Support.Code.actions.shortcuts.BlockForm.main import get_block_form, save_block_form
 from Support.Code.django.forms.summer_form import SummerFieldForm
+
 
 
 
@@ -13,9 +15,8 @@ from Support.Code.django.forms.summer_form import SummerFieldForm
 class CreatePostsAccountView(BaseView):
 
     def get(self, request):
-        self.tc['user'] = request.user
         self.tc['summer_field'] = SummerFieldForm()
-        self.tc['form'] = get_block_form()
+        # self.tc['form'] = get_block_form(request, 'ag_post', create_post_form, use_history=True)
         return render(request, 'accounts/account_group/post/create.html', self.tc)
 
     def post(self, request):
@@ -64,5 +65,4 @@ class EditPostsAccountView(BaseView):
 class PostPreviewAccountView(BaseView):
 
     def get(self, request, code):
-        self.tc['user'] = request.user
         return render(request, 'accounts/account_group/post/preview.html', self.tc)

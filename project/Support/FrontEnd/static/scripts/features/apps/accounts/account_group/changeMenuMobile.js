@@ -19,10 +19,11 @@ function changeMenu(event) {
 
     currentOpen = selectedOption.getAttribute('open')
     
-
-    controlBackButton('add')
-    mainList.classList.add('invisible')
-    newOptions.classList.remove('invisible')
+    if (currentOpen !== 'close'){
+        controlBackButton('add')
+        mainList.classList.add('invisible')
+        newOptions.classList.remove('invisible')
+    }
 }
 
 

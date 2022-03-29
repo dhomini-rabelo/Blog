@@ -8,7 +8,12 @@ import { registerSPA } from './pages/register.js'
 
 document.querySelector('.link-login-group').addEventListener('click', renderSPA)
 
-
+window.addEventListener('popstate', function() {
+    let lastUrl = localStorage.getItem('back')
+    if(lastUrl){
+        window.location.pathname = lastUrl
+    }
+})
 
 
 function renderSPA(e) {

@@ -2,7 +2,6 @@
     overflow-x: hidden;
 }
 .django-message{
-    width: 500px;
     padding: 0.8rem 0.4rem;
     margin-bottom: 1rem;
     border-radius: 0.3rem;
@@ -10,7 +9,8 @@
     margin: 0 auto;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    transform: translateX(200vw);
+    transform: translateX(100vw);
+    width: 100%;
     animation-duration: 10s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
@@ -47,10 +47,20 @@
     90% {
         transform: translateX(0);
     }
-    95% {
-        transform: translateX(200vw);
+    97% {
+        transform: translateX(100vw);
     }
-    100% {
-       display: none;
+    99% {
+        transform: translateX(100vw);
+        opacity: 1;
+        display: block;
+        position: initial;
+        z-index: 0;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+        position: fixed;
+        z-index: -5;
     }
 }
