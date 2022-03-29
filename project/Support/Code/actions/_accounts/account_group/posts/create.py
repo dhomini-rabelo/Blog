@@ -20,13 +20,9 @@ def create_draft_post(request, fields: dict):
 
 
 def get_data_for_post_form(current_form):
-    cache_response = cache.get('data_for_post_form')
-    if cache_response is None:
-        response = [
-            list(Category.objects.all()),
-            list(SubCategory.objects.select_related('category')),
-            current_form
-        ]
-        cache.set('data_for_post_form', response, None)
-        return response
-    return cache_response
+    data = cache.get_many(['categories', 'subcategories'])
+    return [
+        data['categories'],
+        data['subcategories'],
+        current_form
+    ]
