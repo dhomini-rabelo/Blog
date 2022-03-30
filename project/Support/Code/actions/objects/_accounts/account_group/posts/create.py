@@ -54,9 +54,9 @@ def load_data(categories: list, subcategories: list, current_post_form: dict):
     category_html = ''
     subcategory_html = ''
     for category in categories:
-        category_html += f'<option value="{category.slug}">{category.name}</option>'
+        category_html += f'<option value="{category["slug"]}">{category["name"]}</option>'
     for subcategory in subcategories:
-        subcategory_html += f'<div class="ag-check-box cb-category" for="{subcategory.category.slug}"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="{subcategory.slug}"><span class="checkbox-label">{subcategory.name}</span></span></div>'
+        subcategory_html += f'<div class="ag-check-box cb-category" for="{subcategory["category"]}"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="{subcategory["slug"]}"><span class="checkbox-label">{subcategory["name"]}</span></span></div>'
     current_post_form['fields'][0] = {**current_post_form['fields'][0], 'categories': category_html}
     current_post_form['fields'][1] = {**current_post_form['fields'][1], 'subcategories': subcategory_html}
 

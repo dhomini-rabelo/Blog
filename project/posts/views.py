@@ -3,10 +3,12 @@ from django.shortcuts import render
 from Support.Code.Fast.StaticPages.SPGT import GroupSpa, GroupChildrenSpa
 from django.core.cache import cache
 from django.utils.html import format_html
+from Support.Code.Fast.celery_beat.base import create_process_context
 from Support.Code.actions.Support.django.messages.main import load_message, save_message
 from Support.Code.actions.Support.django.views import BaseView
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
+
 
 
 class LatestPostsView(GroupSpa):

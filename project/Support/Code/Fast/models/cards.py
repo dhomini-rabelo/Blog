@@ -12,7 +12,7 @@ def get_posts_list_html(posts):
             <p class="box-description">{post.description}</p>
             <div class="box-info sb-x">
                 <span class="post-category">{post.category.name}</span>
-                <span class="post-date">{show_date(post.date)}</span>
+                <span class="post-date">{show_date(post.created)}</span>
             </div>
         </div>
     </a>

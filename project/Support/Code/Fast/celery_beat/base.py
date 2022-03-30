@@ -11,22 +11,26 @@ def create_process_context():
     context['posts'] = Post.objects.all().select_related('category')
     context['categories'] = Category.objects.all()
     context['subcategories'] = SubCategory.objects.all()
-    context['authors'] = User.objects.filter(posts__gte=1)
+    context['authors'] = User.objects.filter(posts__gte=1).distinct()
     
-    cache.set('context', context, None)
+    cache_context = { k: v[:].values() for k,v in context.copy().items()}
+    cache_context['subcategories'] = [{**subcategory, 'category': cache_context["categories"].get(id=subcategory["category_id"])["slug"]} for subcategory in cache_context['subcategories']]
+    cache.set('context', cache_context, None)
     return context
 
 
 def get_updated_key_value(key: str):
     match key:
         case 'posts':
-            return list(Post.objects.all().select_related('category'))
+            return list(Post.objects.all().select_related('category').values())
         case 'categories':
-            return list(Category.objects.all())
+            return list(Category.objects.all().values())
         case 'subcategories':
-            return list(SubCategory.objects.all())
+            context = SubCategory.objects.all().values()
+            context['subcategories'] = [{**subcategory, 'category': Category.objects.get(slug=subcategory['slug']).slug} for subcategory in context['subcategories']]
+            return list(context)
         case 'authors':
-            return list(User.objects.filter(posts__gte=1))
+            return list(User.objects.filter(posts__gte=1).distinct().values())
         case _:
             raise ValueError('Invalid key')
 

@@ -13,7 +13,7 @@ def create_author_api_data(context):
             'img': post.img.url,
             'description': post.description,
             'category': post.category.name,
-            'date': show_date(post.date),
+            'created': show_date(post.created),
             'code': post.code,
         } for post in posts]
         
