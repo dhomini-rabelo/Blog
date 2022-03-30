@@ -9,7 +9,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_display_links = 'code', 'author',
     list_filter = 'published',
     list_per_page = 50
-    ordering = 'date',
+    ordering = 'created',
     search_fields = 'author', 'title', 
     summernote_fields = 'text',
 

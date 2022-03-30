@@ -9,60 +9,16 @@
 
 {% block mainContent %}
 <h1 class="ag-title">Novo Post</h1>
-<div class="ag-form center-c"   enctype="multipart/form-data">
-    <!-- <div class="ag-form-group">
-        <label for="title" class="ag-label">Título:</label>
-        <input type="text" name="title" id="id_title" class="input" placeholder="Adicionar título">
-        <div class="error"></div>
-    </div>
-    <div class="ag-form-group">
-        <label for="img" class="ag-label">Imagem:</label>
-        <span class="ag-help-title">clique para alterar</span>
-        <div class="img-container">
-            <img src="/media/assets/posts/post/athena.jpg" alt="post-img" id="post-img">
-            <input type="file" name="img" id="id_img" accept="image/*">
-        </div>
-        <div class="error"></div>
-    </div>
-    <div class="ag-form-group">
-        <div class="ag-check-box"><span><input type="checkbox" name="img_active" id="id_img_active" value="checked">Usar no post</span></div>
-        <div class="error"></div>
-    </div>
-    <div class="ag-form-group">
-        <label for="id_description" class="ag-label">Descrição:</label>
-        <textarea type="text" name="description" id="id_description" class="input" placeholder="Adicionar descrição"></textarea>
-        <div class="error"></div>
-    </div> -->
+<form method="POST" class="ag-form center-c"   enctype="multipart/form-data">
     {{form1}}
     <div class="ag-form-group">
         <label for="text" class="ag-label">Texto:</label>
         {{summer_field}}
     </div>
     {{form2}}
-    <!-- <div class="ag-form-group">
-        <label for="id_category" class="ag-label">Categoria:</label>
-        <select name="category" id="id_category" class="ag-select">
-            <option value="Esporte">Esporte</option>
-            <option value="Tecnologia">Tecnologia</option>
-        </select>
-        <div class="error"></div>
-    </div> -->
-    <!-- <div class="ag-form-group">
-        <label for="id_subcategory" class="ag-label">Subcategorias:</label>
-
-        <div class="ag-check-box cb-category" for="Esporte"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Futebol</span></span></div>
-        
-        <div class="ag-check-box cb-category" for="Esporte"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Basquete</span></span></div>
-        
-
-        <div class="ag-check-box cb-category invisible" for="Tecnologia"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Python</span></span></div>
-
-        <div class="ag-check-box cb-category invisible" for="Tecnologia"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="checked"><span class="checkbox-label">Javascript</span></span></div>
-        <div class="error"></div>
-
-    </div> -->
+    {% csrf_token %}
     <button class="bl-wh" type="submit"><span id="submit-span">CRIAR RASCUNHO</span></button>
-</div>
+</form>
 {% endblock %}
 
 {% block javascript %}

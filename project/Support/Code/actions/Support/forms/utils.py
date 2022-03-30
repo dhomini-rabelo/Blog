@@ -93,3 +93,10 @@ def check_and_change_image_field(request, field_name: str):
     if new_file:
         setattr(request.user, field_name, new_file)
         request.user.save()
+
+
+def get_image(request, default_image_path: str, field_name='img'):
+    img = request.FILES.get(field_name)
+    if img is not None:
+        return img
+    return default_image_path

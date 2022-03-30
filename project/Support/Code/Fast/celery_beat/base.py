@@ -31,13 +31,13 @@ def get_updated_key_value(key: str):
             raise ValueError('Invalid key')
 
 
-def update_context():
+def update_process_context():
     context = cache.get('context')
     updated_obj = cache.get('updated')
     update = False
 
     for key in updated_obj.keys():
-        if updated_obj[key] is True:
+        if updated_obj.get(key) is True:
             context[key] = get_updated_key_value(key)
             update = True
     

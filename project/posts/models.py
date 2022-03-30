@@ -9,13 +9,12 @@ from categories.models import Category, SubCategory
 
 class Post(Model):
     title = CharField(max_length=256, verbose_name='Título')
-    slug = SlugField(max_length=256, verbose_name='Url')
     description = CharField(max_length=256, verbose_name='Descrição')
     author = ForeignKey(User, on_delete=RESTRICT, related_name='posts', verbose_name='Autor')
     img = ImageField(upload_to='posts/%Y/%m/%d', blank=True, null=True, verbose_name='Imagem de publicação')
-    img_active = BooleanField(default=True, verbose_name='Imagem no post?')
     text = TextField(verbose_name='Texto')
-    date = DateTimeField(auto_now_add=True, verbose_name='Data')
+    created = DateTimeField(auto_now_add=True, verbose_name='Criado em')
+    updated = DateTimeField(auto_now=True, verbose_name='Atualizado em')
     sub_categories = ManyToManyField(SubCategory, verbose_name='Subcategorias')
     category = ForeignKey(Category, on_delete=RESTRICT, related_name='posts', verbose_name='Categoria')
     code = PositiveIntegerField(unique=True, verbose_name='Código')
