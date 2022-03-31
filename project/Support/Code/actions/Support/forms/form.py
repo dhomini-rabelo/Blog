@@ -38,7 +38,8 @@ class BlockForm:
                     case 'select':
                         field['html'] = field['html'].replace(f'<option value="{values[field["name"]]}"', f'<option value="{values[field["name"]]}" selected')
                     case 'checkbox':
-                        continue
+                        for value in values[field["name"]]:
+                            field['html'] = field['html'].replace(f'value="{value}">', f'value="{value}" checked>')
         self.form_fields = copy_form_fields
         self._update_form()
         

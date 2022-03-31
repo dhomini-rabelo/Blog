@@ -1,3 +1,4 @@
+from Support.Code.Fast.models.cards import get_posts_list_html
 from Support.Code.actions.Support.forms.utils import get_image
 from Support.Code.actions.Support.utils.main import if_none
 from Support.Code.actions._accounts.account_group.posts.support.create import generate_post_code
@@ -22,7 +23,8 @@ def create_draft_post(request, fields: dict):
         post.sub_categories.add(subcategory)
 
     post.save()
-
+    request.session['user_save']['posts']['drafts_list'] += get_posts_list_html([post])
+    request.session.save()
     return {
         'new_draft_post_url': f'/minha-conta/post/editar/{post.code}',
     }
