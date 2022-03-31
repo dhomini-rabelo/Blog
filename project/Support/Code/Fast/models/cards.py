@@ -1,11 +1,12 @@
 from .main import show_date
 
 
-def get_posts_list_html(posts):
+def get_posts_list_html(posts, edit_link=False):
     html = ''
     for post in posts:
+        url = f'/posts/post/{post.code}' if not edit_link else f'/minha-conta/post/editar/{post.code}'
         html += f"""
-    <a href="/posts/post/{post.code}" class="box" slug="{post.code}" id="box-post">
+    <a href="{url}" class="box" slug="{post.code}" id="box-post">
         <div class="box-body center-c">
             <img src="{post.img.url}" alt="post-img" class="box-img">
             <h2 class="post-title">{post.title}</h2>

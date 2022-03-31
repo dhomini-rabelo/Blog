@@ -43,7 +43,6 @@ def get_aleatory_profile_photo():
     chosen_file = archives[drawn_position] 
     return f'users/default/{chosen_file}'
     
-get_aleatory_profile_photo()
 
 
 def get_token_for_user(email):

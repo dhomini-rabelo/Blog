@@ -23,8 +23,9 @@ def create_draft_post(request, fields: dict):
         post.sub_categories.add(subcategory)
 
     post.save()
-    request.session['user_save']['posts']['drafts_list'] += get_posts_list_html([post])
-    request.session.save()
+    html = get_posts_list_html([post], True)
+    update_posts_my_static_pages(request, html, 'drafts_list')
+
     return {
         'new_draft_post_url': f'/minha-conta/post/editar/{post.code}',
     }
@@ -38,3 +39,13 @@ def get_data_for_post_form(current_form):
         data['subcategories'],
         current_form
     ]
+
+
+
+def update_posts_my_static_pages(request, html, list_):
+    request.session['user_save']['posts'][list_] += html
+    request.session.save()
+    base = request.user.my_static_pages.copy()
+    base['posts'][list_] += html
+    request.user.my_static_pages = base
+    request.user.save()

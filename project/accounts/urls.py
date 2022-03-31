@@ -23,7 +23,6 @@ urlpatterns = [
     path('minha-conta/post/editar/meus-posts', login_required(ListPostsAccountView.as_view()), name='account_group_post_list_posts'),
     path('minha-conta/post/editar/meus-rascunhos', login_required(ListDraftsAccountView.as_view()), name='account_group_post_list_drafts'),
     path('minha-conta/post/editar/<int:code>', login_required(EditPostsAccountView.as_view()), name='account_group_post_edit'),
-    path('minha-conta/post/rascunhos/preview/<int:code>', login_required(PostPreviewAccountView.as_view()), name='account_group_post_preview'),
     path('minha-conta/sugestao/categorias', login_required(SuggestionCategoriesAccountView.as_view()), name='account_group_suggestions_categories'),
     path('minha-conta/sugestao/sub-categorias', login_required(SuggestionSubCategoriesAccountView.as_view()), name='account_group_suggestions_sub_categories'),
     path('minha-conta/editar/informacoes-basicas', login_required(EditBasicAccountView.as_view()), name='account_group_edit_basic'),

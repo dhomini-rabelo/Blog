@@ -1,5 +1,5 @@
-from django.http import Http404
-from django.shortcuts import render
+from django.http import Http404, HttpResponseForbidden
+from django.shortcuts import get_object_or_404, render
 from Support.Code.Fast.StaticPages.SPGT import GroupSpa, GroupChildrenSpa
 from django.core.cache import cache
 from django.utils.html import format_html
@@ -8,7 +8,7 @@ from Support.Code.actions.Support.django.messages.main import load_message, save
 from Support.Code.actions.Support.django.views import BaseView
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
-
+from .models import Post
 
 
 class LatestPostsView(GroupSpa):
@@ -29,5 +29,18 @@ class PostView(GroupChildrenSpa):
         if post is None: raise Http404
         self.tc['current_cache_page'] = post
         return render(request, 'posts/post.html', self.tc)
+
+
+
+class PostPreview(BaseView): 
+    def get(self, request, code):
+        post = get_object_or_404(Post, code=code)
+        if post.author != request.user: return HttpResponseForbidden()
+        self.tc = {
+            'title': post.title,
+            'img': post.img.url,
+            'text': format_html(post.text)
+        }
+        return render(request, 'posts/preview.html', self.tc)
 
  

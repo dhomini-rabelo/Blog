@@ -1,7 +1,8 @@
+from django.http import Http404, HttpResponseForbidden
 from Support.Code.actions.Support.django.messages.main import load_message, save_message
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.Support.forms.checks import check_is_logged
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.utils.main import if_none
 from Support.Code.actions._accounts.account_group.posts.create import create_draft_post, get_data_for_post_form
@@ -9,7 +10,7 @@ from Support.Code.actions.objects._accounts.account_group.posts.create import cr
 from Support.Code.actions.shortcuts.BlockForm.main import get_block_form, save_block_form
 from Support.Code.django.forms.summer_form import SummerFieldForm
 from django.utils.html import format_html
-
+from posts.models import Post
 
 
 
@@ -66,10 +67,3 @@ class EditPostsAccountView(BaseView):
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
 
-
-
-
-class PostPreviewAccountView(BaseView):
-
-    def get(self, request, code):
-        return render(request, 'accounts/account_group/post/preview.html', self.tc)
