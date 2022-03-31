@@ -11,7 +11,7 @@ function changeSubcategories(e) {
             subcategory.classList.remove('invisible')
         } else {
             subcategory.classList.add('invisible')
+            subcategory.querySelector('input[type="checkbox"]').checked = false
         }
     })
-
 }

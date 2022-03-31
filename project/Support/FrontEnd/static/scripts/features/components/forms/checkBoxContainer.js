@@ -6,4 +6,5 @@ function clickInCheckBox(e) {
     let label = e.currentTarget
     let checkbox = label.parentElement.querySelector('input[type="checkbox"]')
     checkbox.checked = checkbox.checked === true ? false : true
+    checkbox.dispatchEvent(new Event("change"));
 }

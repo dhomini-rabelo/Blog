@@ -11,6 +11,7 @@ export class Form {
         this.formElement = document.querySelector(formElement)
         this.textInputs = this.formElement.querySelectorAll('input[type="text"]')
         this.passwordInputs = this.formElement.querySelectorAll('input[type="password"]')
+        this.checkBoxes = this.formElement.querySelectorAll('input[type="checkbox"]')
 
         // variables
         this.fieldsObj = fieldsObj
@@ -35,6 +36,10 @@ export class Form {
         
         this.passwordInputs.forEach((input) => {
             input.removeEventListener('blur', clearSpaces)
+        })
+
+        this.checkBoxes.forEach((input) => {
+            input.removeEventListener('change', clearError)
         })
 
         let forms = document.querySelectorAll('form')
@@ -65,13 +70,16 @@ export class Form {
             input.addEventListener('blur', clearSpaces)
         })
 
+        this.checkBoxes.forEach((input) => {
+            input.addEventListener('change', clearError)
+        })
+
         this.formElement.addEventListener('submit', this.validateForm)
 
     }
 
     validateForm = (event) => {
         let isValid = formValidator(this.fieldsObj)
-        
         if (!isValid){
             event.preventDefault()
         } else {

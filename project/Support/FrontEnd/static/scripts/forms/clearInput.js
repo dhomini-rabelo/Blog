@@ -2,7 +2,13 @@ export function clearError(event){
     let input = event.currentTarget
     if(!input) return
     let error = input.parentElement.querySelector('.error')
-    if(!error) return
+    if(!error) {
+        error = input.parentElement.parentElement.querySelector('.error')
+        if(!error) {
+            error = input.parentElement.parentElement.parentElement.querySelector('.error')
+            if(!error) return
+        }
+    }
     error.innerHTML = ''
 }
 
