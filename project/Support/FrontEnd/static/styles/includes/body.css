@@ -34,3 +34,9 @@ footer{
     left: 0;
     z-index: 2;
 }
+@media(max-width: 625px) {
+    .box {
+        display: block !important;
+        width: 100% !important;
+    }
+}

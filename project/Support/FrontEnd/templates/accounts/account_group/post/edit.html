@@ -1,12 +1,38 @@
 {% extends 'accounts/account_group/post/_model.html' %}
 
 {% block moreLinks %}
-<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/post/list_posts.css">
+<link rel="stylesheet" href="/static/styles/apps/accounts/account_group/post/create.css">
 <link rel="stylesheet" href="/static/styles/apps/accounts/account_group/form.css">
 <link rel="stylesheet" href="/static/styles/components/messages.css">
+<link rel="stylesheet" href="/static/styles/components/error.css">
 {% endblock %}
 
 
 {% block mainContent %}
 {{message}}
+
+<h1 class="ag-title">Editar Post</h1>
+<form method="POST" class="ag-form center-c" enctype="multipart/form-data" id="edit-post-form">
+    {{form1}}
+    <div class="ag-form-group">
+        <label for="text" class="ag-label">Texto:</label>
+        {{summer_field}}
+    </div>
+    {{form2}}
+    {% csrf_token %}
+    {% if published %}
+    <button class="bl-wh" type="submit" name="btn" value="unpublish"><span id="submit-span">SALVAR E DESPUBLICAR</span></button>
+    {% else %}
+    <button class="bl-wh" type="submit" name="btn" value="publish"><span id="submit-span">SALVAR E PUBLICAR</span></button>
+    {% endif %}
+    <button class="bl-wh" type="submit" name="btn" value="save"><span id="submit-span">SALVAR</span></button>
+</form>
+{% endblock %}
+
+
+{% block javascript %}
+<script type="module" src="/static/scripts/features/apps/accounts/account_group/edit/post/changeMainImg.js"></script>
+<script src="/static/scripts/features/apps/accounts/account_group/edit/post/changeSubcategories.js"></script>
+<script  src="/static/scripts/features/components/forms/checkBoxContainer.js"></script>
+<script type="module" src="/static/scripts/managers/apps/accounts/account_group/post/edit.js"></script>
 {% endblock %}
