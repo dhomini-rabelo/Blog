@@ -66,7 +66,7 @@ def load_edit_post_2_data(categories: list, subcategories: list, current_post_fo
         else:
             category_html += f'<option value="{category["slug"]}">{category["name"]}</option>'
     for subcategory in subcategories:
-        if subcategory['slug'] in post.sub_categories.values_list('slug', flat=True):
+        if subcategory['slug'] in list(post.sub_categories.values_list('slug', flat=True)):
             subcategory_html += f'<div class="ag-check-box cb-category" for="{subcategory["category"]}"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="{subcategory["slug"]}" checked><span class="checkbox-label">{subcategory["name"]}</span></span></div>'
         else:
             subcategory_html += f'<div class="ag-check-box cb-category" for="{subcategory["category"]}"><span><input type="checkbox" name="subcategory" id="id_subcategory" value="{subcategory["slug"]}"><span class="checkbox-label">{subcategory["name"]}</span></span></div>'
@@ -122,4 +122,18 @@ edit_post_form_2 = {
 
     }
     
+}
+
+validate_edit_post_form = {
+
+    'form_base': {
+        'fields': [
+            ['title'], 
+            ['description'],
+            ['category', []],
+            ['text', []],
+            ['subcategory', []],
+        ]
+    },
+
 }

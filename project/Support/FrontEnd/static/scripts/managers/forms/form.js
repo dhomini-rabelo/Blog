@@ -79,7 +79,6 @@ export class Form {
     }
 
     validateForm = (event) => {
-        event.preventDefault()
         let isValid = formValidator(this.fieldsObj)
         if (!isValid){
             event.preventDefault()

@@ -5,6 +5,7 @@ from Support.Code.actions._accounts.account_group.posts.support.create import ge
 from categories.models import Category, SubCategory
 from django.core.cache import cache
 from posts.models import Post
+from django.utils.html import format_html
 
 
 def create_draft_post(request, fields: dict):
@@ -43,7 +44,7 @@ def get_data_for_post_form(current_form):
 
 
 def update_posts_my_static_pages(request, html, list_):
-    request.session['user_save']['posts'][list_] += html
+    request.session['user_save']['posts'][list_] += format_html(html)
     request.session.save()
     base = request.user.my_static_pages.copy()
     base['posts'][list_] += html

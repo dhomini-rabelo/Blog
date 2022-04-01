@@ -7,6 +7,8 @@ from .models import *
 class PostAdmin(SummernoteModelAdmin):
     list_display = 'code', 'author','title'
     list_display_links = 'code', 'author',
+    fields = 'title', 'author', 'img', 'description', 'text', 'category', 'sub_categories', 'code', 'published', 'created', 'updated'
+    readonly_fields = 'created', 'updated'
     list_filter = 'published',
     list_per_page = 50
     ordering = 'created',

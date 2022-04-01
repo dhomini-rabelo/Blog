@@ -8,8 +8,8 @@ from Support.Code.actions.Support.utils.main import if_none
 from Support.Code.actions._accounts.account_group.posts.create import create_draft_post, get_data_for_post_form
 from Support.Code.actions._accounts.account_group.posts.edit import update_post
 from Support.Code.actions.objects._accounts.account_group.posts.create import create_post_form_1, create_post_form_2, load_data, validate_create_post_form
-from Support.Code.actions.objects._accounts.account_group.posts.edit import load_edit_post_1_data, load_edit_post_2_data, edit_post_form_1, edit_post_form_2
-from Support.Code.actions.shortcuts.BlockForm.main import get_block_form, save_block_form
+from Support.Code.actions.objects._accounts.account_group.posts.edit import load_edit_post_1_data, load_edit_post_2_data, edit_post_form_1, edit_post_form_2, validate_edit_post_form
+from Support.Code.actions.shortcuts.BlockForm.main import get_block_form, save_block_form, delete_used_block_form,delete_base_block_form
 from Support.Code.django.forms.summer_form import SummerFieldForm
 from django.utils.html import format_html
 from posts.models import Post
@@ -33,6 +33,8 @@ class CreatePostsAccountView(BaseView):
             request.session['session_text'] = None
             creation = create_draft_post(request, validation['fields'])
             save_message(request, {'title': 'success_new_draft_post_created', 'message': 'Rascunho criado', 'type': 'success'})
+            delete_used_block_form(request, 'ag_create_post_1')
+            delete_used_block_form(request, 'ag_create_post_2')
             return redirect(creation['new_draft_post_url'])
 
         save_block_form(request, 'ag_create_post_1', request.POST, validation['errors'])
@@ -55,7 +57,7 @@ class ListPostsAccountView(BaseView):
 class ListDraftsAccountView(BaseView):
 
     def get(self, request):
-        self.tc['list'] = format_html(request.session['user_save']['posts']['drafts_list'])
+        self.tc['list'] = request.session['user_save']['posts']['drafts_list']
         return render(request, 'accounts/account_group/post/list_drafts.html', self.tc)
         
         
@@ -68,37 +70,45 @@ class EditPostsAccountView(BaseView):
         post = get_object_or_404(Post, code=code)
         if post.author != request.user: return HttpResponseForbidden()
 
+        form1 = edit_post_form_1.copy()
+        form2 = edit_post_form_2.copy()
 
         if request.session.get('post_save_error') is not True:
             self.tc['summer_field'] = SummerFieldForm({'text': post.text})
+            load_edit_post_1_data(form1, post)
+            load_edit_post_2_data(*get_data_for_post_form(form2), post)
         else:
             self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text'), '')})
-        form1 = edit_post_form_1.copy()
-        load_edit_post_1_data(form1, post)
-        self.tc['form1'] = get_block_form(request, 'ag_edit_post_1', form1)
-        form2 = edit_post_form_2.copy()
-        load_edit_post_2_data(*get_data_for_post_form(form2), post)
-        self.tc['form2'] = get_block_form(request, 'ag_edit_post_2', form2)
+            request.session['post_save_error'] = False
+
+        
+        self.tc['form1'] = get_block_form(request, 'ag_edit_post_1', form1, True)
+        self.tc['form2'] = get_block_form(request, 'ag_edit_post_2', form2, True)
 
 
-        self.tc['message'] = load_messages(request, 'success_post_save', 'error_post_save', 'success_new_draft_post_created')
+        self.tc['messages'] = load_messages(request, 'success_post_save', 'error_post_save', 'success_new_draft_post_created')
         self.tc['published'] = post.published
+        delete_base_block_form(request, 'ag_edit_post_1')
+        delete_base_block_form(request, 'ag_edit_post_2')
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
-    def put(self, request, code):
-        # testar injeção de subcategory com lista
-        validation = validate_form(request.PUT, validate_create_post_form)
+    def post(self, request, code):
+        validation = validate_form(request.POST, validate_edit_post_form)
 
         if validation['status'] == 'valid':
-            update_post(request, code, {**validation['fields'], 'subcategory': request.PUT.getlist('subcategory')}, request.PUT['action'])
+            update_post(request, code, {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, request.POST['action'])
             save_message(request, {'title': 'success_post_save', 'message': 'Alterações salvas', 'type': 'success'})
             request.session['post_save_error'] = False
             request.session['session_text'] = None
+            delete_used_block_form(request, 'ag_edit_post_1')
+            delete_base_block_form(request, 'ag_edit_post_1')
+            delete_used_block_form(request, 'ag_edit_post_2')
+            delete_base_block_form(request, 'ag_edit_post_2')
         else:
             save_message(request, {'title': 'error_post_save', 'message': 'Corrija os errors para salvar', 'type': 'error'})
-            save_block_form(request, 'ag_create_post_1', request.PUT, validation['errors'])
-            save_block_form(request, 'ag_create_post_2', {**validation['fields'], 'subcategory': request.PUT.getlist('subcategory')}, validation['errors'])
+            save_block_form(request, 'ag_edit_post_1', request.POST, validation['errors'])
+            save_block_form(request, 'ag_edit_post_2', {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, validation['errors'])
             request.session['post_save_error'] = True
-            request.session['session_text'] = request.PUT.get('text')
+            request.session['session_text'] = request.POST.get('text')
         
         return redirect(request.get_full_path())

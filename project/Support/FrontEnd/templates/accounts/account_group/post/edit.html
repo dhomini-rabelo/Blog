@@ -9,8 +9,9 @@
 
 
 {% block mainContent %}
+{% for  message in messages %}
 {{message}}
-
+{% endfor %}
 <h1 class="ag-title">Editar Post</h1>
 <form method="POST" class="ag-form center-c" enctype="multipart/form-data" id="edit-post-form">
     {{form1}}
