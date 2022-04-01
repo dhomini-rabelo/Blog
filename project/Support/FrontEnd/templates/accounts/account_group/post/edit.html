@@ -21,11 +21,11 @@
     {{form2}}
     {% csrf_token %}
     {% if published %}
-    <button class="bl-wh" type="submit" name="btn" value="unpublish"><span id="submit-span">SALVAR E DESPUBLICAR</span></button>
+    <button class="bl-wh" type="submit" name="action" value="save-and-unpublish"><span id="submit-span">SALVAR E DESPUBLICAR</span></button>
     {% else %}
-    <button class="bl-wh" type="submit" name="btn" value="publish"><span id="submit-span">SALVAR E PUBLICAR</span></button>
+    <button class="bl-wh" type="submit" name="action" value="save-and-publish"><span id="submit-span">SALVAR E PUBLICAR</span></button>
     {% endif %}
-    <button class="bl-wh" type="submit" name="btn" value="save"><span id="submit-span">SALVAR</span></button>
+    <button class="bl-wh" type="submit" name="action" value="save"><span id="submit-span">SALVAR</span></button>
 </form>
 {% endblock %}
 

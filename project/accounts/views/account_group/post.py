@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from Support.Code.actions.Support.forms.main import validate_form
 from Support.Code.actions.Support.utils.main import if_none
 from Support.Code.actions._accounts.account_group.posts.create import create_draft_post, get_data_for_post_form
+from Support.Code.actions._accounts.account_group.posts.edit import update_post
 from Support.Code.actions.objects._accounts.account_group.posts.create import create_post_form_1, create_post_form_2, load_data, validate_create_post_form
 from Support.Code.actions.objects._accounts.account_group.posts.edit import load_edit_post_1_data, load_edit_post_2_data, edit_post_form_1, edit_post_form_2
 from Support.Code.actions.shortcuts.BlockForm.main import get_block_form, save_block_form
@@ -77,4 +78,9 @@ class EditPostsAccountView(BaseView):
         self.tc['published'] = post.published
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
-
+    def post(self, request, code):
+        # testar injeção de subcategory com lista
+        validation = validate_form(request.POST, validate_create_post_form)
+        if validation['status'] == 'valid':
+            update_post(request, code, {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, request.POST['action'])
+        return redirect(request.get_full_path())
