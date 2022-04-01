@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponseForbidden
-from Support.Code.actions.Support.django.messages.main import load_message, save_message
+from Support.Code.actions.Support.django.messages.main import load_message, load_messages, save_message
 from Support.Code.actions.Support.django.views import BaseView
 from Support.Code.actions.Support.forms.checks import check_is_logged
 from django.shortcuts import get_object_or_404, render, redirect
@@ -67,20 +67,38 @@ class EditPostsAccountView(BaseView):
     def get(self, request, code):
         post = get_object_or_404(Post, code=code)
         if post.author != request.user: return HttpResponseForbidden()
-        self.tc['summer_field'] = SummerFieldForm({'text': post.text})
-        self.tc['message'] = load_message(request, 'success_new_draft_post_created')
+
+
+        if request.session.get('post_save_error') is not True:
+            self.tc['summer_field'] = SummerFieldForm({'text': post.text})
+        else:
+            self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text'), '')})
         form1 = edit_post_form_1.copy()
         load_edit_post_1_data(form1, post)
         self.tc['form1'] = get_block_form(request, 'ag_edit_post_1', form1)
         form2 = edit_post_form_2.copy()
         load_edit_post_2_data(*get_data_for_post_form(form2), post)
         self.tc['form2'] = get_block_form(request, 'ag_edit_post_2', form2)
+
+
+        self.tc['message'] = load_messages(request, 'success_post_save', 'error_post_save', 'success_new_draft_post_created')
         self.tc['published'] = post.published
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
-    def post(self, request, code):
+    def put(self, request, code):
         # testar injeção de subcategory com lista
-        validation = validate_form(request.POST, validate_create_post_form)
+        validation = validate_form(request.PUT, validate_create_post_form)
+
         if validation['status'] == 'valid':
-            update_post(request, code, {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, request.POST['action'])
+            update_post(request, code, {**validation['fields'], 'subcategory': request.PUT.getlist('subcategory')}, request.PUT['action'])
+            save_message(request, {'title': 'success_post_save', 'message': 'Alterações salvas', 'type': 'success'})
+            request.session['post_save_error'] = False
+            request.session['session_text'] = None
+        else:
+            save_message(request, {'title': 'error_post_save', 'message': 'Corrija os errors para salvar', 'type': 'error'})
+            save_block_form(request, 'ag_create_post_1', request.PUT, validation['errors'])
+            save_block_form(request, 'ag_create_post_2', {**validation['fields'], 'subcategory': request.PUT.getlist('subcategory')}, validation['errors'])
+            request.session['post_save_error'] = True
+            request.session['session_text'] = request.PUT.get('text')
+        
         return redirect(request.get_full_path())
