@@ -34,10 +34,10 @@ def celery_update_project_data():
     context, update_obj = update_process_context()
     
     if context != {}:
-        create_cache_initial_data()
         update_api_data(context, update_obj)
         update_cache_pages(context, update_obj)
         static_pages_process = update_static_pages(context, update_obj)
+        create_cache_initial_data()
         return {
             'update': update_obj,
             'static_pages_report': static_pages_process,
