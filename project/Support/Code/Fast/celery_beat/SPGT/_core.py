@@ -14,15 +14,14 @@ def create_static_pages(context):
 
 
 
-def update_static_pages():
-    updated_obj = cache.get('updated')
+def update_static_pages(context, updated_obj):
     new_updated_obj = dict()
     updated_spa, not_updated_spa  = [], []
     spa_data: dict = cache.get('SPGT')
     new_spa_data = dict()
     
     for spa_name in spa_data.keys():
-        response = update_spa(spa_name, spa_data[spa_name], updated_obj)
+        response = update_spa(spa_name, spa_data[spa_name], context, updated_obj)
 
         if response['updated']:
             new_spa_data[spa_name] = response['spa']
@@ -39,15 +38,11 @@ def update_static_pages():
             
             'SPGT': new_spa_data,
             'SPGT_json': dumps(new_spa_data),
-            'updated': {
-                **updated_obj,
-                **new_updated_obj,
-            }
 
         })
         cache.touch('SPGT', None)
         cache.touch('SPGT_json', None)
-        cache.touch('updated', None)
+
         
     return {'updated': updated_spa, 'not_updated': not_updated_spa}
 

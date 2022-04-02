@@ -14,7 +14,3 @@ def create_post_api_data(context):
     cache.set('post_api', posts_data, None)
     
     
-    
-def update_post_api_data(post_code):
-    post = Post.objects.get(code=post_code)
-    pass

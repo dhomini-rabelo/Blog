@@ -1,7 +1,12 @@
 from Support.Code.Fast.models.cards import get_posts_list_html
+from Support.Code.Fast.utils.main import update_cache_keys
 from categories.models import Category, SubCategory
 from posts.models import Post
 from django.utils.html import format_html
+from django.core.cache import cache
+
+
+
 
 def update_post(request, code, values, action=None):
     post = Post.objects.get(code=code)
@@ -33,10 +38,14 @@ def update_post(request, code, values, action=None):
 
 def update_post_list_my_static_user_pages(request):
     user = request.user
+
     
     posts = user.posts.select_related('category')
+    
+    published_list = posts.filter(published=True).distinct().order_by('created')
+
     drafts_html = get_posts_list_html(posts.filter(published=False).distinct().order_by('created'), True)
-    published_html = get_posts_list_html(posts.filter(published=True).distinct().order_by('created'), True)
+    published_html = get_posts_list_html(published_list, True)
     
     request.session['user_save']['posts']['drafts_list'] = format_html(drafts_html)
     request.session['user_save']['posts']['posts_list'] = format_html(published_html)
@@ -45,3 +54,5 @@ def update_post_list_my_static_user_pages(request):
     request.user.my_static_pages = request.session['user_save'].copy()
     
     user.save()
+
+    if len(published_list) > 0: update_cache_keys('authors', 'posts')

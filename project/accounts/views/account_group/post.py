@@ -48,7 +48,7 @@ class CreatePostsAccountView(BaseView):
 class ListPostsAccountView(BaseView):
 
     def get(self, request):
-        self.tc['list'] = request.session['user_save']['posts']['posts_list']
+        self.tc['list'] = format_html(request.session['user_save']['posts']['posts_list'])
         return render(request, 'accounts/account_group/post/list_posts.html', self.tc)
         
 
@@ -57,7 +57,7 @@ class ListPostsAccountView(BaseView):
 class ListDraftsAccountView(BaseView):
 
     def get(self, request):
-        self.tc['list'] = request.session['user_save']['posts']['drafts_list']
+        self.tc['list'] = format_html(request.session['user_save']['posts']['drafts_list'])
         return render(request, 'accounts/account_group/post/list_drafts.html', self.tc)
         
         
@@ -69,6 +69,9 @@ class EditPostsAccountView(BaseView):
     def get(self, request, code):
         post = get_object_or_404(Post, code=code)
         if post.author != request.user: return HttpResponseForbidden()
+        
+        delete_base_block_form(request, 'ag_edit_post_1')
+        delete_base_block_form(request, 'ag_edit_post_2')
 
         form1 = edit_post_form_1.copy()
         form2 = edit_post_form_2.copy()
@@ -88,8 +91,6 @@ class EditPostsAccountView(BaseView):
 
         self.tc['messages'] = load_messages(request, 'success_post_save', 'error_post_save', 'success_new_draft_post_created')
         self.tc['published'] = post.published
-        delete_base_block_form(request, 'ag_edit_post_1')
-        delete_base_block_form(request, 'ag_edit_post_2')
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
     def post(self, request, code):

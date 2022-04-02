@@ -28,7 +28,7 @@ app.conf.beat_schedule = {
 
     'update_project_data': {
         'task': 'Update data for project',  
-        'schedule': 900.0,
+        'schedule': 60.0,
         'args': []
     },
 
