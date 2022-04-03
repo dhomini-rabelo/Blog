@@ -1,9 +1,9 @@
-.box-img{
+#box-category .box-img, #box-subcategory .box-img{
     width: 10rem;
     height: 10rem;
     max-width: 70vw;
 }
-.box {
+#box-category.box, #box-subcategory.box {
     width: 16rem !important;
     max-width: 90vw;
 }

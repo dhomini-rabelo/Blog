@@ -16,6 +16,8 @@
     {% endcache %}
     <div class="styles-group">
         <link rel="stylesheet" href="/static/styles/_compacts/min/main.min.css">
+        <link rel="stylesheet" href="/static/styles/apps/authors/list_authors.css">
+        <link rel="stylesheet" href="/static/styles/apps/categories/list_categories.css">
     </div>
     <div class="styles-individual">
         {% block links %}
@@ -40,7 +42,7 @@
                 <nav class="sb-p2">
                     <ul class="sb-x nav-x">
                         <li class="search">
-                            <form method="GET" class="sb-x">
+                            <form method="GET" class="sb-x" id="search-form">
                                 <input type="text" name="search" id="search_box" placeholder="Posts, categorias e autores">
                                 <button type="submit">
                                     <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
@@ -120,6 +122,7 @@
         </footer>
         {% endcache %}
     </div>
+    <script type="module" src="/static/scripts/features/components/main/search.js"></script>
     <input type="hidden" name="SPGT" id="SPGT" value="{{ SPGT }}">
     <div class="scripts" type="main">
         <script src="/static/scripts/_min/features/components/header/hamburguerAnimation.min.js"></script>

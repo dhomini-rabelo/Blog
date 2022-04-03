@@ -1,21 +1,21 @@
-.box{
+#box-author.box{
     width: 14rem !important;
     max-width: 80vw;
 }
-.box-img{
+#box-author .box-img{
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
     max-width: 60vw;
 }
 @media(max-width: 450px){
-    .box-body{
+    #box-author .box-body{
         width: 57.5vw;
         text-align: center;
     }
 }
 @media(max-width: 300px){
-    .box-body{
+    #box-author .box-body{
         width: 72.5vw;
         text-align: center;
     }
