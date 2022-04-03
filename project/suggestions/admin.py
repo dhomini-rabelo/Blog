@@ -16,3 +16,4 @@ class SubCategorySuggestionAdmin(admin.ModelAdmin):
     list_display_links = 'name',
     ordering = 'name',
     search_fields = 'name',
+    

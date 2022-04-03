@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 
 class SearchApiView(APIView):
     
+    @method_decorator(cache_page(60 * 5))
     def get(self, request):
         search_api_data: dict = cache.get('search_api')
         return Response(search_api_data)
