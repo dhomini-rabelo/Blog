@@ -27,9 +27,9 @@ class SearchApiView(APIView):
         
         search_api_data: dict = cache.get('search_api')
         
-        posts, categories, authors, subcategories = gets(search_api_data, 'posts', 'categories', 'authors', 'subcategories')
+        posts, categories, authors, subcategories = gets(search_api_data, 'posts', 'categories', 'authors', 'subcategories', obj_filter='none')
         
-        do_search = lambda item: search.lower() in item.lower()
+        do_search = lambda item: search.lower() in item['title'].lower()
         
         
         response = { 

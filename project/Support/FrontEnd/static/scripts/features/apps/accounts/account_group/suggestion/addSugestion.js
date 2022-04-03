@@ -40,7 +40,7 @@ function addSuggestionForm() {
             <input type="hidden" name="csrfmiddlewaretoken" value="${getCookie('csrftoken')}">
         </form>
         <div class="suggestion-block-bottom sb-x">
-            <span>Abacate</span>
+            <span>Status</span>
             <span>Em andamento</span>
         </div>
         `

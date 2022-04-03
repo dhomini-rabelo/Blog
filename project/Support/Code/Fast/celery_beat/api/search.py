@@ -4,11 +4,38 @@ from categories.models import Category, SubCategory
 from accounts.models import User
 
 
+map_posts = lambda context: list(map(lambda post: {
+    'title': post.title,
+    'img': post.img.url, 
+    'url': f'/posts/post/{post.code}',
+}, context['posts']))
+
+
+map_categories = lambda context: list(map(lambda category: {
+    'title': category.name,
+    'img': category.img.url,
+    'url': f'/categorias/{category.slug}/subcategorias',
+}, context['categories']))
+
+map_subcategories = lambda context: list(map(lambda subcategory: {
+    'title': subcategory.name,
+    'img': subcategory.img.url,
+    'url': f'categorias/subcategorias/{subcategory.slug}',
+}, context['subcategories']))
+
+map_authors = lambda context: list(map(lambda author: {
+    'title': author.name,
+    'img': author.photo.url,
+    'url': f'/autores/{author.slug}',
+}, context['authors']))
+
+
+
 def create_search_api_data(context):
-    posts = list(context['posts'].values_list('title', flat=True))
-    categories = list(context['categories'].values_list('name', flat=True))
-    subcategories = list(context['subcategories'].values_list('name', flat=True))
-    authors = list(context['authors'].values_list('name', flat=True))
+    posts = map_posts(context)
+    categories = map_categories(context)
+    subcategories = map_subcategories(context)
+    authors = map_authors(context)
     
     cache.set('search_api', { 
                 
@@ -40,13 +67,13 @@ def update_search_api_data(context, updated_obj):
 def update_api_values(key, context):
     match key:
         case 'posts':
-            return list(context[key].values_list('title', flat=True))
+            return map_posts(context)
         case 'categories':
-            return list(context[key].values_list('name', flat=True))
+            return map_categories(context)
         case 'subcategories':
-            return list(context[key].values_list('name', flat=True))
+            return map_subcategories(context)
         case 'authors':
-            return list(context[key].values_list('name', flat=True))
+            return map_authors(context)
         case _:
             raise ValueError('Invalid key')
         
