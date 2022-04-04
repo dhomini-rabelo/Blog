@@ -119,14 +119,13 @@ class EditPasswordAccountView(BaseView):
         validation = validate_form(request.POST, password_form_validation)
         check_password_validation = check_password(request, 'current_password')
         
-        if validation['status'] == 'valid' and check_password_validation == 'valid':
+        if validation['status'] == 'valid' and check_password_validation['status'] == 'valid':
             delete_used_form(request, 'password')
             change_password(request, 'new_password')
             logout(request)
             save_message(request, password_message)
             return redirect('login')
-            
+
         save_form(request, 'password', validation['fields'], {**check_password_validation['errors'], **validation['errors']})
-        
         return redirect('account_group_edit_password')
     

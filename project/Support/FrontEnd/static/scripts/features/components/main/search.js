@@ -1,7 +1,7 @@
 import { renderPost } from "./../../../SPA-renders/_main_children/support/render.js"
 import { fetchPost } from "./../../core/api.js"
 
-let searchForm = document.querySelector('#search-form')
+let searchForm = document.querySelector('form[method="GET"]')
 
 searchForm.addEventListener('submit', renderSearch)
 
