@@ -134,6 +134,9 @@ body {
 .bl-wh {
     transition: .35s ease-in-out;
 }
+.page-title {
+    color: #000 !important;
+}
 @media(max-width: 625px) {
     .init-pc-container, .pc-ag-navigation {
         display: none;

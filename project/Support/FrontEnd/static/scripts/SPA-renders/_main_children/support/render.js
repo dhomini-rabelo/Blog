@@ -1,7 +1,13 @@
 export function renderPosts(posts) {
     let html = ''
     posts.forEach((post) => {
-        html += `
+        html += renderPost(post)
+    })
+    return html
+}
+
+export function renderPost(post) {
+    return `
     <a href="/posts/post/${post.code}" class="box" slug="${post.code}" id="box-post">
         <div class="box-body center-c">
             <img src="${post.img}" alt="post-img" class="box-img">
@@ -14,6 +20,4 @@ export function renderPosts(posts) {
         </div>
     </a>
         `
-    })
-    return html
 }

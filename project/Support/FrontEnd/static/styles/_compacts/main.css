@@ -345,6 +345,7 @@ footer{
 }
 .box{
     display: inline-block;
+    width: 100%;
 }
 .main-container-f .box{
     width: auto;

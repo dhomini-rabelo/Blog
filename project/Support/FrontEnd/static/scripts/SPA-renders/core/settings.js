@@ -4,6 +4,8 @@ export let microsSPA = {
 
         styles: [
             '/static/styles/_compacts/min/main.min.css',
+            '/static/styles/apps/authors/list_authors.css',
+            '/static/styles/apps/categories/list_categories.css'
         ],
 
         scriptsTypes : [

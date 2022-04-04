@@ -1,4 +1,5 @@
 from django.core.cache import cache
+from Support.Code.Fast.models.main import show_date
 from posts.models import Post
 from categories.models import Category, SubCategory
 from accounts.models import User
@@ -8,6 +9,10 @@ map_posts = lambda context: list(map(lambda post: {
     'title': post.title,
     'img': post.img.url, 
     'url': f'/posts/post/{post.code}',
+    'code': post.code,
+    'description': post.description,
+    'category': post.category.name,
+    'date': show_date(post.created),
 }, context['posts']))
 
 
