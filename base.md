@@ -1,6 +1,3 @@
-<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
 <h1>Blog Code Portal</h1>
 <link rel="stylesheet" href=".readme/style.css">
 <img src="./readme/pc.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; display: block; margin: 0 auto; margin-top: 30px;">
@@ -271,8 +268,3 @@
 ```
 docker-compose up --build
 ```
-
-
-    </div>
-  </foreignObject>
-</svg>
