@@ -1,10 +1,18 @@
 <h1>Blog Code Portal</h1>
-
+<style>
+    img {
+        border: 0.5px solid #22272E !important;
+        border-style: solid !important; 
+        max-width: 100%; display: block; 
+        margin: 0 auto; 
+        margin-top: 30px;
+    }
+</style>
 <img src="./readme/pc.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; display: block; margin: 0 auto; margin-top: 30px;">
 <br>
 <div style="display: flex; justify-content: space-evenly; align-items: center;">
     <img src="./readme/mobile.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
-    <kbd><img src="./readme/main/base.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;"></kbd>
+    <img src="./readme/main/base.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
 </div>
 
 
