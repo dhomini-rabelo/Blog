@@ -2,7 +2,10 @@
 
 <img src="./readme/pc.PNG" alt="project-image" style="max-width: 100%; display: block; margin: 0 auto; margin-top: 30px;">
 <br>
-<img src="./readme/mobile.PNG" alt="project-image" style="max-width: 100%; display: block; margin: 0 auto; margin-top: 20px;">
+<div style="display: flex; justify-content: space-evenly; align-items: center;">
+    <img src="./readme/mobile.PNG" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+    <img src="./readme/main/base.PNG" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</div>
 
 
 <h2>🔗 Tópicos</h2>
@@ -12,13 +15,12 @@
 <li><a href="#features">Features</a></li>
 <li><a href="#db">Modelagem</a></li>
 <li><a href="#project">Projeto</a></li>
-<li><a href="#project">Projeto</a></li>
 <li><a href="#how_to_use">Como usar</a></li>
 </ul>
 
 
 <h2 id="about" style="margin-top: 30px;">📖 Sobre</h2>
-<p>Blog compartilhado de tecnologia, basta criar uma conta e fazer seus posts de tecnologia</p>
+<p>Blog compartilhado de tecnologia, basta criar uma conta e fazer seus posts sobre tecnologia</p>
 
 <h2 id="tools" style="margin-top: 30px;">🛠️ Principais ferramentas</h2>
 
@@ -61,12 +63,56 @@
 
 <h3>User</h3>
 <ul>
-<li>Nome</li>
 <li>Username ( gerenciada pelo AbstractUser do Django )</li>
-<li>Email</li>
 <li>Senha ( gerenciada pelo AbstractUser do Django )</li>
-<li>Posts M2M</li>
+<li>Nome</li>
+<li>Email</li>
 <li>Foto de perfil</li>
+<li>My static pages</li>
+</ul>
+
+<h3>Categorias</h3>
+<ul>
+<li>Nome</li>
+<li>Slug</li>
+<li>Imagem</li>
+</ul>
+
+<h3>Subcategorias</h3>
+<ul>
+<li>Nome</li>
+<li>Slug</li>
+<li>Imagem</li>
+<li>Categoria FK</li>
+</ul>
+
+<h3>Sugestão de Categoria</h3>
+<ul>
+<li>Nome</li>
+<li>Estado</li>
+<li>User FK</li>
+</ul>
+
+<h3>Sugestão de Subcategoria</h3>
+<ul>
+<li>Nome</li>
+<li>Estado</li>
+<li>User FK</li>
+</ul>
+
+<h3>Post</h3>
+<ul>
+<li>Título</li>
+<li>Descrição</li>
+<li>Imagem</li>
+<li>Autor (User) FK</li>
+<li>Texto</li>
+<li>Publicado BOOL</li>
+<li>Código</li>
+<li>Categoria FK</li>
+<li>Subcategoria M2M</li>
+<li>Data de criação</li>
+<li>Data de última modificação</li>
 </ul>
 
 
@@ -121,6 +167,11 @@
 </li>
 
 <li style="margin-top: 30px;">
+<h3>Esqueci a senha</h3>
+<img src="./readme/login_group/forgot_password.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
 <h3>Alterar dados básicos</h3>
 <p>Ao criar seu perfil, o sistema sorteia uma foto de usuário, você pode editar essa foto do mesmo modo que edita uma foto de um post</p>
 <img src="./readme/account/edit_profile.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
@@ -166,5 +217,54 @@
 <img src="./readme/account/edit_post.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
 </li>
 
+<li style="margin-top: 30px;">
+<h3>Tela inicial - Lista de Posts</h3>
+<img src="./readme/main/index.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Lista de categorias</h3>
+<img src="./readme/main/categories_view.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Lista de Autores</h3>
+<img src="./readme/main/authors.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Fazendo busca</h3>
+<img src="./readme/main/search.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Navegação rápida</h3>
+<p>Apenas com dados do backend e consumo de APIs, essas páginas ficam num formato de SPA</p>
+<img src="./readme/main/fast_navigation.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+<p style="margin-top: 20px;">A url é dinâmica</p>
+<img src="./readme/main/dinamic_url.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+<p style="margin-top: 20px;">Esta feature também está presente nas páginas de login e cadastro</p>
+<img src="./readme/login_group/spa.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Telas no computador</h3>
+<p>Esse projeto foi feito com o conceito de mobile first</p>
+<img src="./readme/main/pc_views.gif" alt="project-image" style="max-width: 100%; margin-top: 20px;">
+</li>
+
+<li style="margin-top: 30px;">
+<h3>Logout</h3>
+<img src="./readme/login_group/logout_PC.gif" alt="project-image" style="display: block; max-width: 100%; margin-top: 20px;">
+<img src="./readme/login_group/logout.gif" alt="project-image" style="display: block; max-width: 100%; margin-top: 20px;">
+</li>
 
 </ul>
+
+<h2 id="how_to_use" style="margin-top: 30px;">🛠️ Como usar</h2>
+
+<p>Para usar você deve ter docker instalado na sua máquina, atualizar as dependências, configurar o arquivo .env.dev e renomeá-lo para .env, depois disso basta apenas rodar o comando abaixo:</p>
+
+```
+docker-compose up --build
+```
