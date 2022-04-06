@@ -1,9 +1,10 @@
 <h1>Blog Code Portal</h1>
+<link rel="stylesheet" href=".readme/style.css">
 <img src="./readme/pc.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; display: block; margin: 0 auto; margin-top: 30px;">
 <br>
 <div style="display: flex; justify-content: space-evenly; align-items: center;">
     <img src="./readme/mobile.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
-    <img src="./readme/main/base.PNG" alt="project-image" style="border: 0.5px solid #22272E !important;">
+    <img src="./readme/main/base.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
 </div>
 
 
@@ -134,13 +135,13 @@
 
 <li style="margin-top: 30px;">
 <h3>Cadastro</h3>
-<img src="./readme/login_group/register.gif" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
-<img src="./readme/login_group/email.png" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px; height: 766px; object-fit: cover;">
+`<img src="./readme/login_group/register.gif" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">`
+`<img src="./readme/login_group/email.png" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px; height: 766px; object-fit: cover;">`
 </li>
 
 <li style="margin-top: 30px;">
 <h3>Usuário salvo no sistema de administração</h3>
-<img src="./readme/login_group/user_save.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">
+`<img src="./readme/login_group/user_save.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;">`
 </li>
 
 <li style="margin-top: 30px;">
