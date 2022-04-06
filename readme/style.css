@@ -1,0 +1,7 @@
+img {
+    border: 0.5px solid #22272E !important;
+    border-style: solid !important; 
+    max-width: 100%; display: block; 
+    margin: 0 auto; 
+    margin-top: 30px;
+}
