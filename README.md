@@ -122,14 +122,18 @@
 <li style="margin-top: 30px;">
 <h3>Sistema de administração</h3>
 <kbd><img src="./readme/admin/login.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/admin/dash.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
 </li>
 
 <li style="margin-top: 30px;">
 <h3>Flower</h3>
 <kbd><img src="./readme/celery/index.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/celery/many_tasks.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/celery/tasks.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/celery/oonly_task.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
 </li>
 
@@ -196,7 +200,9 @@
 <li style="margin-top: 30px;">
 <h3>Sugestões no sistema de administração</h3>
 <kbd><img src="./readme/account/admin_suggestions.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/account/admin_suggestions_change_state.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
+<br>
 <kbd><img src="./readme/account/admin_suggestion_category_change_state.PNG" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; display: block; max-width: 100%; margin-top: 20px;"></kbd>
 </li>
 
