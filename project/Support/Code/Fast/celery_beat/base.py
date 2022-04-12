@@ -39,7 +39,7 @@ def get_updated_key_value(key: str):
 def update_process_context():
     updated_obj = cache.get('updated')
     update = all(list(updated_obj.keys()))
-    
+
     if update:
         context = create_process_context()
         return context, updated_obj

@@ -1,22 +1,23 @@
 from pathlib import Path
 from datetime import timedelta
-from decouple import config
+from decouple import AutoConfig
 import socket
 import os
 
+DEBUG = False
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+config = AutoConfig(search_path=str(BASE_DIR.parent / 'production/.env')) if not DEBUG else AutoConfig(search_path=str(BASE_DIR.parent / '.env'))
 
 
 SECRET_KEY = 'django-insecure-w@g#t5khnt%m^km#i3w5cttr(49bxfc2wmgi=_o#$av$v)*$ni'
 
-DEBUG = True
-
 ALLOWED_HOSTS = [
-    '*'
+    '*',
+    'https://django-dhomini-rabelo.cloud.okteto.net'
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://django-dhomini-rabelo.cloud.okteto.net']
 
 INSTALLED_APPS = [
     # Django apps
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -180,7 +182,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # My configurations
 
 STATICFILES_DIRS = [Path(BASE_DIR, 'Support/FrontEnd/static')]
-STATIC_ROOT = Path(BASE_DIR, 'static')
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = Path(BASE_DIR,'Support/FrontEnd/media')
 MEDIA_URL = '/media/'
 
@@ -218,6 +220,10 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 DEFAULT_FROM_EMAIL = config('DEFAULT_EMAIL')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 
 if False:
     INSTALLED_APPS += [

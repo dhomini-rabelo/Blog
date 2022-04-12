@@ -4,7 +4,7 @@ services:
     django:
         build: .
         container_name: django
-        command: python project/manage.py migrate && gunicorn BLOG.wsgi:application --bind 0.0.0.0:8000 --log-file - --chdir project
+        command: python3.10 project/manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/code
         ports:
