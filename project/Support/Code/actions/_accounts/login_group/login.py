@@ -41,7 +41,7 @@ def get_aleatory_profile_photo():
     archives_quantity = len(archives)
     drawn_position = randint(0, archives_quantity-1)
     chosen_file = archives[drawn_position] 
-    return f'users/default/{chosen_file}'
+    return f'static/media/users/default/{chosen_file}'
     
 
 

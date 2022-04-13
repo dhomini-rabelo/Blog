@@ -23,7 +23,7 @@ export function focusInFooter(){
             break
     }
 
-    let ci = '/media/assets/posts/mobile-footer' // current image source
+    let ci = '/static/media/assets/posts/mobile-footer' // current image source
     changeSourceImg(`${ci}/${sourceImg}.png`, `${ci}/${sourceImg}-yellow.png`)
     styleInFooter(urlRest.slice(0, endPosition))
 }

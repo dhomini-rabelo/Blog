@@ -87,7 +87,7 @@ def get_suggestion_html(suggestion, state):
 <div class="suggestion-block center-c {suggestion_state}">
     <div class="suggestion-block-top sb-x">
         <span class="suggestion-name">{suggestion}</span>
-        <div class="suggestion-status-color"><img src="/media/assets/account_group/suggestions/{img}.png" alt="" class="suggestion-img"></div>
+        <div class="suggestion-status-color"><img src="/static/media/assets/account_group/suggestions/{img}.png" alt="" class="suggestion-img"></div>
     </div>
     <div class="suggestion-block-bottom sb-x">
         <span>Status</span>

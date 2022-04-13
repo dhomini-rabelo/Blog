@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="/media/assets/global/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/media/assets/global/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/styles/_compacts/min/fullBase.min.css">
     <title>CODE PORTAL</title>
     {% endcache %}
@@ -35,7 +35,7 @@
             <div class="header-pc sb-x">
                 <a href="/" class="sb-p1">
                     <div class="logo sb-x">
-                        <img src="/media/assets/global/logo.png" alt="logo" id="dracula-logo">
+                        <img src="/static/media/assets/global/logo.png" alt="logo" id="dracula-logo">
                         <div class="logo-title center-c">
                             <h1 class="word-1">CODE</h1>
                             <h1 class="word-2">PORTAL</h1>
@@ -48,7 +48,7 @@
                             <form method="GET" class="sb-x">
                                 <input type="text" name="search" id="search_box" placeholder="Posts, categorias e autores">
                                 <button type="submit">
-                                    <img src="/media/assets/posts/lupa.png" alt="search-img" id="search-img">
+                                    <img src="/static/media/assets/posts/lupa.png" alt="search-img" id="search-img">
                                 </button>
                             </form>
                         </li>
@@ -86,8 +86,8 @@
         <div class="load-animation center-c">
             <div class="border-animation">
                 <div class="animated-border"></div>
-                <img src="/media/assets/global/logo.png" alt="logo" class="logo-animation white-logo-animation">
-                <img src="/media/assets/global/black-logo.png" alt="logo" class="logo-animation black-logo-animation">
+                <img src="/static/media/assets/global/logo.png" alt="logo" class="logo-animation white-logo-animation">
+                <img src="/static/media/assets/global/black-logo.png" alt="logo" class="logo-animation black-logo-animation">
             </div>
         </div>
         {% endcache %}
@@ -104,22 +104,22 @@
         <footer>
         <div class="mobile-footer sb-x">
             <a href="/" class="navigation" id="posts-link">
-                <img src="/media/assets/posts/mobile-footer/post.png" alt="nav-img" class="navigation-img">
+                <img src="/static/media/assets/posts/mobile-footer/post.png" alt="nav-img" class="navigation-img">
                 <h3 class="mobile-navigation-text">POSTS</h3>
             </a>
 
             <a href="{% url 'categories' %}" class="navigation" id="categories-link">
-                <img src="/media/assets/posts/mobile-footer/category.png" alt="nav-img" class="navigation-img">
+                <img src="/static/media/assets/posts/mobile-footer/category.png" alt="nav-img" class="navigation-img">
                 <h3 class="mobile-navigation-text">CATEGORIAS</h3>
             </a>
 
             <a href="{% url 'authors' %}" class="navigation" id="authors-link">
-                <img src="/media/assets/posts/mobile-footer/author.png" alt="nav-img" class="navigation-img">
+                <img src="/static/media/assets/posts/mobile-footer/author.png" alt="nav-img" class="navigation-img">
                 <h3 class="mobile-navigation-text">AUTORES</h3>
             </a>
 
             <a href="{% url 'account_page' %}" class="navigation" id="account-link">
-                <img src="/media/assets/posts/mobile-footer/user.png" alt="nav-img" class="navigation-img">
+                <img src="/static/media/assets/posts/mobile-footer/user.png" alt="nav-img" class="navigation-img">
                 <h3 class="mobile-navigation-text">CONTA</h3>
             </a>
         </div>

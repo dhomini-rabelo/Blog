@@ -36,7 +36,7 @@ function addSuggestionForm() {
         divForm.innerHTML = `
         <form method="POST" class="suggestion-block-top sb-x" id="suggestion-form">
             <span class="suggestion-name"><input type="text" name="suggestion" id="id_suggestion" class="input-suggestion-name"></span>
-            <div class="suggestion-status-color"><img src="/media/assets/account_group/suggestions/time.png" alt="" class="suggestion-img"></div>
+            <div class="suggestion-status-color"><img src="/static/media/assets/account_group/suggestions/time.png" alt="" class="suggestion-img"></div>
             <input type="hidden" name="csrfmiddlewaretoken" value="${getCookie('csrftoken')}">
         </form>
         <div class="suggestion-block-bottom sb-x">
