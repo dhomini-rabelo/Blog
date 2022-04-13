@@ -223,30 +223,24 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_EMAIL')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# SECURE_SSL_REDIRECT = False if DEBUG else True
 
+if not DEBUG:
 
-if False:
     INSTALLED_APPS += [
-        "debug_toolbar",
+        'cloudinary_storage',
+        'cloudinary',
     ]
 
-    INTERNAL_IPS = [
-        "127.0.0.1",
-        'localhost'
-    ]
-
-    MIDDLEWARE += [
-        "debug_toolbar.middleware.DebugToolbarMiddleware",
-    ]
-    import mimetypes
-    mimetypes.add_type("application/javascript", ".js", True)
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False,
+    CLOUDINARY = {
+        'CLOUD_NAME': config('CLOUD_NAME'),
+        'API_KEY': config('API_KEY'),
+        'API_SECRET': config('API_SECRET'),
     }
-    
-    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
-    INTERNAL_IPS = [ip[:-1] + '1' for ip in ips] + ['127.0.0.1', '10.0.2.2', 'localhost']
+
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 
     
     
