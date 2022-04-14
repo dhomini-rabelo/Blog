@@ -4,7 +4,7 @@ from decouple import AutoConfig
 import socket
 import os
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

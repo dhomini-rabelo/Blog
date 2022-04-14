@@ -10,7 +10,7 @@ services:
         ports:
             - "8000:8000"
         environment:
-            - DEBUG=1
+            - DEBUG=True
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
             - CELERY_BROKER=redis://redis:6379/0
             - CELERY_BACKEND=redis://redis:6379/0
@@ -24,7 +24,6 @@ services:
         volumes:
             - .:/code
         environment:
-            - DEBUG=1
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
             - CELERY_BROKER=redis://redis:6379/0
             - CELERY_BACKEND=redis://redis:6379/0
@@ -36,7 +35,6 @@ services:
         container_name: celeryBeat
         command: celery --workdir=project -A BLOG beat --loglevel=INFO
         environment:
-            - DEBUG=1
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
             - CELERY_BROKER=redis://redis:6379/0
             - CELERY_BACKEND=redis://redis:6379/0        
