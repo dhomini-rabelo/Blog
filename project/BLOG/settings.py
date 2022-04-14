@@ -4,7 +4,7 @@ from decouple import AutoConfig
 import socket
 import os
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -232,7 +232,7 @@ if not DEBUG:
         'cloudinary',
     ]
 
-    CLOUDINARY = {
+    CLOUDINARY_STORAGE = {
         'CLOUD_NAME': config('CLOUD_NAME'),
         'API_KEY': config('API_KEY'),
         'API_SECRET': config('API_SECRET'),

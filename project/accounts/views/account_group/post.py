@@ -49,6 +49,7 @@ class ListPostsAccountView(BaseView):
 
     def get(self, request):
         self.tc['list'] = format_html(request.session['user_save']['posts']['posts_list'])
+        self.tc['none_list'] = format_html('<div style="margin-top: 2rem;"><span>Nenhum post</span></div>') if len(self.tc['list']) == 0 else ''
         return render(request, 'accounts/account_group/post/list_posts.html', self.tc)
         
 
@@ -58,6 +59,7 @@ class ListDraftsAccountView(BaseView):
 
     def get(self, request):
         self.tc['list'] = format_html(request.session['user_save']['posts']['drafts_list'])
+        self.tc['none_list'] = format_html('<div style="margin-top: 2rem;"><span>Nenhum post</span></div>') if len(self.tc['list']) == 0 else ''
         return render(request, 'accounts/account_group/post/list_drafts.html', self.tc)
         
         

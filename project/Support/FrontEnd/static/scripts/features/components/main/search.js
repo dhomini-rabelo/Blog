@@ -41,15 +41,20 @@ async function renderSearch(e) {
             }
         }
 
+        let initialContainerData = containerHtml
+
         containerHtml += renderData(data.posts, {title: 'Posts', id: 'box-post'}, renderTypes.posts)
         containerHtml += renderData(data.categories, {title: 'Categorias', id: 'box-category'}, renderTypes.default)
         containerHtml += renderData(data.subcategories, {title: 'SubCategorias', id: 'box-subcategory'}, renderTypes.default)
         containerHtml += renderData(data.authors, {title: 'Autores', id: 'box-author'}, renderTypes.default)
-
+        
+        if (initialContainerData === containerHtml) {
+            containerHtml += '<div style="margin-top: 2rem;"><span>nada foi encontrado</span></div>'
+        }
 
         results[input.value.toLowerCase()] = containerHtml
     }
-
+    
     container.innerHTML = results[input.value.toLowerCase()]
 }
 
