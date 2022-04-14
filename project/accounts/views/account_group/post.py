@@ -39,7 +39,7 @@ class CreatePostsAccountView(BaseView):
 
         save_block_form(request, 'ag_create_post_1', request.POST, validation['errors'])
         save_block_form(request, 'ag_create_post_2', {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, validation['errors'])
-        request.session['session_text'] = request.POST.get('text')
+        request.session['session_text_create'] = request.POST.get('text')
         return redirect(request.get_full_path())
 
 
@@ -93,6 +93,7 @@ class EditPostsAccountView(BaseView):
 
         self.tc['messages'] = load_messages(request, 'success_post_save', 'error_post_save', 'success_new_draft_post_created')
         self.tc['published'] = post.published
+        self.tc['code'] = code
         return render(request, 'accounts/account_group/post/edit.html', self.tc)
 
     def post(self, request, code):

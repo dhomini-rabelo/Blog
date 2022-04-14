@@ -116,7 +116,7 @@ dmypy.json
 1/
 2/
 
-
+Frontend/media/
 # deployment
 .stignore
 docker-compose.yml
