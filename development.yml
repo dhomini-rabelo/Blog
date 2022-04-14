@@ -20,7 +20,7 @@ services:
     celery:
         build: .
         container_name: celery
-        command: celery --workdir=project -A BLOG worker --loglevel=INFO
+        command: celery --workdir=project -A BLOG worker --loglevel=INFO --concurrency=5
         volumes:
             - .:/code
         environment:

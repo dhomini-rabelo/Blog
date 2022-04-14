@@ -20,7 +20,7 @@ services:
     celery:
         build: .
         container_name: celery
-        command: celery --workdir=project -A BLOG worker --loglevel=INFO
+        command: celery --workdir=project -A BLOG worker --loglevel=INFO --concurrency=5
         volumes:
             - .:/code
         environment:
@@ -43,20 +43,7 @@ services:
         volumes:
         - .:/code
         depends_on:
-        - redis      
-    flower:
-        build: .
-        container_name: flower
-        command: celery --workdir=project -A BLOG flower --port=5555
-        ports:
-        - 5556:5555
-        environment:
-        - DEBUG=False
-        - CELERY_BROKER=redis://redis:6379/0
-        - CELERY_BACKEND=redis://redis:6379/0
-        depends_on:
         - redis
-        - celery
     pgdb:
         image: postgres
         container_name: pgdb
