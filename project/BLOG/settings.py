@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 config = AutoConfig(search_path=str(BASE_DIR.parent / 'production/.env')) if not DEBUG else AutoConfig(search_path=str(BASE_DIR.parent / '.env'))
 
 
-SECRET_KEY = 'django-insecure-w@g#t5khnt%m^km#i3w5cttr(49bxfc2wmgi=_o#$av$v)*$ni'
+SECRET_KEY = config('SECRET')
 
 ALLOWED_HOSTS = [
     '*',
