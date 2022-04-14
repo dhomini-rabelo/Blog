@@ -18,3 +18,5 @@ def save_user_basic_and_update_user_save(request):
     request.session['user_save']['data']['slug'] = new_slug
     request.session['user_save']['data']['photo_url'] = user.photo.url
     request.session.save()
+    user.my_static_pages = {**user.my_static_pages, 'data': request.session['user_save']['data']}
+    user.save()

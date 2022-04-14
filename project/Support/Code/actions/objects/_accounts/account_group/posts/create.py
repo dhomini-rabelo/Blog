@@ -2,7 +2,7 @@ create_post_form_1 = {
 
     'fields': [
         {'name': 'title', 'label': 'Título', 'placeholder': 'Adicionar título', 'block': 'input'},
-        {'name': 'img', 'block': 'img', 'src': '/media/assets/posts/post/nulli.png'},
+        {'name': 'img', 'block': 'img', 'src': '/static/media/assets/posts/post/nulli.png'},
         {'name': 'description', 'label': 'Descrição', 'placeholder': 'Adicionar descrição', 'block': 'input'},
     ],
 

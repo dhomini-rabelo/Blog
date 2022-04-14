@@ -19,7 +19,7 @@ from posts.models import Post
 class CreatePostsAccountView(BaseView):
 
     def get(self, request):
-        self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text'), '')})
+        self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text_create'), '')})
         self.tc['form1'] = get_block_form(request, 'ag_create_post_1', create_post_form_1, False)
         form2 = create_post_form_2.copy()
         load_data(*get_data_for_post_form(form2))
@@ -30,7 +30,7 @@ class CreatePostsAccountView(BaseView):
         validation = validate_form(request.POST, validate_create_post_form)
 
         if validation['status'] == 'valid':
-            request.session['session_text'] = None
+            request.session['session_text_create'] = None
             creation = create_draft_post(request, validation['fields'])
             save_message(request, {'title': 'success_new_draft_post_created', 'message': 'Rascunho criado', 'type': 'success'})
             delete_used_block_form(request, 'ag_create_post_1')
@@ -83,7 +83,7 @@ class EditPostsAccountView(BaseView):
             load_edit_post_1_data(form1, post)
             load_edit_post_2_data(*get_data_for_post_form(form2), post)
         else:
-            self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text'), '')})
+            self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text_edit'), '')})
             request.session['post_save_error'] = False
 
         
@@ -102,7 +102,7 @@ class EditPostsAccountView(BaseView):
             update_post(request, code, {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, request.POST['action'])
             save_message(request, {'title': 'success_post_save', 'message': 'Alterações salvas', 'type': 'success'})
             request.session['post_save_error'] = False
-            request.session['session_text'] = None
+            request.session['session_text_edit'] = None
             delete_used_block_form(request, 'ag_edit_post_1')
             delete_base_block_form(request, 'ag_edit_post_1')
             delete_used_block_form(request, 'ag_edit_post_2')
@@ -112,6 +112,6 @@ class EditPostsAccountView(BaseView):
             save_block_form(request, 'ag_edit_post_1', request.POST, validation['errors'])
             save_block_form(request, 'ag_edit_post_2', {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, validation['errors'])
             request.session['post_save_error'] = True
-            request.session['session_text'] = request.POST.get('text')
+            request.session['session_text_edit'] = request.POST.get('text')
         
         return redirect(request.get_full_path())
