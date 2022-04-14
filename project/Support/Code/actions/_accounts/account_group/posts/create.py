@@ -5,6 +5,7 @@ from Support.Code.actions._accounts.account_group.posts.support.create import ge
 from categories.models import Category, SubCategory
 from django.core.cache import cache
 from posts.models import Post
+from accounts.models import User
 from django.utils.html import format_html
 
 
@@ -13,7 +14,7 @@ def create_draft_post(request, fields: dict):
         title=fields['title'],
         description=fields['description'],
         text=if_none(request.POST.get('text'), ''),
-        img=get_image(request, 'posts/default/code.jpg'),
+        img=get_image(request, User.objects.get(username='default').photo),
         category=Category.objects.get(slug=fields['category']),
         author=request.user,
         code=generate_post_code(),
