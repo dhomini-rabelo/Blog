@@ -4,14 +4,14 @@ from decouple import AutoConfig
 import socket
 import os
 
-DEBUG = os.environ.get('DEBUG') == 'True'
+DEBUG = True
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 config = AutoConfig(search_path=str(BASE_DIR.parent / 'production/.env')) if not DEBUG else AutoConfig(search_path=str(BASE_DIR.parent / '.env'))
 
 
-SECRET_KEY = config('SECRET')
+SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = [
     '*',

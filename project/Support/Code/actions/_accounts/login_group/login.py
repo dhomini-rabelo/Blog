@@ -41,7 +41,7 @@ def get_aleatory_profile_photo():
     archives_quantity = len(archives)
     drawn_position = randint(0, archives_quantity-1)
     chosen_file = archives[drawn_position] 
-    return f'static/media/users/default/{chosen_file}'
+    return f'/static/media/users/default/{chosen_file}'
     
 
 
@@ -62,7 +62,7 @@ def construct_user_my_static_page(user):
             'name': user.name,
             'slug': user.slug,
             'email': user.email,
-            'photo_url': user.photo.url,
+            'photo_url': get_aleatory_profile_photo(),
             'author': False,
         },
 
