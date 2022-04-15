@@ -37,7 +37,9 @@ textarea {
     margin-bottom: 1.2rem;
 }
 .img-container img {
-    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
     max-height: 50vh;
     object-fit: cover;
 }

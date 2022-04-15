@@ -5,18 +5,20 @@
 #box-author .box-img{
     border-radius: 50%;
     height: 5rem;
-    width: 5rem;
-    max-width: 60vw;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+    display: block;
 }
 @media(max-width: 450px){
     #box-author .box-body{
-        width: 57.5vw;
+        max-width: 57.5vw;
         text-align: center;
     }
 }
 @media(max-width: 300px){
     #box-author .box-body{
-        width: 72.5vw;
+        max-width: 72.5vw;
         text-align: center;
     }
 }

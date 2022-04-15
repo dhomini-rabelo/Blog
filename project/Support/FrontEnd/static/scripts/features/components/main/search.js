@@ -49,7 +49,7 @@ async function renderSearch(e) {
         containerHtml += renderData(data.authors, {title: 'Autores', id: 'box-author'}, renderTypes.default)
         
         if (initialContainerData === containerHtml) {
-            containerHtml += '<div style="margin-top: 2rem;"><span>nada foi encontrado</span></div>'
+            containerHtml += '<div style="margin-top: 2rem; text-align: center;"><span style="color: white;">nada foi encontrado</span></div>'
         }
 
         results[input.value.toLowerCase()] = containerHtml

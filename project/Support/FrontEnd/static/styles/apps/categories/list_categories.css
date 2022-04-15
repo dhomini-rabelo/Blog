@@ -1,7 +1,9 @@
 #box-category .box-img, #box-subcategory .box-img{
-    width: 10rem;
+    max-width: 100%;
     height: 10rem;
-    max-width: 70vw;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
 }
 #box-category.box, #box-subcategory.box {
     width: 16rem !important;

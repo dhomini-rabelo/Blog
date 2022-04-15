@@ -4,8 +4,7 @@ from categories.models import Category, SubCategory
 from posts.models import Post
 from django.utils.html import format_html
 from django.core.cache import cache
-
-
+from .index import resize
 
 
 def update_post(request, code, values, action=None):
@@ -16,7 +15,7 @@ def update_post(request, code, values, action=None):
 
     img = request.FILES.get('img')
     if img is not None:
-        post.img = img
+        post.img = resize(img)
 
     if post.category.slug != values.get('category'):
         post.category = Category.objects.get(slug=values.get('category'))

@@ -363,10 +363,11 @@ footer{
     margin-bottom: 14px;
 }
 .box-img{
-    width: 96%;
+    max-width: 96%;
     max-height: 20rem;
     display: block;    
     object-fit: cover;
+    margin: 0 auto;
 }
 .box-title{
     margin: 0.2rem auto;

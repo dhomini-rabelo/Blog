@@ -109,7 +109,7 @@ main{
 }
 .pc-ag-navigation {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 2px 2px 2px gray;
     justify-content: space-around;
 }

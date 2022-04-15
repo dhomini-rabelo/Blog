@@ -47,7 +47,7 @@ def get_authors_list_html(authors):
         html += f"""
         <a href="/autores/{author.slug}" class="box" slug="{author.slug}" id="box-author">
             <div class="box-body center-c">
-                <img src="{author.photo.url}" alt="post-img" class="box-img">
+                <img src="{author.my_static_pages['data']['photo_url']}" alt="post-img" class="box-img">
                 <h2 class="box-title">{author.name}</h2>
             </div>
         </a>
