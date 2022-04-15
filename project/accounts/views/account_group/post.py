@@ -72,21 +72,20 @@ class EditPostsAccountView(BaseView):
         post = get_object_or_404(Post, code=code)
         if post.author != request.user: return HttpResponseForbidden()
         
-        delete_base_block_form(request, 'ag_edit_post_1')
-        delete_base_block_form(request, 'ag_edit_post_2')
 
         form1 = edit_post_form_1.copy()
         form2 = edit_post_form_2.copy()
 
         if request.session.get('post_save_error') is not True:
-            self.tc['summer_field'] = SummerFieldForm({'text': post.text})
+            delete_base_block_form(request, 'ag_edit_post_1')
+            delete_base_block_form(request, 'ag_edit_post_2')
             load_edit_post_1_data(form1, post)
             load_edit_post_2_data(*get_data_for_post_form(form2), post)
+            self.tc['summer_field'] = SummerFieldForm({'text': post.text})
         else:
             self.tc['summer_field'] = SummerFieldForm({'text': if_none(request.session.get('session_text_edit'), '')})
             request.session['post_save_error'] = False
 
-        
         self.tc['form1'] = get_block_form(request, 'ag_edit_post_1', form1, True)
         self.tc['form2'] = get_block_form(request, 'ag_edit_post_2', form2, True)
 
@@ -110,7 +109,7 @@ class EditPostsAccountView(BaseView):
             delete_base_block_form(request, 'ag_edit_post_2')
         else:
             save_message(request, {'title': 'error_post_save', 'message': 'Corrija os errors para salvar', 'type': 'error'})
-            save_block_form(request, 'ag_edit_post_1', request.POST, validation['errors'])
+            save_block_form(request, 'ag_edit_post_1', {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, validation['errors'])
             save_block_form(request, 'ag_edit_post_2', {**validation['fields'], 'subcategory': request.POST.getlist('subcategory')}, validation['errors'])
             request.session['post_save_error'] = True
             request.session['session_text_edit'] = request.POST.get('text')

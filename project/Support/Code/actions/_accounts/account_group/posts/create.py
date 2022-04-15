@@ -7,14 +7,16 @@ from django.core.cache import cache
 from posts.models import Post
 from accounts.models import User
 from django.utils.html import format_html
+from .index import resize
 
 
 def create_draft_post(request, fields: dict):
+    img = get_image(request, User.objects.get(username='default').photo)
     post = Post.objects.create(
         title=fields['title'],
         description=fields['description'],
         text=if_none(request.POST.get('text'), ''),
-        img=get_image(request, User.objects.get(username='default').photo),
+        img=resize(img, img.name, 500),
         category=Category.objects.get(slug=fields['category']),
         author=request.user,
         code=generate_post_code(),
