@@ -20,7 +20,7 @@ def resize(image_field: InMemoryUploadedFile, image_name: str, max_width: int = 
     """
     max_width variable use px as metric
     """
-    name = filter_name(image_name)
+    image_name = filter_name(image_name)
     image_extension = image_name.split('.')[-1]
     image_file = BytesIO(image_field.file.read())
     image = Image.open(image_file)
