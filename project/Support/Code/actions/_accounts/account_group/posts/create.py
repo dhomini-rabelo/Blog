@@ -15,7 +15,6 @@ from django.core.files.uploadedfile import UploadedFile
 
 def create_draft_post(request, fields: dict):
     img = get_image(request, User.objects.get(username='default').photo)
-    name = img.name if '.' in img.name else 'png'
     img = resize(img, img.name, 500)
     img.seek(0)
     post = Post.objects.create(
