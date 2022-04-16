@@ -12,6 +12,7 @@ click-repl==0.2.0
 cloudinary==1.29.0
 colorama==0.4.4
 Deprecated==1.2.13
+dj3-cloudinary-storage==0.0.6
 Django==4.0
 django-cloudinary-storage==0.3.0
 django-debug-toolbar==3.2.4

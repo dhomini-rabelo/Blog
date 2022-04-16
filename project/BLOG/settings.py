@@ -225,7 +225,11 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # SECURE_SSL_REDIRECT = False if DEBUG else True
 
-if not DEBUG:
+if DEBUG:
+
+    import cloudinary
+    import cloudinary.uploader
+    import cloudinary.api
 
     INSTALLED_APPS += [
         'cloudinary_storage',

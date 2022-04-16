@@ -8,15 +8,21 @@ from posts.models import Post
 from accounts.models import User
 from django.utils.html import format_html
 from .index import resize
+from django.core.files.uploadedfile import UploadedFile
+
+
 
 
 def create_draft_post(request, fields: dict):
     img = get_image(request, User.objects.get(username='default').photo)
+    name = img.name if '.' in img.name else 'png'
+    img = resize(img, img.name, 500)
+    img.seek(0)
     post = Post.objects.create(
         title=fields['title'],
         description=fields['description'],
         text=if_none(request.POST.get('text'), ''),
-        img=resize(img, img.name, 500),
+        img=img,
         category=Category.objects.get(slug=fields['category']),
         author=request.user,
         code=generate_post_code(),

@@ -15,7 +15,9 @@ def update_post(request, code, values, action=None):
 
     img = request.FILES.get('img')
     if img is not None:
-        post.img = resize(img, img.name, 500)
+        img = resize(img, img.name, 500)
+        img.seek(0)
+        post.img = img
 
     if post.category.slug != values.get('category'):
         post.category = Category.objects.get(slug=values.get('category'))
