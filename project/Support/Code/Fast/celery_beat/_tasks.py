@@ -34,7 +34,7 @@ def celery_update_project_data():
     try:
         context, update_obj = update_process_context()
     except AttributeError:
-        create_base(None, None):
+        create_base(None, None)
         return 'Server was sleeping'
 
     if context != {}:
