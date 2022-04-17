@@ -31,8 +31,12 @@ def create_base(sender, conf, **kwargs):
 
 @shared_task(name='Update data for project')
 def celery_update_project_data():
-    context, update_obj = update_process_context()
-    
+    try:
+        context, update_obj = update_process_context()
+    except AttributeError:
+        create_base(None, None):
+        return 'Server was sleeping'
+
     if context != {}:
         update_api_data(context, update_obj)
         update_cache_pages(context, update_obj)
