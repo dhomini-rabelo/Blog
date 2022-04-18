@@ -7,6 +7,7 @@ export function renderPosts(posts) {
 }
 
 export function renderPost(post) {
+    let date = post.created === undefined ? post.date : post.created
     return `
     <a href="/posts/post/${post.code}" class="box" slug="${post.code}" id="box-post">
         <div class="box-body center-c">
@@ -15,7 +16,7 @@ export function renderPost(post) {
             <p class="box-description">${post.description}</p>
             <div class="box-info sb-x">
                 <span class="post-category">${post.category}</span>
-                <span class="post-date">${post.created}</span>
+                <span class="post-date">${date}</span>
             </div>
         </div>
     </a>

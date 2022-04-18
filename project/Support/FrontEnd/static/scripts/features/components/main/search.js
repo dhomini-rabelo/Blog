@@ -14,22 +14,22 @@ async function renderSearch(e) {
     e.preventDefault()
     let container = document.querySelector('.page-container')
     let input = document.querySelector('#search_box')
-    if (input.value === '') return
+    if (input.value.trim() === '') return
 
 
-    if (!(input.value.toLowerCase() in results)) {
+    if (!(input.value.trim().toLowerCase() in results)) {
         let url = `${window.location.origin}/api/search`
         let response = await fetchPost(url, {
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                search: input.value
+                search: input.value.trim()
             })
         })
         
         let data = response
-        let containerHtml = `<h1 class="page-title">Busca por "${input.value}"</h1>`
+        let containerHtml = `<h1 class="page-title">Busca por "${input.value.trim()}"</h1>`
 
         let renderTypes = {
             posts: {
@@ -53,10 +53,10 @@ async function renderSearch(e) {
             containerHtml += '<div style="margin-top: 2rem; text-align: center;"><span style="color: white;">nada foi encontrado</span></div>'
         }
 
-        results[input.value.toLowerCase()] = containerHtml
+        results[input.value.toLowerCase().trim()] = containerHtml
     }
     
-    container.innerHTML = results[input.value.toLowerCase()]
+    container.innerHTML = results[input.value.toLowerCase().trim()]
     input.blur()
 }
 
