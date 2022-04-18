@@ -20,7 +20,7 @@
 
 
 <h2 id="about" style="margin-top: 30px;">📖 Sobre</h2>
-<p>Blog compartilhado de tecnologia, basta criar uma conta e fazer seus posts sobre tecnologia</p>
+<p>Blog compartilhado de tecnologia, basta criar uma conta e fazer seus posts sobre tecnologia. O blog está disponível neste link : <a href="https://django-dhomini-rabelo.cloud.okteto.net/" target="_blank">https://django-dhomini-rabelo.cloud.okteto.net/</a>, ele está hospedado no serviço da okteto.</p>
 
 <h2 id="tools" style="margin-top: 30px;">🛠️ Principais ferramentas</h2>
 
@@ -47,6 +47,7 @@
 <li>Formulários com Fast</li>
 <li>Tarefas usando Celery</li>
 <li>Tarefas agendadas usando Celery beat</li>
+<li>Envio de email usando serviço do gmail</li>
 <li>Dashboard de tarefas usando Flower</li>
 <li>Sistema de mensagens com Fast</li>
 <li>Campo de texto para posts usando Django-summernote</li>
@@ -54,6 +55,7 @@
 <li>Site responsivo</li>
 <li>Micro SPAs</li>
 <li>Admin personalidzado</li>
+<li>Armazenamento de arquivos de mídia pelo Cloudinary</li>
 <li>Envio de email</li>
 <li>Cache</li>
 </ul>
@@ -214,6 +216,7 @@
 
 <li style="margin-top: 30px;">
 <h3>Criando um post</h3>
+<p>Se você adicionar uma imagem muito pesada para o post, ela será cortada, para evitar gasto exagerado de memória, essa feature também está disponível na página de edição de post</p>
 <kbd><img src="./readme/account/create_post.gif" alt="project-image" style="border: 0.5px solid #22272E !important; border-style: solid !important; max-width: 100%; margin-top: 20px;"></kbd>
 </li>
 
@@ -272,5 +275,5 @@
 <p>Para usar você deve ter docker instalado na sua máquina, atualizar as dependências, configurar o arquivo .env.dev e renomeá-lo para .env, depois disso basta apenas rodar o comando abaixo:</p>
 
 ```
-docker-compose up --build
+docker-compose -f development.yml up --build
 ```
