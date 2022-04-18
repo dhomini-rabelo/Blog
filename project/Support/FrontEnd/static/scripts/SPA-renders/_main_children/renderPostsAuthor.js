@@ -32,7 +32,6 @@ export async function renderPostsAuthor(e){
     let container = document.querySelector('.main')
     let html = `<div class="page-container flex-pass"><h1 class="page-title">${box.querySelector('.box-title').innerHTML}</h1><div class="main-container">`
 
-
     html += renderPosts(posts)
 
     html += '</div></div>'

@@ -6,6 +6,7 @@ let searchForm = document.querySelector('form[method="GET"]')
 searchForm.addEventListener('submit', renderSearch)
 
 
+
 let results = {}
 
 
@@ -56,6 +57,7 @@ async function renderSearch(e) {
     }
     
     container.innerHTML = results[input.value.toLowerCase()]
+    input.blur()
 }
 
 function renderData(data, mySettings, settings) {

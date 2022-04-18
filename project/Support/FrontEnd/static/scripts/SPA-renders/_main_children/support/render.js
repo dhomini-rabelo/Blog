@@ -15,7 +15,7 @@ export function renderPost(post) {
             <p class="box-description">${post.description}</p>
             <div class="box-info sb-x">
                 <span class="post-category">${post.category}</span>
-                <span class="post-date">${post.date}</span>
+                <span class="post-date">${post.created}</span>
             </div>
         </div>
     </a>

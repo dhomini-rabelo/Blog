@@ -25,7 +25,7 @@ map_categories = lambda context: list(map(lambda category: {
 map_subcategories = lambda context: list(map(lambda subcategory: {
     'title': subcategory.name,
     'img': subcategory.img.url,
-    'url': f'categorias/subcategorias/{subcategory.slug}',
+    'url': f'/categorias/subcategorias/{subcategory.slug}',
 }, context['subcategories']))
 
 map_authors = lambda context: list(map(lambda author: {
